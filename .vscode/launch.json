@@ -1,0 +1,97 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "RRSP.Server",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet build",
+            "program": "${workspaceFolder}/RRSP.Server/bin/Debug/net10.0/RRSP.Server.dll",
+            "cwd": "${workspaceFolder}/RRSP.Server",
+            "console": "integratedTerminal",
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            }
+        },
+        {
+            "name": "RRSP.Server (test)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet build",
+            "program": "${workspaceFolder}/RRSP.Server/bin/Debug/net10.0/RRSP.Server.dll",
+            "cwd": "${workspaceFolder}/RRSP.Server",
+            "console": "integratedTerminal",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "test"
+            },
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            }
+        },
+        {
+            "name": "RRSP.Server (live)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet build",
+            "program": "${workspaceFolder}/RRSP.Server/bin/Debug/net10.0/RRSP.Server.dll",
+            "cwd": "${workspaceFolder}/RRSP.Server",
+            "console": "integratedTerminal",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "live"
+            },
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            }
+        },
+        {
+            "name": "RRSP.Terminal",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet build",
+            "program": "${workspaceFolder}/RRSP.Terminal/bin/Debug/net10.0/RRSP.Terminal.dll",
+            "cwd": "${workspaceFolder}/RRSP.Terminal/bin/Debug/net10.0",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "RRSP.Terminal (test)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet build",
+            "program": "${workspaceFolder}/RRSP.Terminal/bin/Debug/net10.0/RRSP.Terminal.dll",
+            "cwd": "${workspaceFolder}/RRSP.Terminal/bin/Debug/net10.0",
+            "console": "integratedTerminal",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "test"
+            }
+        },
+        {
+            "name": "RRSP.Terminal (live)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet build",
+            "program": "${workspaceFolder}/RRSP.Terminal/bin/Debug/net10.0/RRSP.Terminal.dll",
+            "cwd": "${workspaceFolder}/RRSP.Terminal/bin/Debug/net10.0",
+            "console": "integratedTerminal",
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "live"
+            }
+        },
+        {
+            "name": "Signum.Upgrade",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build_signum_upgrade",
+            "program": "${workspaceFolder}/Framework/Signum.Upgrade/bin/Debug/net10.0/Signum.Upgrade.dll",
+            "cwd": "${workspaceFolder}/Framework/Signum.Upgrade/bin/Debug/net10.0",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}

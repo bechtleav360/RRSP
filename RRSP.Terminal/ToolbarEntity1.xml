@@ -1,0 +1,1036 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Entities>
+  <Dashboard Guid="ec5a15b8-2697-4358-b41d-af988bba1ae1" DisplayName="Meine Übersicht" HideDisplayName="True" DashboardPriority="1" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="7" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyProjects" />
+      </Part>
+      <Part Row="8" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyPrograms" />
+      </Part>
+      <Part Row="9" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyPortfolios" />
+      </Part>
+      <Part Row="2" StartColumn="0" Columns="12">
+        <TextPart TextContent="&lt;h1 dir=&quot;ltr&quot;&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;$UserGreeting$ $UserName$,&lt;/span&gt;&lt;/h1&gt;&lt;p dir=&quot;ltr&quot;&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Hier ist Ihre Arbeitsübersicht für heute.&lt;/span&gt;&lt;/p&gt;" TextPartType="HTML" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <Dashboard Guid="ef793a24-18d0-4aa5-bb58-93ebf84eb9df" DisplayName="Meine Meilensteine" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="0" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyProjectsMilestone" />
+      </Part>
+      <Part Row="1" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyProgramsMilestone" />
+      </Part>
+      <Part Row="2" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyPortfoliosMilestone" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <ToolbarMenu Guid="f663a26f-4db6-4ac9-a752-ba253cd9b4a7" Name="Organisation">
+    <Elements />
+  </ToolbarMenu>
+  <UserChart Guid="20129428-b5d5-426c-abc2-e2eb5ec4aa51" DisplayName="Domäne nach Status und Budget" Query="Domains" HideQuickLink="false" ChartScript="D3ChartScript.BubblePack" MaxRows="1000">
+    <Columns>
+      <Column Token="Entity" OrderByIndex="1" OrderByType="Ascending" />
+      <Column Token="Entity.Budget" />
+      <Column Token="Entity.Parent" />
+      <Column />
+      <Column Token="Entity.LastStatusReport.OverallProgress.Status" />
+    </Columns>
+    <Parameters>
+      <Parameter Name="Scale" Value="MinMax" />
+      <Parameter Name="StrokeColor" Value="" />
+      <Parameter Name="StrokeWidth" Value="2" />
+      <Parameter Name="NumberOpacity" Value="0.8" />
+      <Parameter Name="NumberSizeLimit" Value="18" />
+      <Parameter Name="NumberColor" Value="#fff" />
+      <Parameter Name="FillOpacity" Value="0.8" />
+      <Parameter Name="ColorScale" Value="ZeroMax" />
+      <Parameter Name="ColorInterpolate" Value="BrBG" />
+      <Parameter Name="ColorCategory" Value="fluent" />
+    </Parameters>
+  </UserChart>
+  <UserQuery Guid="c4cb375d-2b46-4d02-b4fc-1aa36ce8ebdd" DisplayName="Portfolioübersicht" Query="Portfolio" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.Type" Operation="DistinctTo" Value="OrganizationalPortfolio" />
+      <Filter Indentation="0" Token="Entity.State" Operation="EqualTo" Value="Active" />
+    </Filters>
+    <Columns>
+      <Column Token="Entity" />
+      <Column Token="Entity.LastStatusReport.OverallProgress" />
+      <Column Token="Entity.TotalRevenues" SummaryToken="Entity.TotalRevenues.Sum" />
+      <Column Token="Entity.TotalAvailable" SummaryToken="Entity.TotalAvailable.Sum" />
+      <Column Token="Entity.Risk" DisplayName="Risiko" />
+    </Columns>
+    <Orders>
+      <Orden Token="Entity" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="b660acb6-edf3-4d1e-ab3c-0b13cde18669" DisplayName="Projekte nach Portfolios" Query="InitiationRequest" PaginationMode="All" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="ParentDomain" Operation="DistinctTo" />
+    </Filters>
+    <Columns>
+      <Column Token="ParentDomain" CombineRows="EqualValue" />
+      <Column Token="FromDomain" />
+      <Column Token="State" />
+      <Column Token="TotalScore" />
+    </Columns>
+    <Orders>
+      <Orden Token="ParentDomain" OrderType="Ascending" />
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <Dashboard Guid="f1b8ef2f-2250-4b4a-8a10-17e2eccb00e5" DisplayName="Portfolio Übersicht" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="1" StartColumn="8" Columns="4" IconColor="">
+        <UserChartPart UserChart="20129428-b5d5-426c-abc2-e2eb5ec4aa51" />
+      </Part>
+      <Part Row="1" StartColumn="0" Columns="8" IconColor="#2E86C1">
+        <UserQueryPart UserQuery="c4cb375d-2b46-4d02-b4fc-1aa36ce8ebdd" AllowSelection="false" CreateNew="true" />
+      </Part>
+      <Part Row="2" StartColumn="0" Columns="12">
+        <UserQueryPart UserQuery="b660acb6-edf3-4d1e-ab3c-0b13cde18669" AllowSelection="false" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <ToolbarMenu Guid="9f3ef61b-bde7-4c66-9f0d-e92466fafea6" Name="Portfoliostammdaten">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="bullseye-arrow" Content="Goal" Url="~/goals/:key" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="02d57d02-8a19-4fe4-b740-e980da256122" DisplayName="Mitglieder" Query="Member" EntityType="Portfolio" ColumnsMode="ReplaceOrAdd">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Role" DisplayName="Portfoliorolle" />
+      <Column Token="Entity.User.Email" />
+    </Columns>
+    <Orders>
+      <Orden Token="User" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="82b48921-7d6e-4fe2-8f22-41b6a4c6cf2f" DisplayName="Externe Portfoliomitglieder" Query="ExternalMember" EntityType="Portfolio" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="LastName" />
+      <Column Token="FirstName" />
+      <Column Token="Abbreviation" />
+      <Column Token="Email" />
+      <Column Token="Position" />
+      <Column Token="Company" />
+      <Column Token="Deleted" />
+      <Column Token="Domain" />
+    </Columns>
+    <Orders>
+      <Orden Token="LastName" OrderType="Ascending" />
+      <Orden Token="FirstName" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="e83df423-62e2-4bc7-b5bb-61e0919f9502" Name="Portfolioorganisation">
+    <Elements>
+      <ToolbarElement Type="Item" Label="Mitglieder" IconName="users" Content="02d57d02-8a19-4fe4-b740-e980da256122" />
+      <ToolbarElement Type="Item" IconName="building-user" Content="82b48921-7d6e-4fe2-8f22-41b6a4c6cf2f" />
+      <ToolbarElement Type="Item" Label="Portfoliogovernance" IconName="sitemap" Content="Member" Url="~/domainOrganizationalChart/:key" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="7081c5ea-5f19-4154-99cb-055ddf972495" DisplayName="Initiierungsanträge" Query="InitiationRequest" EntityType="Portfolio" ColumnsMode="ReplaceOrAdd">
+    <Filters>
+      <Filter Indentation="0" Token="ParentDomain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="DistinctTo" Value="Declined">
+        <Pinned Label="Nur Aktive" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Requested|InEvaluation">
+        <Pinned Label="Nur in progress" Column="2" Active="Checkbox_Checked" />
+      </Filter>
+    </Filters>
+    <Columns>
+      <Column Token="Title" DisplayName="Bezeichnung" />
+      <Column Token="Initiator" DisplayName="Initiator" />
+    </Columns>
+    <Orders>
+      <Orden Token="FromDomain" OrderType="Ascending" />
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="79107abc-3d40-4b77-9a14-a55fdd1db593" DisplayName="Meilensteine" Query="Milestone" EntityType="Portfolio" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Orders>
+      <Orden Token="TargetDate" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="b691d101-6521-459a-b579-ec5aea296035" Name="Portfoliozusammensetzung">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="lightbulb" ShowCount="MoreThan0" Content="7081c5ea-5f19-4154-99cb-055ddf972495" />
+      <ToolbarElement Type="Item" Label="Planübersicht" IconName="chart-gantt" Url="~/planOverview/:key" />
+      <ToolbarElement Type="Item" IconName="route" Content="79107abc-3d40-4b77-9a14-a55fdd1db593" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="296a73f7-fead-45f3-b570-ee4119725e57" DisplayName="Aufgaben" Query="Task" EntityType="Portfolio" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="Entity.ToString" Operation="Contains" />
+      <Filter Indentation="1" Token="Entity.Id" Operation="EqualTo" />
+      <Filter Indentation="1" Token="Domain.(Project).Name" Operation="Contains" />
+      <Filter Indentation="0" Token="Entity.Labels.Any.Name" Operation="Contains">
+        <Pinned Label="Label" Column="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="InProgress|Open">
+        <Pinned Label="Nur aktive" Column="2" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Orders>
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="85451177-f68a-4f8f-8a55-148113f1333a" DisplayName="Boards" Query="Board" EntityType="Portfolio" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]">
+        <Pinned Column="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="State" Operation="EqualTo" Value="Active">
+        <Pinned Label="Nur aktiv" Column="2" Active="Checkbox_Checked" />
+      </Filter>
+    </Filters>
+    <Orders>
+      <Orden Token="Name" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="67658276-ea1f-4c22-bf43-831f78705c37" DisplayName="Problemregister" Query="ProtocolPoint" EntityType="Portfolio" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="ist offen" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="für mich" Column="2" Active="Checkbox_Unchecked" />
+      </Filter>
+      <Filter Indentation="0" Token="Type" Operation="EqualTo" Value="ProtocolPointType;7;Problem" />
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="AgendaDescription" DisplayName="Bezeichnung" />
+      <Column Token="Description" />
+      <Column Token="Responsible" />
+      <Column Token="MeetingType" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="Deadline" />
+      <Column Token="DoneOn" />
+      <Column Token="State" />
+    </Columns>
+    <Orders>
+      <Orden Token="Date" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="c64a489b-e82b-49d4-9631-c0cca41dfc23" DisplayName="Entscheidungsregister" Query="ProtocolPoint" EntityType="Portfolio" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="ist offen" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="für mich" Column="2" Active="Checkbox_Unchecked" />
+      </Filter>
+      <Filter Indentation="0" Token="Type" Operation="EqualTo" Value="ProtocolPointType;3;Entscheidung" />
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="AgendaDescription" />
+      <Column Token="Description" />
+      <Column Token="Responsible" />
+      <Column Token="MeetingType" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="State" />
+    </Columns>
+    <Orders>
+      <Orden Token="Date" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="7f9d7ad3-5954-4e63-a8cd-7ae106175f71" DisplayName="Besprechungsprotokolle" Query="MeetingProtocol" EntityType="Portfolio" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+  </UserQuery>
+  <UserQuery Guid="e76d9fae-3f16-4893-bee3-20f26d2a1a8e" DisplayName="Offene Punkte" Query="ProtocolPoint" EntityType="Portfolio" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="ist offen" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="für mich" Column="2" Active="Checkbox_Unchecked" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="AgendaDescription" />
+      <Column Token="Description" />
+      <Column Token="Responsible" />
+      <Column Token="MeetingType" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="Deadline" />
+      <Column Token="DoneOn" />
+      <Column Token="State" />
+    </Columns>
+    <Orders>
+      <Orden Token="Date" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="1d0d7f64-2e0a-405f-b3c9-c91e00728cad" Name="Portfoliorealisierung">
+    <Elements>
+      <ToolbarElement Type="Item" Label="Portfolioaufgaben" IconName="tasks" Content="296a73f7-fead-45f3-b570-ee4119725e57" />
+      <ToolbarElement Type="Item" IconName="game-board-simple" Content="85451177-f68a-4f8f-8a55-148113f1333a" Url="~/board/:key/:id2/:toStr2" />
+      <ToolbarElement Type="ExtraIcon" IconName="list" Content="85451177-f68a-4f8f-8a55-148113f1333a" />
+      <ToolbarElement Type="Item" Label="Finanzmanagement" IconName="circle-euro" Content="Revenue" Url="~/financeManagement/:key" />
+      <ToolbarElement Type="Item" Label="Stakeholdermanagement" IconName="people-roof" Content="Stakeholder" Url="~/stakeholderManagement/:key" />
+      <ToolbarElement Type="Item" Label="Risikomanagement" IconName="warning" Content="Risk" Url="~/riskManagement/:key" />
+      <ToolbarElement Type="Item" Label="Problemmanagement" IconName="star-exclamation" Content="67658276-ea1f-4c22-bf43-831f78705c37" />
+      <ToolbarElement Type="Item" Label="Entscheidungsmanagement" IconName="ruler" Content="c64a489b-e82b-49d4-9631-c0cca41dfc23" />
+      <ToolbarElement Type="Item" Label="Besprechungsprotokolle" IconName="messages" Content="7f9d7ad3-5954-4e63-a8cd-7ae106175f71" />
+      <ToolbarElement Type="Item" IconName="list" ShowCount="MoreThan0" Content="e76d9fae-3f16-4893-bee3-20f26d2a1a8e" />
+      <ToolbarElement Type="Item" Label="Kommunikationsmanagement" IconName="users-rays" Content="Stakeholder" Url="~/communicationManagement/:key" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="058ba7c7-461c-4d12-a893-f2a74edbac54" DisplayName="Statusberichte" Query="StatusReport" EntityType="Portfolio" ColumnsMode="Remove">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Customer" />
+      <Column Token="Domain" />
+      <Column Token="ConsumedTime" />
+      <Column Token="ConsumedCost" />
+    </Columns>
+    <Orders>
+      <Orden Token="ReportDate" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="3408800b-c04c-462f-841d-d9960e5c77fa" Name="Portfolioberichte">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="chart-line" Content="058ba7c7-461c-4d12-a893-f2a74edbac54" />
+    </Elements>
+  </ToolbarMenu>
+  <ToolbarMenu Guid="b1348d74-210c-4023-9806-e9df4e168c23" Name="Portfolio" EntityType="Portfolio">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="gauge-med" Content="f1b8ef2f-2250-4b4a-8a10-17e2eccb00e5" AutoSelect="true" />
+      <ToolbarElement Type="Item" Label="Portfolios" IconName="list-ol" Content="Portfolio" />
+      <ToolbarElement Type="Header" Label="Zusammensetzung" />
+      <ToolbarElement Type="Divider" />
+      <ToolbarElement Type="Header" Label="Allgemein" />
+      <ToolbarElement Type="Item" IconName="cogs" Content="InitiationRequestGlobalConfiguration" />
+      <ToolbarElement Type="Item" Label="Portfolio-Dashboard" IconName="gauge-med" Url="~/defaultDashboard/:key" WithEntity="true" AutoSelect="true" />
+      <ToolbarElement Type="Item" Content="9f3ef61b-bde7-4c66-9f0d-e92466fafea6" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="e83df423-62e2-4bc7-b5bb-61e0919f9502" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="b691d101-6521-459a-b579-ec5aea296035" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="1d0d7f64-2e0a-405f-b3c9-c91e00728cad" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="3408800b-c04c-462f-841d-d9960e5c77fa" WithEntity="true" />
+      <ToolbarElement Type="Divider" WithEntity="true" />
+      <ToolbarElement Type="Item" Label="Konfiguration" IconName="cogs" Url="~/view/:type/:id" WithEntity="true" />
+    </Elements>
+  </ToolbarMenu>
+  <ToolbarMenu Guid="d00af620-2496-4bfb-b43f-a7e0180e1c2a" Name="Programmstammdaten">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="bullseye-arrow" Content="Goal" Url="~/goals/:key" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="c1b031d3-663e-4639-9b76-a7b2edc7c7bf" DisplayName="Mitglieder" Query="Member" EntityType="Program" ColumnsMode="ReplaceOrAdd">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Role" DisplayName="Programmrolle" />
+    </Columns>
+    <Orders>
+      <Orden Token="User" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="0b751981-0860-410a-b2c5-826c9c3df8f8" DisplayName="Externe Programmmitglieder" Query="ExternalMember" EntityType="Program" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="LastName" />
+      <Column Token="FirstName" />
+      <Column Token="Abbreviation" />
+      <Column Token="Email" />
+      <Column Token="Position" />
+      <Column Token="Company" />
+      <Column Token="Deleted" />
+      <Column Token="Domain" />
+    </Columns>
+    <Orders>
+      <Orden Token="LastName" OrderType="Ascending" />
+      <Orden Token="FirstName" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="2530459f-f042-4206-9063-70bfde6b70ad" Name="Programmteam und -organisation">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="users" Content="c1b031d3-663e-4639-9b76-a7b2edc7c7bf" />
+      <ToolbarElement Type="Item" IconName="building-user" Content="0b751981-0860-410a-b2c5-826c9c3df8f8" />
+      <ToolbarElement Type="Item" IconName="user-cog" Content="RASCIMatrix" Url="~/sub/:type/:id/RASCIMatrix" />
+      <ToolbarElement Type="Item" Label="Programmgovernance" IconName="sitemap" Content="Member" Url="~/domainOrganizationalChart/:key" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="6130ce0d-fd63-4a42-93d3-a8b83ea77382" DisplayName="Meilensteine" Query="Milestone" EntityType="Program" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Orders>
+      <Orden Token="TargetDate" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="74261d78-c6db-4cdd-9879-56764a3d9aec" Name="Programmplanung und -durchführung">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="route" Content="6130ce0d-fd63-4a42-93d3-a8b83ea77382" />
+      <ToolbarElement Type="Item" Label="Planübersicht" IconName="chart-gantt" Url="~/planOverview/:key" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="fa529a45-0fcf-4f99-9cb5-7a58f0894a84" DisplayName="Aufgaben" Query="Task" EntityType="Program" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Search" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="Entity.ToString" Operation="Contains" />
+      <Filter Indentation="1" Token="Entity.Id" Operation="EqualTo" />
+      <Filter Indentation="1" Token="Domain.(Project).Name" Operation="Contains" />
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]">
+        <Pinned Column="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.Labels.Any.Name" Operation="Contains">
+        <Pinned Label="Label" Column="2" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="Only active" Column="3" Active="Checkbox_Checked" />
+      </Filter>
+    </Filters>
+    <Orders>
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="666750f6-3287-4f76-89eb-6adc38bf32c4" DisplayName="Boards" Query="Board" EntityType="Program" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]">
+        <Pinned Column="0" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="State" Operation="EqualTo" Value="Active">
+        <Pinned Label="Nur aktiv" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+    </Filters>
+    <Orders>
+      <Orden Token="Name" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="8e0fdabf-5ed3-4fbc-ad3e-bb888044c76f" DisplayName="Problemregister" Query="ProtocolPoint" EntityType="Program" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="ist offen" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="für mich" Column="2" Active="Checkbox_Unchecked" />
+      </Filter>
+      <Filter Indentation="0" Token="Type" Operation="EqualTo" Value="ProtocolPointType;7;Problem" />
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="AgendaDescription" DisplayName="Bezeichnung" />
+      <Column Token="Description" />
+      <Column Token="Responsible" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="Deadline" />
+      <Column Token="DoneOn" />
+      <Column Token="State" />
+    </Columns>
+    <Orders>
+      <Orden Token="Date" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="e35bc9ce-b29b-44b2-b5af-c8a74639dbe9" DisplayName="Entscheidungsregister" Query="ProtocolPoint" EntityType="Program" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="ist offen" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="für mich" Column="2" Active="Checkbox_Unchecked" />
+      </Filter>
+      <Filter Indentation="0" Token="Type" Operation="EqualTo" Value="ProtocolPointType;3;Entscheidung" />
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="AgendaDescription" />
+      <Column Token="Description" />
+      <Column Token="Responsible" />
+      <Column Token="MeetingType" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="State" />
+    </Columns>
+    <Orders>
+      <Orden Token="Date" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="130da501-fc2d-4151-8ce2-f9e558e41f11" DisplayName="Besprechungsprotokolle" Query="MeetingProtocol" EntityType="Program" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+  </UserQuery>
+  <UserQuery Guid="99b9df51-d931-4091-91cf-42f635ac6ebd" DisplayName="Protokollpunkte Programm" Query="ProtocolPoint" EntityType="Program" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="ist offen" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="für mich" Column="2" Active="Checkbox_Unchecked" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="AgendaDescription" />
+      <Column Token="Description" />
+      <Column Token="Responsible" />
+      <Column Token="MeetingType" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="Deadline" />
+      <Column Token="DoneOn" />
+      <Column Token="State" />
+    </Columns>
+    <Orders>
+      <Orden Token="Date" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="c89517e2-80a5-4411-94d8-c21ba600ddba" Name="Programmsteuerung">
+    <Elements>
+      <ToolbarElement Type="Item" Label="Programmaufgaben" IconName="tasks" Content="fa529a45-0fcf-4f99-9cb5-7a58f0894a84" />
+      <ToolbarElement Type="Item" IconName="game-board-simple" Content="666750f6-3287-4f76-89eb-6adc38bf32c4" Url="~/board/:key/:id2/:toStr2" />
+      <ToolbarElement Type="ExtraIcon" IconName="list" Content="666750f6-3287-4f76-89eb-6adc38bf32c4" />
+      <ToolbarElement Type="Item" Label="Finanzmanagement" IconName="circle-euro" Content="Revenue" Url="~/financeManagement/:key" />
+      <ToolbarElement Type="Item" Label="Stakeholdermanagement" IconName="people-roof" Content="Stakeholder" Url="~/stakeholderManagement/:key" />
+      <ToolbarElement Type="Item" Label="Risikomanagement" IconName="triangle-exclamation" Content="Risk" Url="~/riskManagement/:key" />
+      <ToolbarElement Type="Item" Label="Problemmanagement" IconName="star-exclamation" Content="8e0fdabf-5ed3-4fbc-ad3e-bb888044c76f" />
+      <ToolbarElement Type="Item" Label="Entscheidungsmanagement" IconName="ruler" Content="e35bc9ce-b29b-44b2-b5af-c8a74639dbe9" />
+      <ToolbarElement Type="Item" IconName="messages" Content="130da501-fc2d-4151-8ce2-f9e558e41f11" />
+      <ToolbarElement Type="Item" Label="offene Punkte" IconName="list-ul" ShowCount="MoreThan0" Content="99b9df51-d931-4091-91cf-42f635ac6ebd" />
+      <ToolbarElement Type="Item" Label="Kommunikationsmanagement" IconName="users-rays" Content="Stakeholder" Url="~/communicationManagement/:key" />
+    </Elements>
+  </ToolbarMenu>
+  <ToolbarMenu Guid="961296e8-0dd8-4790-90fc-9d2e50da3c7e" Name="PgInitialisierung">
+    <Elements />
+  </ToolbarMenu>
+  <ToolbarMenu Guid="94422ef1-c04f-4f50-8bb1-eea7bc152cf7" Name="PgAbschluss">
+    <Elements />
+  </ToolbarMenu>
+  <UserQuery Guid="c3953a9f-9feb-47e9-840e-31eb7b136180" DisplayName="Initiierungsanträge" Query="InitiationRequest" EntityType="Program" ColumnsMode="ReplaceOrAdd">
+    <Filters>
+      <Filter Indentation="0" Token="ParentDomain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="DistinctTo" Value="Declined">
+        <Pinned Label="Nur Aktive" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Requested|InEvaluation">
+        <Pinned Label="Nur in progress" Column="2" Active="Checkbox_Checked" />
+      </Filter>
+    </Filters>
+    <Columns>
+      <Column Token="Title" DisplayName="Programmbezeichnung" />
+      <Column Token="Initiator" DisplayName="Initiator" />
+    </Columns>
+    <Orders>
+      <Orden Token="FromDomain" OrderType="Ascending" />
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="06e00171-7d69-4617-9acc-821137f929cb" DisplayName="Statusberichte" Query="StatusReport" EntityType="Program" ColumnsMode="Remove">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Customer" />
+      <Column Token="Domain" />
+      <Column Token="ConsumedTime" />
+      <Column Token="ConsumedCost" />
+      <Column Token="Budget" />
+    </Columns>
+    <Orders>
+      <Orden Token="ReportDate" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="81591087-eca9-49ec-97b4-4f1dfdca184e" Name="Programmberichte und -anträge">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="lightbulb" ShowCount="MoreThan0" Content="c3953a9f-9feb-47e9-840e-31eb7b136180" />
+      <ToolbarElement Type="Item" IconName="chart-line" Content="06e00171-7d69-4617-9acc-821137f929cb" />
+    </Elements>
+  </ToolbarMenu>
+  <ToolbarMenu Guid="fcb5fef9-6a71-4b64-b896-86556a4b47c4" Name="Programm" EntityType="Program">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="list" Content="Program" AutoSelect="true" />
+      <ToolbarElement Type="Item" Label="Programm-Dashboard" IconName="gauge-med" Url="~/defaultDashboard/:key" WithEntity="true" AutoSelect="true" />
+      <ToolbarElement Type="Item" Content="d00af620-2496-4bfb-b43f-a7e0180e1c2a" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="2530459f-f042-4206-9063-70bfde6b70ad" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="74261d78-c6db-4cdd-9879-56764a3d9aec" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="c89517e2-80a5-4411-94d8-c21ba600ddba" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="961296e8-0dd8-4790-90fc-9d2e50da3c7e" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="94422ef1-c04f-4f50-8bb1-eea7bc152cf7" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="81591087-eca9-49ec-97b4-4f1dfdca184e" WithEntity="true" />
+      <ToolbarElement Type="Divider" WithEntity="true" />
+      <ToolbarElement Type="Item" Label="Konfiguration" IconName="cog" Url="~/view/:type/:id" WithEntity="true" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="455009f3-c417-44d5-b554-3b106679f53d" DisplayName="Projekte" Query="Project" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="Entity.Id" Operation="EqualTo" />
+      <Filter Indentation="1" Token="Entity.ToString" Operation="Contains" />
+      <Filter Indentation="1" Token="Entity.Description" Operation="Contains" />
+      <Filter Indentation="0" Token="State" Operation="EqualTo" Value="Active">
+        <Pinned Label="Nur aktive" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+    </Filters>
+    <Orders>
+      <Orden Token="Name" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="1d04307c-4d2b-42b7-8f0a-5f2678f1bf12" DisplayName="Initiierungsanträge" Query="InitiationRequest" ColumnsMode="Add">
+    <Orders>
+      <Orden Token="FromDomain" OrderType="Ascending" />
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="55a424b3-7d51-42d8-89da-b299f7feb40f" Name="Projektstammdaten">
+    <Elements>
+      <ToolbarElement Type="Item" Label="Ziele" IconName="bullseye-arrow" Content="Goal" Url="~/goals/:key" />
+      <ToolbarElement Type="Item" Label="Anforderungen" IconName="handshake" Content="Requirement" Url="~/requirements/:key" />
+      <ToolbarElement Type="Item" Label="Annahmen" IconName="water-arrow-up" Content="Assumption" Url="~/assumptions/:key" />
+      <ToolbarElement Type="Item" Label="Einschränkungen" IconName="frame" Content="Constraint" Url="~/constraints/:key" />
+      <ToolbarElement Type="Item" Label="Liefergegenstände" IconName="dolly" Content="Deliverable" Url="~/deliverables/:key" />
+      <ToolbarElement Type="Item" Label="Supportleistungen" IconName="hand-holding-box" Content="Service" Url="~/services/:key" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="8e659329-fd90-44d9-b7ad-614a943b7dbe" DisplayName="Projektmitglieder" Query="Member" EntityType="Project" ColumnsMode="ReplaceOrAdd">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Role" DisplayName="Projektrolle" />
+      <Column Token="Entity.User.Email" />
+    </Columns>
+    <Orders>
+      <Orden Token="User" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="358556cf-6cca-435a-a348-5425930a2a9a" DisplayName="Externe Projektmitglieder" Query="ExternalMember" EntityType="Project" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="LastName" />
+      <Column Token="FirstName" />
+      <Column Token="Abbreviation" />
+      <Column Token="Email" />
+      <Column Token="Position" />
+      <Column Token="Company" />
+      <Column Token="Deleted" />
+      <Column Token="Domain" />
+    </Columns>
+    <Orders>
+      <Orden Token="LastName" OrderType="Ascending" />
+      <Orden Token="FirstName" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="4c933b3e-ff96-4f57-861b-bf96d57acf00" Name="Projektteam und Governance">
+    <Elements>
+      <ToolbarElement Type="Item" Label="Projektmitglieder" IconName="users" Content="8e659329-fd90-44d9-b7ad-614a943b7dbe" />
+      <ToolbarElement Type="Item" IconName="building-user" Content="358556cf-6cca-435a-a348-5425930a2a9a" />
+      <ToolbarElement Type="Item" Label="RASCI-Matrix" IconName="user-cog" Content="RASCIMatrix" Url="~/sub/:type/:id/RASCIMatrix" />
+      <ToolbarElement Type="Item" Label="Stakeholdermanagement" IconName="people-roof" Content="Stakeholder" Url="~/stakeholderManagement/:key" />
+      <ToolbarElement Type="Item" Label="Projektgovernance" IconName="sitemap" Content="Member" Url="~/domainOrganizationalChart/:key" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="bacaed92-c67b-48b6-90ad-502f69991caf" DisplayName="Meilensteine" Query="Milestone" EntityType="Project" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Orders>
+      <Orden Token="TargetDate" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="1c05589a-7950-429e-b5a6-cf54ed4fec09" DisplayName="Pläne" Query="ProjectPlan" EntityType="Project" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Project" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+  </UserQuery>
+  <UserQuery Guid="e6420183-f3a3-482e-8ab8-03648ecf0a02" DisplayName="Lessons learned" Query="LessonsLearned" EntityType="Project" ColumnsMode="Remove">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Domain" />
+    </Columns>
+    <Orders>
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="65e7e9fc-84ea-479d-a263-376dfb818788" Name="Projektplanung und -durchführung">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="route" Content="bacaed92-c67b-48b6-90ad-502f69991caf" />
+      <ToolbarElement Type="Item" Label="Projektpläne" IconName="chart-gantt" Content="1c05589a-7950-429e-b5a6-cf54ed4fec09" Url="~/projectPlanner/:key/:id2" />
+      <ToolbarElement Type="ExtraIcon" IconName="list" Content="1c05589a-7950-429e-b5a6-cf54ed4fec09" />
+      <ToolbarElement Type="Item" IconName="notes" Content="e6420183-f3a3-482e-8ab8-03648ecf0a02" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="f21c2e65-64e4-4dc7-834b-67295b5ae162" DisplayName="Aufgaben" Query="Task" EntityType="Project" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Search" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="Entity.ToString" Operation="Contains" />
+      <Filter Indentation="1" Token="Entity.Id" Operation="EqualTo" />
+      <Filter Indentation="1" Token="Domain.(Project).Name" Operation="Contains" />
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]">
+        <Pinned Column="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.Labels.Any.Name" Operation="Contains">
+        <Pinned Label="Label" Column="2" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="Only active" Column="3" Active="Checkbox_Checked" />
+      </Filter>
+    </Filters>
+    <Orders>
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="1644d075-ba9b-4e38-afd8-9db4df55f652" DisplayName="Boards" Query="Board" EntityType="Project" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="EqualTo" Value="Active">
+        <Pinned Label="Nur aktiv" Column="2" Active="Checkbox_Checked" />
+      </Filter>
+    </Filters>
+    <Orders>
+      <Orden Token="Name" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="2b2cc406-6a9a-4e7e-9ca7-e453b5bfa2c1" DisplayName="Problemregister" Query="ProtocolPoint" EntityType="Project" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="ist offen" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="für mich" Column="2" Active="Checkbox_Unchecked" />
+      </Filter>
+      <Filter Indentation="0" Token="Type" Operation="EqualTo" Value="ProtocolPointType;7;Problem" />
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="AgendaDescription" DisplayName="Bezeichnung" />
+      <Column Token="Description" />
+      <Column Token="Responsible" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="Deadline" />
+      <Column Token="DoneOn" />
+      <Column Token="State" />
+    </Columns>
+    <Orders>
+      <Orden Token="Date" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="06aca78e-b924-4c4e-b63c-776a90680556" DisplayName="Entscheidungsregister" Query="ProtocolPoint" EntityType="Project" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="ist offen" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="für mich" Column="2" Active="Checkbox_Unchecked" />
+      </Filter>
+      <Filter Indentation="0" Token="Type" Operation="EqualTo" Value="ProtocolPointType;3;Entscheidung" />
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="AgendaDescription" />
+      <Column Token="Description" />
+      <Column Token="Responsible" />
+      <Column Token="MeetingType" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="State" />
+    </Columns>
+    <Orders>
+      <Orden Token="Date" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="6ff4acef-5bb6-4f2b-8ab2-dfa5540d3902" DisplayName="Besprechungsprotokolle" Query="MeetingProtocol" EntityType="Project" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+  </UserQuery>
+  <UserQuery Guid="275aa28a-a1d7-45c8-ac55-13f4ec31f4a5" DisplayName="Offene Punkte" Query="ProtocolPoint" EntityType="Project" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="ist offen" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="für mich" Column="2" Active="Checkbox_Unchecked" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="AgendaDescription" />
+      <Column Token="Description" />
+      <Column Token="Type" />
+      <Column Token="Responsible" />
+      <Column Token="MeetingType" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="Deadline" />
+      <Column Token="DoneOn" />
+      <Column Token="State" />
+    </Columns>
+    <Orders>
+      <Orden Token="Date" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="8c935c4e-ce96-4a3d-8063-7767a860142d" Name="Projektsteuerung">
+    <Elements>
+      <ToolbarElement Type="Item" Label="Projektaufgaben" IconName="tasks" Content="f21c2e65-64e4-4dc7-834b-67295b5ae162" />
+      <ToolbarElement Type="Item" IconName="game-board-simple" Content="1644d075-ba9b-4e38-afd8-9db4df55f652" Url="~/board/:key/:id2/:toStr2" />
+      <ToolbarElement Type="ExtraIcon" IconName="list" Content="1644d075-ba9b-4e38-afd8-9db4df55f652" />
+      <ToolbarElement Type="Item" Label="Finanzmanagement" IconName="circle-euro" Content="Revenue" Url="~/financeManagement/:key" />
+      <ToolbarElement Type="Item" Label="Risikomanagement" IconName="warning" Content="Risk" Url="~/riskManagement/:key" />
+      <ToolbarElement Type="Item" Label="Problemmanagement" IconName="star-exclamation" Content="2b2cc406-6a9a-4e7e-9ca7-e453b5bfa2c1" />
+      <ToolbarElement Type="Item" Label="Entscheidungsmanagement" IconName="ruler" Content="06aca78e-b924-4c4e-b63c-776a90680556" />
+      <ToolbarElement Type="Item" Label="Änderungsmanagement" IconName="book" Content="ChangeRequest" Url="~/changerequest/:key" />
+      <ToolbarElement Type="Item" IconName="messages" Content="6ff4acef-5bb6-4f2b-8ab2-dfa5540d3902" />
+      <ToolbarElement Type="Item" IconName="list-ul" ShowCount="MoreThan0" Content="275aa28a-a1d7-45c8-ac55-13f4ec31f4a5" />
+      <ToolbarElement Type="Item" Label="Kommunikationsmanagement" IconName="users-rays" Content="Stakeholder" Url="~/communicationManagement/:key" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="af8090c3-5116-40b3-a023-18d4bbc47979" DisplayName="Projektinitiierungsantrag" Query="InitiationRequest" EntityType="Project" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.FromDomain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="DistinctTo" Value="Declined">
+        <Pinned Label="Nur Aktive" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="FromDomain" />
+      <Column Token="Title" DisplayName="Projektbezeichnung" />
+      <Column Token="State" />
+      <Column Token="Entity.FromDomain.(Program).Phase" />
+      <Column Token="TotalScore" />
+    </Columns>
+    <Orders>
+      <Orden Token="FromDomain" OrderType="Ascending" />
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="70e904af-871c-4297-a980-5c2d74d9586a" DisplayName="Statusberichte" Query="StatusReport" EntityType="Project" ColumnsMode="Remove">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Customer" />
+      <Column Token="Domain" />
+      <Column Token="ConsumedTime" />
+      <Column Token="ConsumedCost" />
+    </Columns>
+    <Orders>
+      <Orden Token="ReportDate" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="53ad4b79-fdd4-4e2c-a620-5c7b689af7a4" Name="Projektberichte und -anträge">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="lightbulb" Content="af8090c3-5116-40b3-a023-18d4bbc47979" />
+      <ToolbarElement Type="Item" Label="Projektauftrag" IconName="file-contract" Content="Charter" Url="~/sub/:type/:id/charter" />
+      <ToolbarElement Type="Item" Label="Business Case" IconName="briefcase" Content="BusinessCase" Url="~/sub/:type/:id/businessCase" />
+      <ToolbarElement Type="Item" Label="Projektstatusberichte" IconName="chart-line" Content="70e904af-871c-4297-a980-5c2d74d9586a" />
+    </Elements>
+  </ToolbarMenu>
+  <UserQuery Guid="bd62e699-a373-433d-adc1-89294fdca459" DisplayName="alle offenen Punkte" Query="ProtocolPoint" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Beschreibung" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="MeetingType" Operation="EqualTo">
+        <Pinned Column="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo">
+        <Pinned Column="2" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo">
+        <Pinned Column="3" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Date" Operation="GreaterThanOrEqual">
+        <Pinned Label="Von" Column="0" Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Date" Operation="LessThanOrEqual">
+        <Pinned Label="Bis" Column="1" Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Domain.(Project).UsersWithProtocolAccess.Any" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="Nur meine Projekte" Column="2" Row="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="And">
+        <Pinned Label="Offene Punkte" Column="3" Row="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="1" Token="State" Operation="IsIn" Value="Open|InProgress" />
+      <Filter Indentation="1" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+      <Filter Indentation="0" Token="Type" Operation="EqualTo">
+        <Pinned Column="0" Row="2" Active="WhenHasValue" />
+      </Filter>
+    </Filters>
+  </UserQuery>
+  <ToolbarMenu Guid="d83fadb3-382d-4e4b-b59b-53d91abec74e" Name="Projekt" EntityType="Project">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="list" Content="455009f3-c417-44d5-b554-3b106679f53d" AutoSelect="true" />
+      <ToolbarElement Type="Item" IconName="lightbulb" Content="1d04307c-4d2b-42b7-8f0a-5f2678f1bf12" />
+      <ToolbarElement Type="Item" Label="Projekt-Dashboard" IconName="gauge-med" Url="~/defaultDashboard/:key" WithEntity="true" AutoSelect="true" />
+      <ToolbarElement Type="Item" Content="55a424b3-7d51-42d8-89da-b299f7feb40f" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="4c933b3e-ff96-4f57-861b-bf96d57acf00" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="65e7e9fc-84ea-479d-a263-376dfb818788" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="8c935c4e-ce96-4a3d-8063-7767a860142d" WithEntity="true" />
+      <ToolbarElement Type="Item" Content="53ad4b79-fdd4-4e2c-a620-5c7b689af7a4" WithEntity="true" />
+      <ToolbarElement Type="Item" Label="offene Punkte" IconName="list-ul" Content="bd62e699-a373-433d-adc1-89294fdca459" />
+      <ToolbarElement Type="Divider" WithEntity="true" />
+      <ToolbarElement Type="Item" Label="Konfiguration" IconName="cogs" Url="~/view/Project/:id" WithEntity="true" />
+    </Elements>
+  </ToolbarMenu>
+  <ToolbarMenu Guid="2deb71ea-f065-4fe3-9215-90460bc2d5ec" Name="Reports">
+    <Elements>
+      <ToolbarElement Type="Item" Label="Karte" IconName="map" Content="MapPermission.ViewMap" Url="~/Map" />
+      <ToolbarElement Type="Item" Label="Word-Vorlagen" Content="WordTemplate" />
+      <ToolbarElement Type="Item" Label="E-Mail-Vorlagen" Content="EmailTemplate" />
+      <ToolbarElement Type="Item" Label="Benutzer-Abfragen" Content="UserQuery" />
+      <ToolbarElement Type="Item" Label="Benutzerdiagramme" Content="UserChart" />
+      <ToolbarElement Type="Item" Content="Dashboard" />
+      <ToolbarElement Type="Item" Content="Toolbar" />
+    </Elements>
+  </ToolbarMenu>
+  <ToolbarMenu Guid="af61b3b1-dc30-4129-a37f-aaf72450a939" Name="Logs">
+    <Elements>
+      <ToolbarElement Type="Item" Content="OperationLog" />
+    </Elements>
+  </ToolbarMenu>
+  <ToolbarMenu Guid="3dbf3d73-02f6-4ad8-88f4-2fe03d34edeb" Name="Security">
+    <Elements>
+      <ToolbarElement Type="Item" Content="User" />
+      <ToolbarElement Type="Item" Content="Role" />
+    </Elements>
+  </ToolbarMenu>
+  <ToolbarMenu Guid="aa00a50a-ff58-4950-94de-e200769effdc" Name="System Panels">
+    <Elements>
+      <ToolbarElement Type="Item" Label="Cache" IconName="database" Content="CachePermission.ViewCache" Url="~/cache/statistics" />
+      <ToolbarElement Type="Item" Label="Profiler (Heavy)" IconName="bolt" Content="ProfilerPermission.ViewHeavyProfiler" Url="~/profiler/heavy" />
+      <ToolbarElement Type="Item" Label="Profiler (Times)" IconName="bolt" Content="ProfilerPermission.ViewTimeTracker" Url="~/profiler/times" />
+      <ToolbarElement Type="Item" Label="Processes Panel" IconName="gears" Content="ProcessPermission.ViewProcessPanel" Url="~/processes/view" />
+      <ToolbarElement Type="Item" Label="Async Email Sender" IconName="paper-plane" Content="AsyncEmailSenderPermission.ViewAsyncEmailSenderPanel" Url="~/asyncEmailSender/view" />
+      <ToolbarElement Type="Item" Label="Code Translation" IconName="language" Content="TranslationPermission.TranslateCode" Url="~/translation/status" />
+    </Elements>
+  </ToolbarMenu>
+  <ToolbarSwitcher Guid="a53d0c7d-e783-4373-8173-9f45103598f8" Name="Switcher">
+    <Options>
+      <ToolbarSwitcherOption ToolbarMenu="f663a26f-4db6-4ac9-a752-ba253cd9b4a7" IconName="earth" />
+      <ToolbarSwitcherOption ToolbarMenu="b1348d74-210c-4023-9806-e9df4e168c23" IconName="trees" />
+      <ToolbarSwitcherOption ToolbarMenu="fcb5fef9-6a71-4b64-b896-86556a4b47c4" IconName="tree" />
+      <ToolbarSwitcherOption ToolbarMenu="d83fadb3-382d-4e4b-b59b-53d91abec74e" IconName="leaf" />
+      <ToolbarSwitcherOption ToolbarMenu="2deb71ea-f065-4fe3-9215-90460bc2d5ec" IconName="file" />
+      <ToolbarSwitcherOption ToolbarMenu="af61b3b1-dc30-4129-a37f-aaf72450a939" IconName="calendar-days" />
+      <ToolbarSwitcherOption ToolbarMenu="3dbf3d73-02f6-4ad8-88f4-2fe03d34edeb" IconName="unlock-keyhole" />
+      <ToolbarSwitcherOption ToolbarMenu="aa00a50a-ff58-4950-94de-e200769effdc" IconName="cog" />
+    </Options>
+  </ToolbarSwitcher>
+  <Toolbar Guid="eb64a1af-852c-468b-a94f-19e28357ac0e" Name="Side Toolbar" Location="Side">
+    <Elements>
+      <ToolbarElement Type="Item" IconName="user" Content="ec5a15b8-2697-4358-b41d-af988bba1ae1" />
+      <ToolbarElement Type="Item" IconName="route" Content="ef793a24-18d0-4aa5-bb58-93ebf84eb9df" />
+      <ToolbarElement Type="Item" Content="a53d0c7d-e783-4373-8173-9f45103598f8" />
+    </Elements>
+  </Toolbar>
+</Entities>

@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Entities>
+  <Dashboard Guid="cea89d17-d4a3-4d7d-834c-263313812732" DisplayName="Timesheet" CombineSimilarRows="true">
+    <Parts />
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <Dashboard Guid="26b3e987-cda4-4dfd-ad19-9b0ad8539375" DisplayName="Organisations-KPIs" Owner="Role;6;Super user" CombineSimilarRows="true">
+    <Parts />
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <UserChart Guid="20129428-b5d5-426c-abc2-e2eb5ec4aa51" DisplayName="Domäne nach Status und Budget" Query="Domains" HideQuickLink="false" ChartScript="D3ChartScript.BubblePack" MaxRows="1000">
+    <Columns>
+      <Column Token="Entity" OrderByIndex="1" OrderByType="Ascending" />
+      <Column Token="Entity.Budget" />
+      <Column Token="Entity.Parent" />
+      <Column />
+      <Column Token="Entity.LastStatusReport.OverallProgress.Status" />
+    </Columns>
+    <Parameters>
+      <Parameter Name="Scale" Value="MinMax" />
+      <Parameter Name="StrokeColor" Value="" />
+      <Parameter Name="StrokeWidth" Value="2" />
+      <Parameter Name="NumberOpacity" Value="0.8" />
+      <Parameter Name="NumberSizeLimit" Value="18" />
+      <Parameter Name="NumberColor" Value="#fff" />
+      <Parameter Name="FillOpacity" Value="0.8" />
+      <Parameter Name="ColorScale" Value="ZeroMax" />
+      <Parameter Name="ColorInterpolate" Value="BrBG" />
+      <Parameter Name="ColorCategory" Value="fluent" />
+    </Parameters>
+  </UserChart>
+  <UserQuery Guid="c4cb375d-2b46-4d02-b4fc-1aa36ce8ebdd" DisplayName="Portfolioübersicht" Query="Portfolio" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.Type" Operation="DistinctTo" Value="OrganizationalPortfolio" />
+      <Filter Indentation="0" Token="Entity.State" Operation="EqualTo" Value="Active" />
+    </Filters>
+    <Columns>
+      <Column Token="Entity" />
+      <Column Token="Entity.LastStatusReport.OverallProgress" />
+      <Column Token="Entity.TotalRevenues" SummaryToken="Entity.TotalRevenues.Sum" />
+      <Column Token="Entity.TotalAvailable" SummaryToken="Entity.TotalAvailable.Sum" />
+      <Column Token="Entity.Risk" DisplayName="Risiko" />
+    </Columns>
+    <Orders>
+      <Orden Token="Entity" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="b660acb6-edf3-4d1e-ab3c-0b13cde18669" DisplayName="Projekte nach Portfolios" Query="InitiationRequest" PaginationMode="All" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="ParentDomain" Operation="DistinctTo" />
+    </Filters>
+    <Columns>
+      <Column Token="ParentDomain" CombineRows="EqualValue" />
+      <Column Token="FromDomain" />
+      <Column Token="State" />
+      <Column Token="TotalScore" />
+    </Columns>
+    <Orders>
+      <Orden Token="ParentDomain" OrderType="Ascending" />
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <Dashboard Guid="f1b8ef2f-2250-4b4a-8a10-17e2eccb00e5" DisplayName="Portfolio Übersicht" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="1" StartColumn="8" Columns="4" IconColor="">
+        <UserChartPart UserChart="20129428-b5d5-426c-abc2-e2eb5ec4aa51" />
+      </Part>
+      <Part Row="1" StartColumn="0" Columns="8" IconColor="#2E86C1">
+        <UserQueryPart UserQuery="c4cb375d-2b46-4d02-b4fc-1aa36ce8ebdd" AllowSelection="false" CreateNew="true" />
+      </Part>
+      <Part Row="2" StartColumn="0" Columns="12">
+        <UserQueryPart UserQuery="b660acb6-edf3-4d1e-ab3c-0b13cde18669" AllowSelection="false" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <UserQuery Guid="aa321032-cf8b-4962-898e-bdcc912f1ad9" DisplayName="Protokollpunkte nach Frist" Query="ProtocolPoint" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Deadline" Operation="EqualTo" Value="yyyy/mm/dd 00:00:00" />
+      <Filter Indentation="0" Token="State" Operation="DistinctTo" Value="Done" />
+      <Filter Indentation="0" Token="Domain.(Project).UsersWithProtocolAccess.Any" Operation="EqualTo" Value="[CurrentUser]" DashboardBehaviour="UseWhenNoFilters" />
+      <Filter Indentation="0" Token="Type" Operation="IsNotIn" Value="ProtocolPointType;4;Information" />
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="MeetingType" />
+      <Column Token="AgendaDescription" />
+      <Column Token="Deadline" />
+      <Column Token="Description" />
+      <Column Token="Responsible" />
+      <Column Token="Type" />
+      <Column Token="Domain" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="Priority" />
+      <Column Token="State" />
+    </Columns>
+  </UserQuery>
+  <UserQuery Guid="23b9b1d7-cc60-4693-99b8-6759a350d650" DisplayName="Überwachte Protokollpunkte" Query="ProtocolPoint" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.IsWatched" Operation="EqualTo" Value="True" />
+      <Filter Indentation="0" Token="State" Operation="DistinctTo" Value="Done" />
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" DashboardBehaviour="PromoteToDasboardPinnedFilter">
+        <Pinned Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Domain.(Project).UsersWithProtocolAccess.Any" Operation="EqualTo" Value="[CurrentUser]" DashboardBehaviour="UseWhenNoFilters" />
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="MeetingType" />
+      <Column Token="AgendaDescription" />
+      <Column Token="Deadline" />
+      <Column Token="Description" />
+      <Column Token="Responsible" />
+      <Column Token="Type" />
+      <Column Token="Domain" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="Priority" />
+      <Column Token="State" />
+    </Columns>
+  </UserQuery>
+  <Dashboard Guid="ca1ce61b-f0e5-4735-b10c-55c1434367dd" DisplayName="Protocol Points" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="1" StartColumn="0" Columns="12" IconName="fa-regular fa-rectangle-list" IconColor="#2E86C1" TitleColor="" InteractionGroup="Group1">
+        <UserQueryPart UserQuery="aa321032-cf8b-4962-898e-bdcc912f1ad9" AllowSelection="false" ShowFooter="true" CreateNew="true" AllowMaxHeight="true" />
+      </Part>
+      <Part Row="0" StartColumn="0" Columns="12" IconName="fa-regular fa-eye" IconColor="#2E86C1" TitleColor="" InteractionGroup="Group1">
+        <UserQueryPart UserQuery="23b9b1d7-cc60-4693-99b8-6759a350d650" AllowSelection="false" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <UserQuery Guid="99d974f7-d9a4-4426-be08-66e7de151207" DisplayName="My Tasks" Query="Task" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Search" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="Entity.ToString" Operation="Contains" />
+      <Filter Indentation="1" Token="Entity.Id" Operation="EqualTo" />
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo">
+        <Pinned Column="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.Labels.Any.Name" Operation="Contains">
+        <Pinned Label="Label" Column="2" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.AssignedTo" Operation="EqualTo" Value="[CurrentUser]" />
+      <Filter Indentation="0" Token="State" Operation="EqualTo" Value="InProgress" />
+      <Filter Indentation="0" Token="Column.ArchiveTasksOlderThan" Operation="EqualTo" />
+    </Filters>
+    <Orders>
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="13ac7e63-2585-4901-b54f-04a224b18f1a" DisplayName="Protokollpunkte" Query="ProtocolPoint" EntityType="Project" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Description" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="MeetingType" Operation="EqualTo">
+        <Pinned Column="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo">
+        <Pinned Column="2" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]">
+        <Pinned Column="3" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Date" Operation="GreaterThanOrEqual">
+        <Pinned Label="From" Column="0" Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Date" Operation="LessThanOrEqual">
+        <Pinned Label="To" Column="1" Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Domain.(Project).UsersWithProtocolAccess.Any" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="Nur meine Projekte" Column="2" Row="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="And">
+        <Pinned Label="Offene Punkte" Column="3" Row="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="1" Token="State" Operation="IsIn" Value="Open|InProgress" />
+      <Filter Indentation="1" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+      <Filter Indentation="0" Token="Type" Operation="EqualTo">
+        <Pinned Column="0" Row="2" Active="WhenHasValue" />
+      </Filter>
+    </Filters>
+  </UserQuery>
+  <Dashboard Guid="7b918cb5-61a3-4cff-9a88-24fec9c651b8" DisplayName="User dashboard" HideDisplayName="True" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="4" StartColumn="0" Columns="12" IconName="fas fa-rectangle-list" IconColor="#2E86C1">
+        <UserQueryPart UserQuery="99d974f7-d9a4-4426-be08-66e7de151207" AllowSelection="false" />
+      </Part>
+      <Part Row="3" StartColumn="0" Columns="12" IconName="fas fa-rectangle-list" IconColor="#2E86C1">
+        <UserQueryPart UserQuery="13ac7e63-2585-4901-b54f-04a224b18f1a" AllowSelection="false" />
+      </Part>
+      <Part Row="0" StartColumn="0" Columns="12" Title="" IconName="fa-brands fa-adn" IconColor="#4e7afd">
+        <TextPart TextContent="&lt;h2 dir=&quot;ltr&quot;&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Hi $FirstName$,&lt;/span&gt;&lt;/h2&gt;&lt;h3 dir=&quot;ltr&quot;&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Welcome to RRSP!&lt;/span&gt;&lt;/h3&gt;" TextPartType="HTML" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <UserQuery Guid="6b17f366-6ce2-41f8-b9f0-82f1160e2ae6" DisplayName="Übersicht aller zugeordneten Portfolios, Programme und Projekte" Query="DomainChildren" EntityType="Portfolio" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="Entity.State" Operation="EqualTo" Value="Active" />
+    </Filters>
+    <Columns>
+      <Column Token="TypeNiceName" DisplayName="Typ" />
+      <Column Token="Name" DisplayName="Name" />
+      <Column Token="Entity.LabelsToolTip" DisplayName="Labels" />
+      <Column Token="Entity.LastStatusReport.OverallProgress.Progress" />
+      <Column Token="Entity.CompletedGoals" />
+      <Column Token="StartDate" />
+      <Column Token="EndDate" />
+      <Column Token="Responsible" />
+      <Column Token="Entity.LastStatusReport.OverallProgress.Status" />
+    </Columns>
+    <Orders>
+      <Orden Token="Name" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserChart Guid="8890f97a-fa34-4779-84cb-33e36797a9b6" DisplayName="Portfolio-Dringlichkeit vs. strategische Bedeutung" Query="DomainChildren" EntityType="Portfolio" HideQuickLink="false" ChartScript="D3ChartScript.Scatterplot" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Entity.MyLastInitiationRequest" />
+      <Column Token="Entity.MyLastInitiationRequest.[Dimension].[Dringlichkeit]" />
+      <Column Token="Entity.MyLastInitiationRequest.[Dimension].[Strategische Bedeutung]" />
+      <Column />
+      <Column />
+      <Column />
+      <Column />
+    </Columns>
+    <Parameters>
+      <Parameter Name="HorizontalScale" Value="0...100" />
+      <Parameter Name="VerticalScale" Value="0...100" />
+      <Parameter Name="UnitMargin" Value="40" />
+      <Parameter Name="PointSize" Value="4" />
+      <Parameter Name="DrawingMode" Value="Svg" />
+      <Parameter Name="ColorScale" Value="ZeroMax" />
+      <Parameter Name="ColorInterpolate" Value="BrBG" />
+      <Parameter Name="ColorCategory" Value="fluent" />
+    </Parameters>
+  </UserChart>
+  <UserQuery Guid="6fc1729e-45c0-423e-be23-d3698a24bfa6" DisplayName="Statusberichte" Query="StatusReport" EntityType="Portfolio" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.IsLast" Operation="EqualTo" Value="True" />
+      <Filter Indentation="0" GroupOperation="Or" />
+      <Filter Indentation="1" Token="Domain.Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="1" Token="Domain.ReportingParents.Any" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="Domain.State" Operation="EqualTo" Value="Active" />
+    </Filters>
+    <Columns>
+      <Column Token="Domain" />
+      <Column Token="Entity.Projects" />
+      <Column Token="Entity.Domain.ManagerOrResponsible" DisplayName="Manager" />
+      <Column Token="ReportDate" />
+      <Column Token="OverallProgress" />
+      <Column Token="Budget" />
+      <Column Token="Scope" />
+      <Column Token="TimeLine" />
+      <Column Token="Resources" />
+      <Column Token="RisksAndIssues" />
+      <Column Token="Dependencies" />
+    </Columns>
+    <Orders>
+      <Orden Token="Domain" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <Dashboard Guid="ef2238a6-c7c8-4d2d-b50e-573b51ad236c" DisplayName="Portfolio" EntityType="Portfolio" HideDisplayName="True" EmbeddedInEntity="None" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="3" StartColumn="0" Columns="12">
+        <CustomPart CustomPartName="GoalPart" />
+      </Part>
+      <Part Row="8" StartColumn="6" Columns="6" Title="Risiken">
+        <CustomPart CustomPartName="RiskPart" />
+      </Part>
+      <Part Row="6" StartColumn="0" Columns="12">
+        <UserQueryPart UserQuery="6b17f366-6ce2-41f8-b9f0-82f1160e2ae6" AllowSelection="false" />
+      </Part>
+      <Part Row="8" StartColumn="0" Columns="6" IconName="fas fa-chart-bar" IconColor="#6C3483">
+        <UserChartPart UserChart="8890f97a-fa34-4779-84cb-33e36797a9b6" />
+      </Part>
+      <Part Row="9" StartColumn="0" Columns="12" IconName="fas fa-rectangle-list" IconColor="#2E86C1">
+        <UserQueryPart UserQuery="6fc1729e-45c0-423e-be23-d3698a24bfa6" AllowSelection="false" />
+      </Part>
+      <Part Row="10" StartColumn="0" Columns="12" Title="Plan-Übersicht">
+        <CustomPart CustomPartName="PlanPart" />
+      </Part>
+      <Part Row="2" StartColumn="0" Columns="12">
+        <CustomPart CustomPartName="DomainLabelsPart" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <UserQuery Guid="275aa28a-a1d7-45c8-ac55-13f4ec31f4a5" DisplayName="Offene Punkte" Query="ProtocolPoint" EntityType="Project" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="IsIn" Value="Open|InProgress">
+        <Pinned Label="ist offen" Column="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Suche" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="für mich" Column="2" Active="Checkbox_Unchecked" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Date" />
+      <Column Token="AgendaDescription" />
+      <Column Token="Description" />
+      <Column Token="Type" />
+      <Column Token="Responsible" />
+      <Column Token="MeetingType" />
+      <Column Token="MeetingProtocol" />
+      <Column Token="Deadline" />
+      <Column Token="DoneOn" />
+      <Column Token="State" />
+    </Columns>
+    <Orders>
+      <Orden Token="Date" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="591bb787-5102-4760-bd2a-eb11eec51f89" DisplayName="Risk Project" Query="Risk" EntityType="Project" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="Status" Operation="EqualTo" Value="Active" />
+    </Filters>
+  </UserQuery>
+  <UserQuery Guid="842fcd50-ce4a-4279-8949-b5d94ec84b27" DisplayName="Projektziele" Query="Goal" EntityType="Project" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="RouteId" DisplayName="Id" />
+      <Column Token="Title" />
+      <Column Token="Entity.Deadline" />
+      <Column Token="Entity.Progress" />
+      <Column Token="Entity.Parent" />
+    </Columns>
+    <Orders>
+      <Orden Token="Title" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="6ff4acef-5bb6-4f2b-8ab2-dfa5540d3902" DisplayName="Besprechungsprotokolle" Query="MeetingProtocol" EntityType="Project" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+  </UserQuery>
+  <UserQuery Guid="1644d075-ba9b-4e38-afd8-9db4df55f652" DisplayName="Boards" Query="Board" EntityType="Project" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="State" Operation="EqualTo" Value="Active">
+        <Pinned Label="Nur aktiv" Column="2" Active="Checkbox_Checked" />
+      </Filter>
+    </Filters>
+    <Orders>
+      <Orden Token="Name" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="bacaed92-c67b-48b6-90ad-502f69991caf" DisplayName="Meilensteine" Query="Milestone" EntityType="Project" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Orders>
+      <Orden Token="TargetDate" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="1c05589a-7950-429e-b5a6-cf54ed4fec09" DisplayName="Pläne" Query="ProjectPlan" EntityType="Project" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" Token="Project" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+  </UserQuery>
+  <UserQuery Guid="70e904af-871c-4297-a980-5c2d74d9586a" DisplayName="Statusberichte" Query="StatusReport" EntityType="Project" ColumnsMode="Remove">
+    <Filters>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Customer" />
+      <Column Token="Domain" />
+      <Column Token="ConsumedTime" />
+      <Column Token="ConsumedCost" />
+    </Columns>
+    <Orders>
+      <Orden Token="ReportDate" OrderType="Descending" />
+    </Orders>
+  </UserQuery>
+  <ToolbarMenu Guid="1c7568a2-e5b0-48dc-b551-7a2c8a838324" Name="QuickLinks Project">
+    <Elements>
+      <ToolbarElement Type="Item" Label="Besprechungsprotokolle" IconName="messages" Content="6ff4acef-5bb6-4f2b-8ab2-dfa5540d3902" />
+      <ToolbarElement Type="Item" IconName="game-board-simple" Content="1644d075-ba9b-4e38-afd8-9db4df55f652" Url="~/board/:key/:id2/:toStr2" />
+      <ToolbarElement Type="Item" Label="Finanzmanagement" IconName="circle-euro" Content="Revenue" Url="~/financeManagement/:key" />
+      <ToolbarElement Type="Item" IconName="route" Content="bacaed92-c67b-48b6-90ad-502f69991caf" />
+      <ToolbarElement Type="Item" IconName="list-ul" Content="275aa28a-a1d7-45c8-ac55-13f4ec31f4a5" />
+      <ToolbarElement Type="Item" IconName="chart-gantt" Content="1c05589a-7950-429e-b5a6-cf54ed4fec09" Url="~/projectPlanner/:key/:id2" />
+      <ToolbarElement Type="Item" Label="Risikomanagement" IconName="exclamation-triangle" Content="Risk" Url="~/riskManagement/:key" />
+      <ToolbarElement Type="Item" Label="Stakeholdermanagement" IconName="people-roof" Content="Stakeholder" Url="~/stakeholderManagement/:key" />
+      <ToolbarElement Type="Item" IconName="chart-line" Content="70e904af-871c-4297-a980-5c2d74d9586a" />
+      <ToolbarElement Type="Item" IconName="bullseye-arrow" Content="Goal" Url="~/goals/:key" />
+    </Elements>
+  </ToolbarMenu>
+  <Dashboard Guid="21e68ced-7df0-4702-957a-93209a8d74f8" DisplayName="Projekt-Dashboard" EntityType="Project" EmbeddedInEntity="None" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="4" StartColumn="9" Columns="3">
+        <CustomPart CustomPartName="MilestonePart" />
+      </Part>
+      <Part Row="6" StartColumn="0" Columns="12" Title="Projektplan">
+        <CustomPart CustomPartName="PlanPart" />
+      </Part>
+      <Part Row="1" StartColumn="0" Columns="9" Title="Projektübersicht">
+        <CustomPart CustomPartName="Main" />
+      </Part>
+      <Part Row="4" StartColumn="3" Columns="3" Title="Protokollpunkte" IconName="list-ul">
+        <BigValuePart UserQuery="275aa28a-a1d7-45c8-ac55-13f4ec31f4a5" CustomBigValue="TotalActiveProtocol" Navigate="true" CustomUrl="" IsClickable="false" />
+      </Part>
+      <Part Row="4" StartColumn="6" Columns="3" Title="Risiko" IconName="warning">
+        <BigValuePart UserQuery="591bb787-5102-4760-bd2a-eb11eec51f89" CustomBigValue="TotalActiveRisks" Navigate="true" CustomUrl="~/riskManagement/:key" IsClickable="false" />
+      </Part>
+      <Part Row="4" StartColumn="0" Columns="3" Title="Ziele" IconName="bullseye-arrow">
+        <BigValuePart UserQuery="842fcd50-ce4a-4279-8949-b5d94ec84b27" CustomBigValue="TotalActiveGoals" Navigate="true" CustomUrl="~/goals/:key" IsClickable="false" />
+      </Part>
+      <Part Row="1" StartColumn="9" Columns="3" Title="Wichtigste Funktionen">
+        <ToolbarPart ToolbarMenu="1c7568a2-e5b0-48dc-b551-7a2c8a838324" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <UserChart Guid="cf297bea-06bf-47c2-b9b5-f3df8ac7a6b2" DisplayName="Programm-Dringlichkeit vs. strategische Bedeutung" Query="DomainChildren" EntityType="Program" HideQuickLink="false" ChartScript="D3ChartScript.Scatterplot" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Entity.MyLastInitiationRequest" />
+      <Column Token="Entity.MyLastInitiationRequest.[Dimension].[Dringlichkeit]" />
+      <Column Token="Entity.MyLastInitiationRequest.[Dimension].[Strategische Bedeutung]" />
+      <Column />
+      <Column />
+      <Column />
+      <Column />
+    </Columns>
+    <Parameters>
+      <Parameter Name="HorizontalScale" Value="0...100" />
+      <Parameter Name="VerticalScale" Value="0...100" />
+      <Parameter Name="UnitMargin" Value="40" />
+      <Parameter Name="PointSize" Value="4" />
+      <Parameter Name="DrawingMode" Value="Svg" />
+      <Parameter Name="ColorScale" Value="ZeroMax" />
+      <Parameter Name="ColorInterpolate" Value="BrBG" />
+      <Parameter Name="ColorCategory" Value="fluent" />
+    </Parameters>
+  </UserChart>
+  <UserQuery Guid="86453eae-5afc-4262-b3db-f5c99648122b" DisplayName="Statusberichte" Query="StatusReport" EntityType="Program" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.IsLast" Operation="EqualTo" Value="True" />
+      <Filter Indentation="0" GroupOperation="Or" />
+      <Filter Indentation="1" Token="Domain.Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="1" Token="Domain.ReportingParents.Any" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="Domain.State" Operation="EqualTo" Value="Active" />
+    </Filters>
+    <Columns>
+      <Column Token="Domain" />
+      <Column Token="Entity.Domain.ManagerOrResponsible" DisplayName="Manager" />
+      <Column Token="ReportDate" />
+      <Column Token="OverallProgress" />
+      <Column Token="Budget" />
+      <Column Token="Scope" />
+      <Column Token="TimeLine" />
+      <Column Token="Resources" />
+      <Column Token="RisksAndIssues" />
+      <Column Token="Dependencies" />
+    </Columns>
+    <Orders>
+      <Orden Token="Domain" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="e0c4503b-08a0-4146-8c80-7760c5f46536" DisplayName="Übersicht aller zugeordneten Projekte" Query="DomainChildren" EntityType="Program" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="Entity.State" Operation="EqualTo" Value="Active" />
+    </Filters>
+    <Columns>
+      <Column Token="TypeNiceName" DisplayName="Typ" />
+      <Column Token="Name" />
+      <Column Token="Entity.LabelsToolTip" DisplayName="Labels" />
+      <Column Token="Entity.LastStatusReport.OverallProgress.Progress" />
+      <Column Token="Entity.CompletedGoals" />
+      <Column Token="StartDate" />
+      <Column Token="EndDate" />
+      <Column Token="Responsible" />
+      <Column Token="Entity.LastStatusReport.OverallProgress.Status" />
+    </Columns>
+    <Orders>
+      <Orden Token="Name" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <Dashboard Guid="c851687d-f358-4058-8606-97601fc1c494" DisplayName="Programm-Dashboard" EntityType="Program" HideDisplayName="True" EmbeddedInEntity="None" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="2" StartColumn="0" Columns="12">
+        <CustomPart CustomPartName="GoalPart" />
+      </Part>
+      <Part Row="7" StartColumn="6" Columns="6" Title="Risiken">
+        <CustomPart CustomPartName="RiskPart" />
+      </Part>
+      <Part Row="7" StartColumn="0" Columns="6" IconName="fas fa-chart-bar" IconColor="#6C3483">
+        <UserChartPart UserChart="cf297bea-06bf-47c2-b9b5-f3df8ac7a6b2" />
+      </Part>
+      <Part Row="8" StartColumn="0" Columns="12" IconName="fas fa-rectangle-list" IconColor="#2E86C1">
+        <UserQueryPart UserQuery="86453eae-5afc-4262-b3db-f5c99648122b" AllowSelection="false" />
+      </Part>
+      <Part Row="5" StartColumn="0" Columns="12">
+        <UserQueryPart UserQuery="e0c4503b-08a0-4146-8c80-7760c5f46536" AllowSelection="false" ShowFooter="true" />
+      </Part>
+      <Part Row="1" StartColumn="0" Columns="12">
+        <CustomPart CustomPartName="DomainLabelsPart" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <UserQuery Guid="3f324449-ba3f-4ed7-8e63-a03bab168df9" DisplayName="Statistics" Query="Portfolio" EntityType="Portfolio" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Entity" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Id" />
+      <Column Token="Name" />
+      <Column Token="Entity.ProjectsCount" />
+      <Column Token="Entity.RunningProjectsCount" />
+      <Column Token="Entity.AllAccomplishedMilestones" />
+      <Column Token="Entity.CompletedProjectsCount" />
+    </Columns>
+  </UserQuery>
+  <UserQuery Guid="c7d0d216-ee6e-4c78-aadf-f16c886bbca3" DisplayName="Projects (MoA)" Query="Project" EntityType="Portfolio" IncludeDefaultFilters="false" PaginationMode="All" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or" />
+      <Filter Indentation="1" Token="Entity.Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="1" Token="Entity.Parent.Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="1" GroupOperation="And" />
+      <Filter Indentation="2" Token="Entity.MyLastInitiationRequest.ParentDomain.Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="2" Token="Entity.MyLastInitiationRequest.State" Operation="EqualTo" Value="Suspended" />
+      <Filter Indentation="0" Token="Entity.Phase" Operation="EqualTo">
+        <Pinned Active="WhenHasValue" />
+      </Filter>
+    </Filters>
+    <Columns>
+      <Column Token="Name" />
+      <Column Token="Entity.LabelsToolTip" DisplayName="Labels" />
+      <Column Token="Manager" DisplayName="Projektmanager:in" />
+      <Column Token="Entity.Phase" DisplayName="Projektphase" />
+      <Column Token="Entity.AccomplishedMilestones" />
+      <Column Token="Entity.PlannedStartDate" DisplayName="Startdatum" />
+      <Column Token="Entity.PlannedEndDate" DisplayName="Enddatum" />
+    </Columns>
+    <Orders>
+      <Orden Token="Entity.MyLastInitiationRequest.State" OrderType="Descending" />
+      <Orden Token="Name" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="8a6e01af-4d31-4932-8d44-f450c919df08" DisplayName="Ressorts" Query="Project" EntityType="Portfolio" IncludeDefaultFilters="false" GroupResults="true" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="State" Operation="EqualTo" Value="Active" />
+      <Filter Indentation="0" GroupOperation="Or" />
+      <Filter Indentation="1" Token="Entity.Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="1" Token="Entity.Parent.Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="Manager.Ressort" Operation="DistinctTo" />
+      <Filter Indentation="0" Token="Entity.Phase" Operation="EqualTo" Value="Executing" />
+    </Filters>
+    <Columns>
+      <Column Token="Manager.Ressort" />
+      <Column Token="Count" />
+    </Columns>
+    <Orders>
+      <Orden Token="Manager.Ressort" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="5ecab5fe-33ac-4381-afd0-bf1edf5ca2d9" DisplayName="Referats" Query="Project" EntityType="Portfolio" IncludeDefaultFilters="false" GroupResults="true" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="State" Operation="EqualTo" Value="Active" />
+      <Filter Indentation="0" GroupOperation="Or" />
+      <Filter Indentation="1" Token="Entity.Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="1" Token="Entity.Parent.Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+      <Filter Indentation="0" Token="Manager.Referat" Operation="DistinctTo" />
+      <Filter Indentation="0" Token="Entity.Phase" Operation="EqualTo" Value="Executing" />
+    </Filters>
+    <Columns>
+      <Column Token="Manager.Referat" />
+      <Column Token="Count" />
+    </Columns>
+    <Orders>
+      <Orden Token="Manager.Referat" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <UserQuery Guid="49b806f6-76fa-4ba0-ba22-50fd95c34a5d" DisplayName="Programme" Query="Program" EntityType="Portfolio" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.Parent" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Name" />
+      <Column Token="Entity.LabelsToolTip" DisplayName="Labels" />
+      <Column Token="Entity.AllAccomplishedMilestones" />
+      <Column Token="Entity.AllMilestonesProgress" />
+      <Column Token="Entity.RunningProjectsCount" DisplayName="Anzahl laufender Projekte" />
+      <Column Token="Entity.Manager" DisplayName="Programmmanager:in" />
+    </Columns>
+    <Orders>
+      <Orden Token="Name" OrderType="Ascending" />
+    </Orders>
+  </UserQuery>
+  <Dashboard Guid="ce118370-eb2c-4574-bd53-8b4340724878" DisplayName="Dashboard Umsetzungsfortschritt: Modernisierungsagenda Bund" EntityType="Portfolio" EmbeddedInEntity="None" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="1" StartColumn="6" Columns="3" Title="Abgeschlossene Projekte" Tooltip="&lt;p&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Zeigt alle Projekte, deren Initiierungsantrag im Status 'genehmigt' ist und die sich in der Projektphase &quot;Abgeschlossen' befinden.&lt;/span&gt;&lt;/p&gt;">
+        <BigValuePart UserQuery="3f324449-ba3f-4ed7-8e63-a03bab168df9" ValueToken="Entity.CompletedProjectsCount" />
+      </Part>
+      <Part Row="3" StartColumn="0" Columns="12" Title="Übersicht der Maßnahmen (Projekte)" Tooltip="&lt;p&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Zeigt alle Projekte, die dem Portfolio direkt oder über ein Programm zugeordnet sind und deren Initiierungsantrag im Status 'genehmigt' ist. Bei Fortschritt '100 %' gilt ein Meilenstein als abgeschlossen.&lt;/span&gt;&lt;/p&gt;">
+        <UserQueryPart UserQuery="c7d0d216-ee6e-4c78-aadf-f16c886bbca3" AllowSelection="false" />
+      </Part>
+      <Part Row="4" StartColumn="0" Columns="12" Title="Projektplan" Tooltip="&lt;p&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Zeigt eine Übersicht der Projektpläne aller dem Portfolio zugehörigen Projekte, geordnet nach dem jeweiligen Programm, dem sie angehören. Der Fortschritt wird aus den verknüpften Meilensteinen akkumuliert ausgelesen.&lt;/span&gt;&lt;/p&gt;">
+        <CustomPart CustomPartName="PlanWithMilestonePart" />
+      </Part>
+      <Part Row="5" StartColumn="6" Columns="6" Title="Laufende Projekte pro Ressort" Tooltip="&lt;p&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Zeigt alle laufenden Projekte, die dem Portfolio direkt oder über ein Programm zugeordnet sind. Die Einordnung nach Ressort erfolgt über die Eintragung des Ressorts im Profil des jeweiligen Projektleitenden.&lt;/span&gt;&lt;/p&gt;">
+        <UserQueryPart UserQuery="8a6e01af-4d31-4932-8d44-f450c919df08" AllowSelection="false" />
+      </Part>
+      <Part Row="5" StartColumn="0" Columns="6" Title="Laufende Projekte pro Referat" Tooltip="&lt;p&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Zeigt alle laufenden Projekte, die dem Portfolio direkt oder über ein Programm zugeordnet sind. Die Einordnung nach Referat erfolgt über die Eintragung des Referats im Profil des jeweiligen Projektleitenden.&lt;/span&gt;&lt;/p&gt;">
+        <UserQueryPart UserQuery="5ecab5fe-33ac-4381-afd0-bf1edf5ca2d9" AllowSelection="false" />
+      </Part>
+      <Part Row="0" StartColumn="0" Columns="12">
+        <CustomPart CustomPartName="DomainLabelsPart" />
+      </Part>
+      <Part Row="1" StartColumn="0" Columns="3" Title="Gesamtzahl der Projekte" Tooltip="&lt;p&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Zeigt alle Projekte, die dem Portfolio direkt oder über ein Programm zugeordnet sind.&lt;/span&gt;&lt;/p&gt;">
+        <BigValuePart UserQuery="3f324449-ba3f-4ed7-8e63-a03bab168df9" ValueToken="Entity.ProjectsCount" />
+      </Part>
+      <Part Row="2" StartColumn="0" Columns="12" Title="Übersicht der Handlungsfelder (Programme)" Tooltip="&lt;p&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Zeigt alle Programme, die dem Portfolio zugeordnet sind. Bei Fortschritt '100%' gilt ein Meilenstein als abgeschlossen. Die Anzahl laufender Projekte zeigt 'Laufende Projekte' in Relation zur 'Gesamtzahl der Projekte', die dem jeweiligen Programm zugeordnet sind.&lt;/span&gt;&lt;/p&gt;">
+        <UserQueryPart UserQuery="49b806f6-76fa-4ba0-ba22-50fd95c34a5d" AllowSelection="false" />
+      </Part>
+      <Part Row="1" StartColumn="9" Columns="3" Tooltip="&lt;p&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Zeigt die Meilensteine aller laufenden Projekte. Bei Fortschritt '100%' gilt ein Meilenstein als abgeschlossen.&lt;/span&gt;&lt;/p&gt;">
+        <CustomPart CustomPartName="MilestonePart" />
+      </Part>
+      <Part Row="1" StartColumn="3" Columns="3" Title="Laufende Projekte" Tooltip="&lt;p&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Zeigt alle Projekte, deren Initiierungsantrag im Status 'genehmigt' ist und die sich in der Projektphase 'Durchführung' befinden.&lt;/span&gt;&lt;/p&gt;">
+        <BigValuePart UserQuery="3f324449-ba3f-4ed7-8e63-a03bab168df9" ValueToken="Entity.RunningProjectsCount" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <Dashboard Guid="ef793a24-18d0-4aa5-bb58-93ebf84eb9df" DisplayName="Meine Meilensteine" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="0" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyProjectsMilestone" />
+      </Part>
+      <Part Row="1" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyProgramsMilestone" />
+      </Part>
+      <Part Row="2" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyPortfoliosMilestone" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+  <Dashboard Guid="ec5a15b8-2697-4358-b41d-af988bba1ae1" DisplayName="Meine Übersicht" HideDisplayName="True" DashboardPriority="1" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="7" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyProjects" />
+      </Part>
+      <Part Row="8" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyPrograms" />
+      </Part>
+      <Part Row="9" StartColumn="0" Columns="12" Title="">
+        <CustomPart CustomPartName="MyPortfolios" />
+      </Part>
+      <Part Row="2" StartColumn="0" Columns="12">
+        <TextPart TextContent="&lt;h1 dir=&quot;ltr&quot;&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;$UserGreeting$ $UserName$,&lt;/span&gt;&lt;/h1&gt;&lt;p dir=&quot;ltr&quot;&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Hier ist Ihre Arbeitsübersicht für heute.&lt;/span&gt;&lt;/p&gt;" TextPartType="HTML" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+</Entities>

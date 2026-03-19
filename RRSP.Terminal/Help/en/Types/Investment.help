@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Entity CleanName="Investment" Culture="en">
+  <Description>&lt;p&gt;Investment module description&lt;/p&gt;
+</Description>
+  <Properties>
+    <Property Name="Description">&lt;p&gt;description of the project and its purpose (targets and key results)&lt;/p&gt;
+</Property>
+    <Property Name="Project">&lt;p&gt;Project that is related to this investment&lt;/p&gt;
+</Property>
+    <Property Name="InitialSituation">&lt;p&gt;description of the initial situation (current state)&lt;/p&gt;
+</Property>
+    <Property Name="TargetSituation">&lt;p&gt;description of the goal to be achieved through the implementation of this investment&lt;/p&gt;
+</Property>
+    <Property Name="AddedValue">&lt;p&gt;Which benefits does this investment bring to whom?&lt;/p&gt;
+</Property>
+    <Property Name="AffectedComponentsAndOrProcesses">&lt;p&gt;who or what is affected by this investment&lt;/p&gt;
+</Property>
+    <Property Name="SolutionVariants">&lt;p&gt;including evaluation according to monetary (costs, expenses, revenues, income) and non-monetary aspects (utility value)&lt;/p&gt;
+</Property>
+    <Property Name="Solution">&lt;p&gt;including justification of the advantages and disadvantages compared to the alternatives, as well as a description of the goals to be achieved and key results (OKR)&lt;/p&gt;
+</Property>
+    <Property Name="Risk">&lt;p&gt;what risk arises/exists if this investment is not implemented?&lt;/p&gt;
+</Property>
+  </Properties>
+</Entity>

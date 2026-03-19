@@ -1,0 +1,35 @@
+<Project>
+	<ItemGroup>
+		<Compile Remove="ts_out\**" />
+		<Content Remove="ts_out\**" />
+		<EmbeddedResource Remove="ts_out\**" />
+		<None Remove="ts_out\**" />
+		<TypeScriptCompile Remove="ts_out\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Remove="package.json"/>
+		<None Include="package.json">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</None>
+		<Content Update="tsconfig.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Translations\*.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<!--
+		<None Update="Translations\*.en.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Translations\*.de.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		-->
+	</ItemGroup>
+</Project>

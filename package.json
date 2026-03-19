@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "resolutions": {
+    "@types/react": "19.1.8",
+    "@types/node": "22.13.17"
+  },
+  "workspaces": [
+    "Framework/Signum",
+    "Framework/Extensions/*",
+    "Meros/*",
+    "RRSP",
+    "RRSP.Server"
+  ]
+}

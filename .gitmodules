@@ -1,0 +1,6 @@
+[submodule "Framework"]
+	path = Framework
+	url = https://av360@dev.azure.com/av360/Signum%20Framework/_git/Signum%20Framework
+[submodule "Meros"]
+	path = Meros
+	url = https://av360@dev.azure.com/av360/Meros/_git/Meros

@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Entities>
+  <DomainRole Guid="9b789af0-17c6-5ef9-9d3b-b98623576e6c" Name="Projektkernteam" MinimumUserRole="Role;8;Standard user" Level="Project">
+    <Types>
+      <Type EntityType="ProjectClassification" AccessLevel="Read" />
+      <Type EntityType="Project" AccessLevel="Read" />
+      <Type EntityType="PlanningGroup" AccessLevel="Read" />
+      <Type EntityType="InitiationRequest" AccessLevel="Read" />
+      <Type EntityType="Member" AccessLevel="Read" />
+      <Type EntityType="ExternalMember" AccessLevel="Read" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Read" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Read" />
+      <Type EntityType="BusinessCase" AccessLevel="Read" />
+      <Type EntityType="PlanningRole" AccessLevel="Read" />
+      <Type EntityType="DefaultWeeklyProjectPlan" AccessLevel="Read" />
+      <Type EntityType="Charter" AccessLevel="Read" />
+      <Type EntityType="CharterTextBlock" AccessLevel="Read" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Read" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Read" />
+      <Type EntityType="Event" AccessLevel="Read" />
+      <Type EntityType="Goal" AccessLevel="Read" />
+      <Type EntityType="Requirement" AccessLevel="Read" />
+      <Type EntityType="Assumption" AccessLevel="Read" />
+      <Type EntityType="Constraint" AccessLevel="Read" />
+      <Type EntityType="Service" AccessLevel="Read" />
+      <Type EntityType="Deliverable" AccessLevel="Read" />
+      <Type EntityType="ChangeRequest" AccessLevel="Read" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Read" />
+      <Type EntityType="ChangeRequestTemplate" AccessLevel="Read" />
+      <Type EntityType="ProjectPlan" AccessLevel="Read" />
+      <Type EntityType="PlanBaseline" AccessLevel="Read" />
+      <Type EntityType="ProjectWorkPackage" AccessLevel="Read" />
+      <Type EntityType="ProjectWorkPackageTemplate" AccessLevel="Read" />
+      <Type EntityType="ProtocolTemplate" AccessLevel="Read" />
+      <Type EntityType="Risk" AccessLevel="Read" />
+      <Type EntityType="RiskTemplate" AccessLevel="Read" />
+      <Type EntityType="Stakeholder" AccessLevel="Read" />
+      <Type EntityType="StakeholderLog" AccessLevel="Read" />
+      <Type EntityType="StakeholderTemplate" AccessLevel="Read" />
+      <Type EntityType="StatusReport" AccessLevel="Read" />
+      <Type EntityType="StatusReportTemplate" AccessLevel="Read" />
+      <Type EntityType="Board" AccessLevel="Read" />
+      <Type EntityType="Column" AccessLevel="Read" />
+      <Type EntityType="TaskLabel" AccessLevel="Read" />
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Read" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Write" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Write" />
+      <Type EntityType="Milestone" AccessLevel="Write" />
+      <Type EntityType="Task" AccessLevel="Write" />
+      <Type EntityType="Attachment" AccessLevel="Write" />
+      <Type EntityType="Comment" AccessLevel="Write" />
+      <Type EntityType="LessonsLearned" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="c0a340dc-ea6a-53da-ac8e-a2666f5323ca" Name="Projektbüro" MinimumUserRole="Role;8;Standard user" Level="Project">
+    <Types>
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="ChangeRequestTemplate" AccessLevel="Read" />
+      <Type EntityType="ProjectWorkPackageTemplate" AccessLevel="Read" />
+      <Type EntityType="ProjectClassification" AccessLevel="Write" />
+      <Type EntityType="Project" AccessLevel="Write" />
+      <Type EntityType="PlanningGroup" AccessLevel="Write" />
+      <Type EntityType="InitiationRequest" AccessLevel="Write" />
+      <Type EntityType="Member" AccessLevel="Write" />
+      <Type EntityType="ExternalMember" AccessLevel="Write" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Write" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Write" />
+      <Type EntityType="BusinessCase" AccessLevel="Write" />
+      <Type EntityType="PlanningRole" AccessLevel="Write" />
+      <Type EntityType="DefaultWeeklyProjectPlan" AccessLevel="Write" />
+      <Type EntityType="Charter" AccessLevel="Write" />
+      <Type EntityType="CharterTextBlock" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Write" />
+      <Type EntityType="Event" AccessLevel="Write" />
+      <Type EntityType="Goal" AccessLevel="Write" />
+      <Type EntityType="Requirement" AccessLevel="Write" />
+      <Type EntityType="Assumption" AccessLevel="Write" />
+      <Type EntityType="Constraint" AccessLevel="Write" />
+      <Type EntityType="Service" AccessLevel="Write" />
+      <Type EntityType="Deliverable" AccessLevel="Write" />
+      <Type EntityType="ChangeRequest" AccessLevel="Write" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Write" />
+      <Type EntityType="ProjectPlan" AccessLevel="Write" />
+      <Type EntityType="PlanBaseline" AccessLevel="Write" />
+      <Type EntityType="ProjectWorkPackage" AccessLevel="Write" />
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Write" />
+      <Type EntityType="ProtocolTemplate" AccessLevel="Write" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Write" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Write" />
+      <Type EntityType="Milestone" AccessLevel="Write" />
+      <Type EntityType="Risk" AccessLevel="Write" />
+      <Type EntityType="RiskTemplate" AccessLevel="Write" />
+      <Type EntityType="Revenue" AccessLevel="Write" />
+      <Type EntityType="Expenditure" AccessLevel="Write" />
+      <Type EntityType="Stakeholder" AccessLevel="Write" />
+      <Type EntityType="StakeholderLog" AccessLevel="Write" />
+      <Type EntityType="StakeholderTemplate" AccessLevel="Write" />
+      <Type EntityType="StatusReport" AccessLevel="Write" />
+      <Type EntityType="StatusReportTemplate" AccessLevel="Write" />
+      <Type EntityType="Board" AccessLevel="Write" />
+      <Type EntityType="Column" AccessLevel="Write" />
+      <Type EntityType="TaskLabel" AccessLevel="Write" />
+      <Type EntityType="Task" AccessLevel="Write" />
+      <Type EntityType="Attachment" AccessLevel="Write" />
+      <Type EntityType="Comment" AccessLevel="Write" />
+      <Type EntityType="LessonsLearned" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="09c00633-e447-53ab-a686-cb67e6d9d6f9" Name="Stakeholder" MinimumUserRole="Role;8;Standard user" Level="Project">
+    <Types>
+      <Type EntityType="ProjectClassification" AccessLevel="Read" />
+      <Type EntityType="Project" AccessLevel="Read" />
+      <Type EntityType="PlanningGroup" AccessLevel="Read" />
+      <Type EntityType="InitiationRequest" AccessLevel="Read" />
+      <Type EntityType="Member" AccessLevel="Read" />
+      <Type EntityType="ExternalMember" AccessLevel="Read" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Read" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Read" />
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Read" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="700ea87a-8f57-5786-b776-44f6f1ecf7e4" Name="PM" MinimumUserRole="Role;8;Standard user" Level="Project">
+    <Types>
+      <Type EntityType="Project" AccessLevel="Write" />
+      <Type EntityType="Board" AccessLevel="Write" />
+      <Type EntityType="Column" AccessLevel="Write" />
+      <Type EntityType="TaskLabel" AccessLevel="Write" />
+      <Type EntityType="Task" AccessLevel="Write" />
+      <Type EntityType="Attachment" AccessLevel="Write" />
+      <Type EntityType="Comment" AccessLevel="Write" />
+      <Type EntityType="ProtocolTemplate" AccessLevel="Write" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Write" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Write" />
+      <Type EntityType="Milestone" AccessLevel="Write" />
+      <Type EntityType="BusinessCase" AccessLevel="Write" />
+      <Type EntityType="Charter" AccessLevel="Write" />
+      <Type EntityType="CharterTextBlock" AccessLevel="Write" />
+      <Type EntityType="Revenue" AccessLevel="Write" />
+      <Type EntityType="Expenditure" AccessLevel="Write" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Write" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Write" />
+      <Type EntityType="InitiationRequest" AccessLevel="Write" />
+      <Type EntityType="LessonsLearned" AccessLevel="Write" />
+      <Type EntityType="Goal" AccessLevel="Write" />
+      <Type EntityType="Requirement" AccessLevel="Write" />
+      <Type EntityType="Assumption" AccessLevel="Write" />
+      <Type EntityType="Constraint" AccessLevel="Write" />
+      <Type EntityType="Service" AccessLevel="Write" />
+      <Type EntityType="Deliverable" AccessLevel="Write" />
+      <Type EntityType="ChangeRequest" AccessLevel="Write" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Write" />
+      <Type EntityType="ChangeRequestTemplate" AccessLevel="Write" />
+      <Type EntityType="ProjectClassification" AccessLevel="Write" />
+      <Type EntityType="Member" AccessLevel="Write" />
+      <Type EntityType="ExternalMember" AccessLevel="Write" />
+      <Type EntityType="PlanningGroup" AccessLevel="Write" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Write" />
+      <Type EntityType="PlanningRole" AccessLevel="Write" />
+      <Type EntityType="DefaultWeeklyProjectPlan" AccessLevel="Write" />
+      <Type EntityType="Event" AccessLevel="Write" />
+      <Type EntityType="ProjectPlan" AccessLevel="Write" />
+      <Type EntityType="PlanBaseline" AccessLevel="Write" />
+      <Type EntityType="ProjectWorkPackage" AccessLevel="Write" />
+      <Type EntityType="ProjectWorkPackageTemplate" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Write" />
+      <Type EntityType="Risk" AccessLevel="Write" />
+      <Type EntityType="RiskTemplate" AccessLevel="Write" />
+      <Type EntityType="Stakeholder" AccessLevel="Write" />
+      <Type EntityType="StakeholderLog" AccessLevel="Write" />
+      <Type EntityType="StakeholderTemplate" AccessLevel="Write" />
+      <Type EntityType="StatusReport" AccessLevel="Write" />
+      <Type EntityType="StatusReportTemplate" AccessLevel="Write" />
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="fba71377-bda5-530f-bbcf-190ba20806f2" Name="Porfolioleitungsgruppe (PfSC)" MinimumUserRole="Role;8;Standard user" Level="Portfolio">
+    <Types>
+      <Type EntityType="Member" AccessLevel="Read" />
+      <Type EntityType="ExternalMember" AccessLevel="Read" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Read" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Read" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Read" />
+      <Type EntityType="Goal" AccessLevel="Read" />
+      <Type EntityType="Requirement" AccessLevel="Read" />
+      <Type EntityType="Assumption" AccessLevel="Read" />
+      <Type EntityType="Constraint" AccessLevel="Read" />
+      <Type EntityType="Service" AccessLevel="Read" />
+      <Type EntityType="Deliverable" AccessLevel="Read" />
+      <Type EntityType="ChangeRequest" AccessLevel="Read" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Read" />
+      <Type EntityType="Risk" AccessLevel="Read" />
+      <Type EntityType="RiskTemplate" AccessLevel="Read" />
+      <Type EntityType="Stakeholder" AccessLevel="Read" />
+      <Type EntityType="StakeholderLog" AccessLevel="Read" />
+      <Type EntityType="Board" AccessLevel="Read" />
+      <Type EntityType="Column" AccessLevel="Read" />
+      <Type EntityType="TaskLabel" AccessLevel="Read" />
+      <Type EntityType="Portfolio" AccessLevel="Write" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Write" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Write" />
+      <Type EntityType="Milestone" AccessLevel="Write" />
+      <Type EntityType="ProjectPrioritization" AccessLevel="Write" />
+      <Type EntityType="StatusReport" AccessLevel="Write" />
+      <Type EntityType="Task" AccessLevel="Write" />
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Read" />
+      <Type EntityType="DomainAssignedLabelByParent" AccessLevel="Read" />
+      <Type EntityType="Attachment" AccessLevel="Write" />
+      <Type EntityType="Comment" AccessLevel="Write" />
+      <Type EntityType="LessonsLearned" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="a857180a-b9cd-505d-af89-3a9950d53858" Name="Portfolioleitung" MinimumUserRole="Role;8;Standard user" Level="Portfolio">
+    <Types>
+      <Type EntityType="Portfolio" AccessLevel="Write" />
+      <Type EntityType="Board" AccessLevel="Write" />
+      <Type EntityType="Column" AccessLevel="Write" />
+      <Type EntityType="TaskLabel" AccessLevel="Write" />
+      <Type EntityType="Task" AccessLevel="Write" />
+      <Type EntityType="Attachment" AccessLevel="Write" />
+      <Type EntityType="Comment" AccessLevel="Write" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Write" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Write" />
+      <Type EntityType="Milestone" AccessLevel="Write" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Write" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Write" />
+      <Type EntityType="ProjectPrioritization" AccessLevel="Write" />
+      <Type EntityType="InitiationRequest" AccessLevel="Read" />
+      <Type EntityType="LessonsLearned" AccessLevel="Write" />
+      <Type EntityType="Member" AccessLevel="Write" />
+      <Type EntityType="PlanningGroup" AccessLevel="Write" />
+      <Type EntityType="ExternalMember" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Write" />
+      <Type EntityType="Risk" AccessLevel="Write" />
+      <Type EntityType="RiskTemplate" AccessLevel="Write" />
+      <Type EntityType="Stakeholder" AccessLevel="Write" />
+      <Type EntityType="StakeholderLog" AccessLevel="Write" />
+      <Type EntityType="Requirement" AccessLevel="Write" />
+      <Type EntityType="Assumption" AccessLevel="Write" />
+      <Type EntityType="Constraint" AccessLevel="Write" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Write" />
+      <Type EntityType="Service" AccessLevel="Write" />
+      <Type EntityType="Deliverable" AccessLevel="Write" />
+      <Type EntityType="Goal" AccessLevel="Write" />
+      <Type EntityType="ChangeRequest" AccessLevel="Write" />
+      <Type EntityType="StatusReport" AccessLevel="Write" />
+      <Type EntityType="Revenue" AccessLevel="Read" />
+      <Type EntityType="Expenditure" AccessLevel="Read" />
+      <Type EntityType="InitiationRequestProperty" AccessLevel="Write" />
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Write" />
+      <Type EntityType="DomainAssignedLabelByParent" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="ba427d68-701f-51f1-919b-80f882c15f1c" Name="Portfoliolenkungsausschuss" MinimumUserRole="Role;8;Standard user" Level="Portfolio">
+    <Types>
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Read" />
+      <Type EntityType="DomainAssignedLabelByParent" AccessLevel="Read" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="Risk" AccessLevel="Read" />
+      <Type EntityType="RiskTemplate" AccessLevel="Read" />
+      <Type EntityType="Revenue" AccessLevel="Read" />
+      <Type EntityType="Expenditure" AccessLevel="Read" />
+      <Type EntityType="Stakeholder" AccessLevel="Read" />
+      <Type EntityType="StakeholderLog" AccessLevel="Read" />
+      <Type EntityType="Board" AccessLevel="Read" />
+      <Type EntityType="Column" AccessLevel="Read" />
+      <Type EntityType="TaskLabel" AccessLevel="Read" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Read" />
+      <Type EntityType="Member" AccessLevel="Write" />
+      <Type EntityType="ExternalMember" AccessLevel="Write" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Write" />
+      <Type EntityType="Goal" AccessLevel="Write" />
+      <Type EntityType="Requirement" AccessLevel="Write" />
+      <Type EntityType="Assumption" AccessLevel="Write" />
+      <Type EntityType="Constraint" AccessLevel="Write" />
+      <Type EntityType="Service" AccessLevel="Write" />
+      <Type EntityType="Deliverable" AccessLevel="Write" />
+      <Type EntityType="ChangeRequest" AccessLevel="Write" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Write" />
+      <Type EntityType="Portfolio" AccessLevel="Write" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Write" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Write" />
+      <Type EntityType="Milestone" AccessLevel="Write" />
+      <Type EntityType="ProjectPrioritization" AccessLevel="Write" />
+      <Type EntityType="StatusReport" AccessLevel="Write" />
+      <Type EntityType="Task" AccessLevel="Write" />
+      <Type EntityType="Attachment" AccessLevel="Write" />
+      <Type EntityType="Comment" AccessLevel="Write" />
+      <Type EntityType="LessonsLearned" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="db7d0d58-a25c-5a91-8d87-da27527c3e4a" Name="Portfoliobüro" MinimumUserRole="Role;8;Standard user" Level="Portfolio">
+    <Types>
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Write" />
+      <Type EntityType="DomainAssignedLabelByParent" AccessLevel="Write" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="RiskTemplate" AccessLevel="Read" />
+      <Type EntityType="Revenue" AccessLevel="Read" />
+      <Type EntityType="Expenditure" AccessLevel="Read" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Read" />
+      <Type EntityType="Member" AccessLevel="Write" />
+      <Type EntityType="ExternalMember" AccessLevel="Write" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Write" />
+      <Type EntityType="Goal" AccessLevel="Write" />
+      <Type EntityType="Requirement" AccessLevel="Write" />
+      <Type EntityType="Assumption" AccessLevel="Write" />
+      <Type EntityType="Constraint" AccessLevel="Write" />
+      <Type EntityType="Service" AccessLevel="Write" />
+      <Type EntityType="Deliverable" AccessLevel="Write" />
+      <Type EntityType="ChangeRequest" AccessLevel="Write" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Write" />
+      <Type EntityType="Portfolio" AccessLevel="Write" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Write" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Write" />
+      <Type EntityType="Milestone" AccessLevel="Write" />
+      <Type EntityType="Risk" AccessLevel="Write" />
+      <Type EntityType="ProjectPrioritization" AccessLevel="Write" />
+      <Type EntityType="Stakeholder" AccessLevel="Write" />
+      <Type EntityType="StakeholderLog" AccessLevel="Write" />
+      <Type EntityType="StatusReport" AccessLevel="Write" />
+      <Type EntityType="Board" AccessLevel="Write" />
+      <Type EntityType="Column" AccessLevel="Write" />
+      <Type EntityType="TaskLabel" AccessLevel="Write" />
+      <Type EntityType="Task" AccessLevel="Write" />
+      <Type EntityType="Attachment" AccessLevel="Write" />
+      <Type EntityType="Comment" AccessLevel="Write" />
+      <Type EntityType="LessonsLearned" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="77bb8d67-fa30-5ebc-b862-1bd0a3d90927" Name="Entscheidungsgremium" MinimumUserRole="Role;8;Standard user" Level="Program">
+    <Types>
+      <Type EntityType="User" AccessLevel="Read" />
+      <Type EntityType="Member" AccessLevel="Read" />
+      <Type EntityType="ExternalMember" AccessLevel="Read" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Read" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Read" />
+      <Type EntityType="BusinessCase" AccessLevel="Read" />
+      <Type EntityType="ProjectBusinessCaseTemplate" AccessLevel="Read" />
+      <Type EntityType="ProjectCharterTemplate" AccessLevel="Read" />
+      <Type EntityType="PlanningRole" AccessLevel="Read" />
+      <Type EntityType="DefaultWeeklyProjectPlan" AccessLevel="Read" />
+      <Type EntityType="Charter" AccessLevel="Read" />
+      <Type EntityType="CharterTextBlock" AccessLevel="Read" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Read" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Read" />
+      <Type EntityType="Event" AccessLevel="Read" />
+      <Type EntityType="Goal" AccessLevel="Read" />
+      <Type EntityType="Requirement" AccessLevel="Read" />
+      <Type EntityType="Assumption" AccessLevel="Read" />
+      <Type EntityType="Constraint" AccessLevel="Read" />
+      <Type EntityType="Service" AccessLevel="Read" />
+      <Type EntityType="Deliverable" AccessLevel="Read" />
+      <Type EntityType="ChangeRequest" AccessLevel="Read" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Read" />
+      <Type EntityType="ChangeRequestTemplate" AccessLevel="Read" />
+      <Type EntityType="ProjectPlan" AccessLevel="Read" />
+      <Type EntityType="PlanBaseline" AccessLevel="Read" />
+      <Type EntityType="ProjectWorkPackage" AccessLevel="Read" />
+      <Type EntityType="ProjectWorkPackageTemplate" AccessLevel="Read" />
+      <Type EntityType="Program" AccessLevel="Read" />
+      <Type EntityType="InitiationRequest" AccessLevel="Read" />
+      <Type EntityType="ProtocolTemplate" AccessLevel="Read" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Read" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Read" />
+      <Type EntityType="Milestone" AccessLevel="Read" />
+      <Type EntityType="Revenue" AccessLevel="Read" />
+      <Type EntityType="Expenditure" AccessLevel="Read" />
+      <Type EntityType="StatusReport" AccessLevel="Read" />
+      <Type EntityType="StatusReportTemplate" AccessLevel="Read" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="6b54802c-aed4-5368-8f54-1867177c346d" Name="Programmlenkungsausschuss" MinimumUserRole="Role;8;Standard user" Level="Program">
+    <Types>
+      <Type EntityType="User" AccessLevel="Read" />
+      <Type EntityType="Member" AccessLevel="Read" />
+      <Type EntityType="ExternalMember" AccessLevel="Read" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Read" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Read" />
+      <Type EntityType="BusinessCase" AccessLevel="Read" />
+      <Type EntityType="ProjectBusinessCaseTemplate" AccessLevel="Read" />
+      <Type EntityType="ProjectCharterTemplate" AccessLevel="Read" />
+      <Type EntityType="PlanningRole" AccessLevel="Read" />
+      <Type EntityType="DefaultWeeklyProjectPlan" AccessLevel="Read" />
+      <Type EntityType="Charter" AccessLevel="Read" />
+      <Type EntityType="CharterTextBlock" AccessLevel="Read" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Read" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Read" />
+      <Type EntityType="Event" AccessLevel="Read" />
+      <Type EntityType="Goal" AccessLevel="Read" />
+      <Type EntityType="Requirement" AccessLevel="Read" />
+      <Type EntityType="Assumption" AccessLevel="Read" />
+      <Type EntityType="Constraint" AccessLevel="Read" />
+      <Type EntityType="Service" AccessLevel="Read" />
+      <Type EntityType="Deliverable" AccessLevel="Read" />
+      <Type EntityType="ChangeRequest" AccessLevel="Read" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Read" />
+      <Type EntityType="ChangeRequestTemplate" AccessLevel="Read" />
+      <Type EntityType="ProjectPlan" AccessLevel="Read" />
+      <Type EntityType="PlanBaseline" AccessLevel="Read" />
+      <Type EntityType="ProjectWorkPackage" AccessLevel="Read" />
+      <Type EntityType="ProjectWorkPackageTemplate" AccessLevel="Read" />
+      <Type EntityType="ProtocolTemplate" AccessLevel="Read" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Read" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Read" />
+      <Type EntityType="Milestone" AccessLevel="Read" />
+      <Type EntityType="Risk" AccessLevel="Read" />
+      <Type EntityType="RiskTemplate" AccessLevel="Read" />
+      <Type EntityType="Revenue" AccessLevel="Read" />
+      <Type EntityType="Expenditure" AccessLevel="Read" />
+      <Type EntityType="Stakeholder" AccessLevel="Read" />
+      <Type EntityType="StakeholderLog" AccessLevel="Read" />
+      <Type EntityType="StakeholderTemplate" AccessLevel="Read" />
+      <Type EntityType="StatusReport" AccessLevel="Read" />
+      <Type EntityType="StatusReportTemplate" AccessLevel="Read" />
+      <Type EntityType="Board" AccessLevel="Read" />
+      <Type EntityType="Column" AccessLevel="Read" />
+      <Type EntityType="TaskLabel" AccessLevel="Read" />
+      <Type EntityType="Task" AccessLevel="Read" />
+      <Type EntityType="TaskTransition" AccessLevel="Read" />
+      <Type EntityType="TaskAssignedLog" AccessLevel="Read" />
+      <Type EntityType="Attachment" AccessLevel="Read" />
+      <Type EntityType="Comment" AccessLevel="Read" />
+      <Type EntityType="LessonsLearned" AccessLevel="Read" />
+      <Type EntityType="Program" AccessLevel="Write" />
+      <Type EntityType="InitiationRequest" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="825b48cb-ba7e-5cdb-85e7-c48d7635455c" Name="Programmeigner" MinimumUserRole="Role;8;Standard user" Level="Program">
+    <Types>
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Read" />
+      <Type EntityType="DomainAssignedLabelByParent" AccessLevel="Read" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="Risk" AccessLevel="Read" />
+      <Type EntityType="RiskTemplate" AccessLevel="Read" />
+      <Type EntityType="Revenue" AccessLevel="Read" />
+      <Type EntityType="Expenditure" AccessLevel="Read" />
+      <Type EntityType="Stakeholder" AccessLevel="Read" />
+      <Type EntityType="StakeholderLog" AccessLevel="Read" />
+      <Type EntityType="Board" AccessLevel="Read" />
+      <Type EntityType="Column" AccessLevel="Read" />
+      <Type EntityType="TaskLabel" AccessLevel="Read" />
+      <Type EntityType="Task" AccessLevel="Read" />
+      <Type EntityType="Attachment" AccessLevel="Read" />
+      <Type EntityType="Comment" AccessLevel="Read" />
+      <Type EntityType="LessonsLearned" AccessLevel="Read" />
+      <Type EntityType="Member" AccessLevel="Write" />
+      <Type EntityType="ExternalMember" AccessLevel="Write" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Write" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Write" />
+      <Type EntityType="Goal" AccessLevel="Write" />
+      <Type EntityType="Requirement" AccessLevel="Write" />
+      <Type EntityType="Assumption" AccessLevel="Write" />
+      <Type EntityType="Constraint" AccessLevel="Write" />
+      <Type EntityType="Service" AccessLevel="Write" />
+      <Type EntityType="Deliverable" AccessLevel="Write" />
+      <Type EntityType="ChangeRequest" AccessLevel="Write" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Write" />
+      <Type EntityType="Program" AccessLevel="Write" />
+      <Type EntityType="InitiationRequest" AccessLevel="Write" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Write" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Write" />
+      <Type EntityType="Milestone" AccessLevel="Write" />
+      <Type EntityType="StatusReport" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="df76942b-d506-52bb-8bdd-399497d3dc9d" Name="Programm Anforderungsmanager" MinimumUserRole="Role;8;Standard user" Level="Program">
+    <Types>
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Write" />
+      <Type EntityType="DomainAssignedLabelByParent" AccessLevel="Write" />
+      <Type EntityType="Member" AccessLevel="Read" />
+      <Type EntityType="ExternalMember" AccessLevel="Read" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Read" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Read" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Read" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Read" />
+      <Type EntityType="Goal" AccessLevel="Read" />
+      <Type EntityType="Requirement" AccessLevel="Read" />
+      <Type EntityType="Assumption" AccessLevel="Read" />
+      <Type EntityType="Constraint" AccessLevel="Read" />
+      <Type EntityType="Service" AccessLevel="Read" />
+      <Type EntityType="Deliverable" AccessLevel="Read" />
+      <Type EntityType="ChangeRequest" AccessLevel="Read" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Read" />
+      <Type EntityType="RiskTemplate" AccessLevel="Read" />
+      <Type EntityType="Revenue" AccessLevel="Read" />
+      <Type EntityType="Expenditure" AccessLevel="Read" />
+      <Type EntityType="Program" AccessLevel="Write" />
+      <Type EntityType="InitiationRequest" AccessLevel="Write" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Write" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Write" />
+      <Type EntityType="Milestone" AccessLevel="Write" />
+      <Type EntityType="Risk" AccessLevel="Write" />
+      <Type EntityType="Stakeholder" AccessLevel="Write" />
+      <Type EntityType="StakeholderLog" AccessLevel="Write" />
+      <Type EntityType="StatusReport" AccessLevel="Write" />
+      <Type EntityType="Board" AccessLevel="Write" />
+      <Type EntityType="Column" AccessLevel="Write" />
+      <Type EntityType="TaskLabel" AccessLevel="Write" />
+      <Type EntityType="Task" AccessLevel="Write" />
+      <Type EntityType="Attachment" AccessLevel="Write" />
+      <Type EntityType="Comment" AccessLevel="Write" />
+      <Type EntityType="LessonsLearned" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="2c8d19b3-ec95-5010-aea4-f80c46132692" Name="Programmleitung" MinimumUserRole="Role;8;Standard user" Level="Program">
+    <Types>
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Write" />
+      <Type EntityType="DomainAssignedLabelByParent" AccessLevel="Write" />
+      <Type EntityType="Program" AccessLevel="Write" />
+      <Type EntityType="Board" AccessLevel="Write" />
+      <Type EntityType="Column" AccessLevel="Write" />
+      <Type EntityType="TaskLabel" AccessLevel="Write" />
+      <Type EntityType="Task" AccessLevel="Write" />
+      <Type EntityType="Attachment" AccessLevel="Write" />
+      <Type EntityType="Comment" AccessLevel="Write" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Write" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Write" />
+      <Type EntityType="Milestone" AccessLevel="Write" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Write" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Write" />
+      <Type EntityType="InitiationRequest" AccessLevel="Write" />
+      <Type EntityType="Member" AccessLevel="Write" />
+      <Type EntityType="ExternalMember" AccessLevel="Write" />
+      <Type EntityType="PlanningGroup" AccessLevel="Write" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Write" />
+      <Type EntityType="LessonsLearned" AccessLevel="Write" />
+      <Type EntityType="ProgramBusinessCase" AccessLevel="Write" />
+      <Type EntityType="ProgramCharter" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Write" />
+      <Type EntityType="Risk" AccessLevel="Write" />
+      <Type EntityType="RiskTemplate" AccessLevel="Write" />
+      <Type EntityType="Stakeholder" AccessLevel="Write" />
+      <Type EntityType="StakeholderLog" AccessLevel="Write" />
+      <Type EntityType="Goal" AccessLevel="Write" />
+      <Type EntityType="Requirement" AccessLevel="Write" />
+      <Type EntityType="Assumption" AccessLevel="Write" />
+      <Type EntityType="Constraint" AccessLevel="Write" />
+      <Type EntityType="Service" AccessLevel="Write" />
+      <Type EntityType="Deliverable" AccessLevel="Write" />
+      <Type EntityType="ChangeRequest" AccessLevel="Write" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Write" />
+      <Type EntityType="StatusReport" AccessLevel="Write" />
+      <Type EntityType="Revenue" AccessLevel="Read" />
+      <Type EntityType="Expenditure" AccessLevel="Read" />
+      <Type EntityType="InitiationRequestProperty" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="02792823-6c28-5e51-ae6a-a917fcf3bf01" Name="Programm Büro" MinimumUserRole="Role;8;Standard user" Level="Program">
+    <Types>
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Write" />
+      <Type EntityType="DomainAssignedLabelByParent" AccessLevel="Write" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="Revenue" AccessLevel="Read" />
+      <Type EntityType="Expenditure" AccessLevel="Read" />
+      <Type EntityType="Member" AccessLevel="Write" />
+      <Type EntityType="ExternalMember" AccessLevel="Write" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Write" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrix" AccessLevel="Write" />
+      <Type EntityType="RASCIMatrixTask" AccessLevel="Write" />
+      <Type EntityType="Goal" AccessLevel="Write" />
+      <Type EntityType="Requirement" AccessLevel="Write" />
+      <Type EntityType="Assumption" AccessLevel="Write" />
+      <Type EntityType="Constraint" AccessLevel="Write" />
+      <Type EntityType="Service" AccessLevel="Write" />
+      <Type EntityType="Deliverable" AccessLevel="Write" />
+      <Type EntityType="ChangeRequest" AccessLevel="Write" />
+      <Type EntityType="ChangeRequestComment" AccessLevel="Write" />
+      <Type EntityType="Program" AccessLevel="Write" />
+      <Type EntityType="InitiationRequest" AccessLevel="Write" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Write" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Write" />
+      <Type EntityType="Milestone" AccessLevel="Write" />
+      <Type EntityType="Risk" AccessLevel="Write" />
+      <Type EntityType="RiskTemplate" AccessLevel="Write" />
+      <Type EntityType="Stakeholder" AccessLevel="Write" />
+      <Type EntityType="StakeholderLog" AccessLevel="Write" />
+      <Type EntityType="StatusReport" AccessLevel="Write" />
+      <Type EntityType="Board" AccessLevel="Write" />
+      <Type EntityType="Column" AccessLevel="Write" />
+      <Type EntityType="TaskLabel" AccessLevel="Write" />
+      <Type EntityType="Task" AccessLevel="Write" />
+      <Type EntityType="Attachment" AccessLevel="Write" />
+      <Type EntityType="Comment" AccessLevel="Write" />
+      <Type EntityType="LessonsLearned" AccessLevel="Write" />
+    </Types>
+  </DomainRole>
+  <DomainRole Guid="1a7cf043-0581-5982-9556-b5e0856fc963" Name="Linienverantwortlicher" MinimumUserRole="Role;8;Standard user" Level="Project">
+    <Types>
+      <Type EntityType="DomainAssignedLabel" AccessLevel="Read" />
+      <Type EntityType="ProjectClassification" AccessLevel="Read" />
+      <Type EntityType="Project" AccessLevel="Read" />
+      <Type EntityType="PlanningGroup" AccessLevel="Read" />
+      <Type EntityType="InitiationRequest" AccessLevel="Read" />
+      <Type EntityType="Member" AccessLevel="Read" />
+      <Type EntityType="ExternalMember" AccessLevel="Read" />
+      <Type EntityType="DomainReportingParent" AccessLevel="Read" />
+      <Type EntityType="DomainResponsibilityGroup" AccessLevel="Read" />
+      <Type EntityType="MemberResponsibility" AccessLevel="Read" />
+      <Type EntityType="ProtocolTemplate" AccessLevel="Read" />
+      <Type EntityType="MeetingProtocol" AccessLevel="Read" />
+      <Type EntityType="ProtocolPoint" AccessLevel="Read" />
+      <Type EntityType="Milestone" AccessLevel="Read" />
+      <Type EntityType="Risk" AccessLevel="Read" />
+      <Type EntityType="RiskTemplate" AccessLevel="Read" />
+      <Type EntityType="Revenue" AccessLevel="Read" />
+      <Type EntityType="Expenditure" AccessLevel="Read" />
+      <Type EntityType="StatusReport" AccessLevel="Read" />
+      <Type EntityType="StatusReportTemplate" AccessLevel="Read" />
+      <Type EntityType="Board" AccessLevel="Read" />
+      <Type EntityType="Column" AccessLevel="Read" />
+      <Type EntityType="TaskLabel" AccessLevel="Read" />
+      <Type EntityType="Task" AccessLevel="Read" />
+      <Type EntityType="Attachment" AccessLevel="Read" />
+      <Type EntityType="Comment" AccessLevel="Read" />
+      <Type EntityType="LessonsLearned" AccessLevel="Read" />
+    </Types>
+  </DomainRole>
+</Entities>

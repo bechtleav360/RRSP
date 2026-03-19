@@ -1,0 +1,34 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:63908/",
+      "sslPort": 44380
+
+    },
+    "iis": {
+      "applicationUrl": "http://localhost/RRSP.Server",
+      "sslPort": 0
+    }
+
+  },
+  "profiles": {
+    "Kestrel Local": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "local"
+      },
+      "applicationUrl": "http://localhost:5000;https://localhost:5001"
+    },
+    "IIS Local": {
+      "commandName": "IIS",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "local"
+      },
+      "ancmHostingModel": "InProcess"
+    }
+  }
+}

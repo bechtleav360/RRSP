@@ -1,0 +1,96 @@
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework> 
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject>RRSP.Terminal.Program</StartupObject>
+    <Nullable>enable</Nullable>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
+    <UserSecretsId>RRSP</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\RRSP.Test.Environment\PortfolioGlobalConfigLoader.cs" Link="PortfolioGlobalConfigLoader.cs" />
+    <Compile Include="..\RRSP.Test.Environment\RRSPLoader.cs" Link="RRSPLoader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Aspose.HTML" Version="23.12.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.2" />
+    <PackageReference Include="Signum.Analyzer" Version="3.2.0" />
+    <PackageReference Include="Signum.MSBuildTask" Version="10.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Signum\Signum.csproj" />
+    <ProjectReference Include="..\Framework\Signum.Utilities\Signum.Utilities.csproj" />
+    <ProjectReference Include="..\RRSP\RRSP.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="appsettings.local_cloudogu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>None</CopyToPublishDirectory>
+    </None>
+    <None Update="appsettings.local.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>None</CopyToPublishDirectory>
+    </None>
+    <None Update="appsettings.rrsp.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>None</CopyToPublishDirectory>
+    </None>
+    <None Update="appsettings.demobva.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<CopyToPublishDirectory>None</CopyToPublishDirectory>
+	</None>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<CopyToPublishDirectory>None</CopyToPublishDirectory>
+	</None>
+    <None Update="AuthRules.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DashboardEntity4.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DashboardEntity5.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Dashboards.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="DLN EVB-IT.docx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="WordTemplates\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+	<None Update="InstanceTranslations\*">
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	</None>
+    <None Update="InstanceTranslations\PortfolioEvaluationCriteria.en.View.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="InstanceTranslations\PortfolioEvaluationDimension.en.View.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+	<None Update="runTerminal.ps1">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
+	<None Update="AuthRules.xml">
+		<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+	<None Update="ToolbarEntity1.xml">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
+	<None Update="UserAssets.xml">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
+  </ItemGroup>
+</Project>

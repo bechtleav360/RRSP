@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Entity CleanName="Investment" Culture="de">
+  <Description>&lt;p&gt;Germen version of investment&lt;/p&gt;
+</Description>
+  <Properties>
+    <Property Name="Description">&lt;p&gt;Beschreibung des Projektes und seines Zwecks&lt;/p&gt;
+</Property>
+    <Property Name="InitialSituation">&lt;p&gt;Beschreibung der Ausgangssituation (Ist-Zustand)&lt;/p&gt;
+</Property>
+    <Property Name="TargetSituation">&lt;p&gt;Beschreibung des zu erreichenden Ziels durch Umsetzung dieser Investition&lt;/p&gt;
+</Property>
+    <Property Name="AddedValue">&lt;p&gt;Welchen Mehrwert, bzw, welche Vorteile erbringt diese Investition für wen?&lt;/p&gt;
+</Property>
+    <Property Name="AffectedComponentsAndOrProcesses">&lt;p&gt;Wer oder was ist von dieser Investition betroffen&lt;/p&gt;
+</Property>
+    <Property Name="SolutionVariants">&lt;p&gt;inkl. Bewertung nach monetären (Kosten, Aufwand, Erlöse, Erträge) und nicht-monetären Aspekten (Nutzwert)&lt;/p&gt;
+</Property>
+    <Property Name="Solution">&lt;p&gt;inkl. Begründung der Vor- und Nachteile gegenüber den Alternativen, sowie Beschreibung der zu erreichenden Ziele und Schlüssel-Ergebnisse (OKR)&lt;/p&gt;
+</Property>
+    <Property Name="Risk">&lt;p&gt;Welches Risiko entsteht/besteht, sollte diese Investition nicht umgesetzt werden?&lt;/p&gt;
+</Property>
+  </Properties>
+</Entity>
