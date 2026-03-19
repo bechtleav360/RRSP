@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Auth>
+  <Roles>
+    <Role Name="External user" Contains="" />
+    <Role Name="Super user" MergeStrategy="Intersection" Contains="" />
+    <Role Name="Standard user" Contains="External user" />
+    <Role Name="Advanced user" Contains="Standard user" />
+  </Roles>
+  <Operations>
+    <Role Name="External user" />
+    <Role Name="Super user">
+      <Operation Resource="ProjectOperation.Delete/Project" Allowed="None" />
+      <Operation Resource="ProjectOperation.DeleteWithAlternative/Project" Allowed="None" />
+      <Operation Resource="TaskOperation.DeleteWithAlternative/Task" Allowed="None" />
+    </Role>
+    <Role Name="Standard user">
+      <Operation Resource="InitiationRequestOperation.Approve/InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Allow" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Allow" />
+      </Operation>
+      <Operation Resource="InitiationRequestOperation.BackToRequester/InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Allow" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Allow" />
+      </Operation>
+      <Operation Resource="InitiationRequestOperation.Decline/InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Allow" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Allow" />
+      </Operation>
+      <Operation Resource="InitiationRequestOperation.Delete/InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Allow" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Allow" />
+      </Operation>
+      <Operation Resource="InitiationRequestOperation.FinishEvaluation/InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Allow" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Allow" />
+      </Operation>
+      <Operation Resource="InitiationRequestOperation.ReopenEvaluation/InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Allow" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Allow" />
+      </Operation>
+      <Operation Resource="InitiationRequestOperation.Request/InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Allow" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Allow" />
+      </Operation>
+      <Operation Resource="InitiationRequestOperation.Retry/InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Allow" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Allow" />
+      </Operation>
+      <Operation Resource="InitiationRequestOperation.Rollback/InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Allow" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Allow" />
+      </Operation>
+      <Operation Resource="InitiationRequestOperation.StartEvaluation/InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Allow" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Allow" />
+      </Operation>
+      <Operation Resource="InitiationRequestOperation.Suspend/InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Allow" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Allow" />
+      </Operation>
+      <Operation Resource="ProjectOperation.Delete/Project" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+      </Operation>
+      <Operation Resource="ProjectOperation.DeleteWithAlternative/Project" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+      </Operation>
+      <Operation Resource="TaskOperation.DeleteWithAlternative/Task" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="None" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+      </Operation>
+    </Role>
+    <Role Name="Advanced user" />
+  </Operations>
+  <Permissions>
+    <Role Name="External user">
+      <Permission Resource="BasicPermission.AutomaticUpgradeOfOperations" Allowed="True" />
+      <Permission Resource="BasicPermission.AutomaticUpgradeOfProperties" Allowed="True" />
+      <Permission Resource="BasicPermission.AutomaticUpgradeOfQueries" Allowed="True" />
+      <Permission Resource="HelpPermissions.ViewHelp" Allowed="True" />
+    </Role>
+    <Role Name="Super user" />
+    <Role Name="Standard user">
+      <Permission Resource="ChartPermission.ViewCharting" Allowed="True" />
+      <Permission Resource="DashboardPermission.ViewDashboard" Allowed="True" />
+      <Permission Resource="ExcelPermission.PlainExcel" Allowed="True" />
+      <Permission Resource="MapPermission.ViewMap" Allowed="True" />
+      <Permission Resource="ProjectPermission.AddNewUserToProjects" Allowed="True" />
+      <Permission Resource="UserAssetPermission.UserAssetsToXML" Allowed="True" />
+      <Permission Resource="UserQueryPermission.ViewUserQuery" Allowed="True" />
+      <Permission Resource="WordTemplatePermission.GenerateReport" Allowed="True" />
+    </Role>
+    <Role Name="Advanced user">
+      <Permission Resource="ProjectPermission.CanCreatePortfolio" Allowed="True" />
+      <Permission Resource="ProjectPermission.CanCreateProgram" Allowed="True" />
+      <Permission Resource="ProjectPermission.CanCreateProject" Allowed="True" />
+    </Role>
+  </Permissions>
+  <Properties>
+    <Role Name="External user" />
+    <Role Name="Super user" />
+    <Role Name="Standard user">
+      <Property Resource="InitiationRequest|ApprovingAuthority" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Assumptions" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|AverageDailyRate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Constraints" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|ContextSituation" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|CreationDate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|CustomProperties" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|CustomProperties/Property" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|CustomProperties/Value" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|DateOfRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|EstimatedEffort" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|EstimatedEffortComment" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|EvaluationCriteriaValues" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Read" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Write" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|EvaluationCriteriaValues/Criteria" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Read" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Write" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|EvaluationCriteriaValues/Dimension" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Read" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Write" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|EvaluationCriteriaValues/Value" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Read" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Write" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|EvaluationDimensionScores" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Read" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Write" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|EvaluationDimensionScores/Dimension" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Read" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Write" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|EvaluationDimensionScores/Score" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Read" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Write" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|FromDomain" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Id" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Impact" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Initiator" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|LegalBasis" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Manager" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|MessageForRequester" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|MessageForRequesterFrom" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|OrganizationUnit" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Outcomes" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Owner" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|ParentDomain" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Priority" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Risks" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Sensitivity" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|SolutionProvider" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|SuccessCriteria" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|TargetDeliveryDate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Title" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|TotalScore" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Read" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Write" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|TypeOfDelivery" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="InitiationRequest|Version" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Property>
+      <Property Resource="Project|[DomainTaskMixin].AddNewUsersAutomatically" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="None" />
+      </Property>
+    </Role>
+    <Role Name="Advanced user" />
+  </Properties>
+  <Queries>
+    <Role Name="External user">
+      <Query Resource="AppendixHelp" Allowed="None" />
+      <Query Resource="HelpImage" Allowed="None" />
+      <Query Resource="NamespaceHelp" Allowed="None" />
+      <Query Resource="Operation" Allowed="None" />
+      <Query Resource="ProjectWorkPackage" Allowed="EmbeddedOnly" />
+      <Query Resource="PropertyRoute" Allowed="None" />
+      <Query Resource="QueryHelp" Allowed="None" />
+      <Query Resource="Type" Allowed="None" />
+      <Query Resource="TypeHelp" Allowed="None" />
+    </Role>
+    <Role Name="Super user" />
+    <Role Name="Standard user">
+      <Query Resource="ProjectWorkPackage" Allowed="Allow" />
+    </Role>
+    <Role Name="Advanced user" />
+  </Queries>
+  <Types>
+    <Role Name="External user">
+      <Type Resource="Alert" Allowed="None">
+        <Condition Name="RRSPCondition.CurrentUser" Allowed="Write" />
+      </Type>
+      <Type Resource="AlertType" Allowed="Read" />
+      <Type Resource="AppendixHelp" Allowed="Read" />
+      <Type Resource="Attachment" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="BigValuePart" Allowed="Read" />
+      <Type Resource="Board" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="ChartScript" Allowed="Read" />
+      <Type Resource="Column" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="CombinedUserChartPart" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+        <Condition Name="RRSPCondition.UserEntities" Allowed="Write" />
+      </Type>
+      <Type Resource="Comment" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="CultureInfo" Allowed="Read" />
+      <Type Resource="Dashboard" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+        <Condition Name="RRSPCondition.UserEntities" Allowed="Write" />
+      </Type>
+      <Type Resource="DocumentationImage" Allowed="Read" />
+      <Type Resource="ExternalMember" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="File" Allowed="Read" />
+      <Type Resource="FileType" Allowed="Read" />
+      <Type Resource="HealthCheckPart" Allowed="Read" />
+      <Type Resource="HelpImage" Allowed="Read" />
+      <Type Resource="HolidayCalendar" Allowed="Read" />
+      <Type Resource="Member" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="NamespaceHelp" Allowed="Read" />
+      <Type Resource="NotificationConfig" Allowed="None">
+        <Condition Name="RRSPCondition.CurrentUser" Allowed="Write" />
+      </Type>
+      <Type Resource="Operation" Allowed="Read" />
+      <Type Resource="Permission" Allowed="DBReadUINone" />
+      <Type Resource="PlanningGroup" Allowed="None">
+        <Condition Name="RRSPCondition.CurrentUser" Allowed="Read" />
+      </Type>
+      <Type Resource="Project" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="ProjectPlan" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="ProjectWorkPackage" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="PropertyRoute" Allowed="Read" />
+      <Type Resource="Query" Allowed="Read" />
+      <Type Resource="QueryHelp" Allowed="Read" />
+      <Type Resource="Task" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="TaskLabel" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="TaskLabelType" Allowed="Read" />
+      <Type Resource="TaskRelationship" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="TaskTransition" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+      </Type>
+      <Type Resource="TextPart" Allowed="Read" />
+      <Type Resource="TokenEquivalenceGroup" Allowed="Read" />
+      <Type Resource="Toolbar" Allowed="DBReadUINone" />
+      <Type Resource="ToolbarMenu" Allowed="DBReadUINone" />
+      <Type Resource="Type" Allowed="Read" />
+      <Type Resource="TypeHelp" Allowed="Read" />
+      <Type Resource="User" Allowed="None">
+        <Condition Name="UserTypeCondition.DeactivatedUsers" Allowed="None" />
+        <Condition Name="RRSPCondition.CurrentUser" Allowed="Read" />
+      </Type>
+      <Type Resource="UserChart" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+        <Condition Name="RRSPCondition.UserEntities" Allowed="Write" />
+      </Type>
+      <Type Resource="UserChartPart" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+        <Condition Name="RRSPCondition.UserEntities" Allowed="Write" />
+      </Type>
+      <Type Resource="UserQuery" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+        <Condition Name="RRSPCondition.UserEntities" Allowed="Write" />
+      </Type>
+      <Type Resource="UserQueryPart" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+        <Condition Name="RRSPCondition.UserEntities" Allowed="Write" />
+      </Type>
+      <Type Resource="ValueUserQueryListPart" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+        <Condition Name="RRSPCondition.UserEntities" Allowed="Write" />
+      </Type>
+      <Type Resource="Video" Allowed="Read" />
+      <Type Resource="VideoCategory" Allowed="Read" />
+      <Type Resource="VideoViewLog" Allowed="DBWriteUINone" />
+    </Role>
+    <Role Name="Super user" />
+    <Role Name="Standard user">
+      <Type Resource="Assumption" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Attachment" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Board" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="BusinessCase" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="CameralisticAllocation" Allowed="Read" />
+      <Type Resource="ChangeRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ChangeRequestComment" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ChangeRequestTemplate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Charter" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="CharterTextBlock" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ColorPalette" Allowed="Read" />
+      <Type Resource="Column" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Comment" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Company" Allowed="Read" />
+      <Type Resource="Constraint" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ContractualPartner" Allowed="Read" />
+      <Type Resource="CustomPart" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+      </Type>
+      <Type Resource="Dashboard" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+      </Type>
+      <Type Resource="DefaultWeeklyProjectPlan" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="RRSPCondition.CurrentUser" Allowed="Write" />
+      </Type>
+      <Type Resource="Deliverable" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="DomainAssignedLabel" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="DomainAssignedLabelByParent" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="DomainLabel" Allowed="Read">
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="DomainReportingParent" Allowed="None">
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="DomainResponsibility" Allowed="Read" />
+      <Type Resource="DomainResponsibilityGroup" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="DomainRole" Allowed="Read" />
+      <Type Resource="EstimationSize" Allowed="Read" />
+      <Type Resource="Event" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Expenditure" Allowed="None">
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ExpenditureType" Allowed="Read" />
+      <Type Resource="ExternalMember" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Goal" Allowed="None">
+        <Condition Name="DomainCondition.ByChildrenDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="HealthCheckPart" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+      </Type>
+      <Type Resource="InitiationRequest" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Write" />
+        <Condition Name="DomainCondition.Domain_Write, DomainCondition.ByParentDomain" Allowed="Write" />
+      </Type>
+      <Type Resource="InitiationRequestGlobalConfiguration" Allowed="Read" />
+      <Type Resource="InitiationRequestProperty" Allowed="Read">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="LessonsLearned" Allowed="None">
+        <Condition Name="LessonsLearnedCondition.EveryOne" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="LessonsLearnedCondition.OnlyMe" Allowed="Write" />
+        <Condition Name="LessonsLearnedCondition.Private" Allowed="None" />
+      </Type>
+      <Type Resource="MeetingProtocol" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="ProtocolCondition.Confidential" Allowed="None" />
+      </Type>
+      <Type Resource="MeetingType" Allowed="Read" />
+      <Type Resource="Member" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="MemberPosition" Allowed="Read" />
+      <Type Resource="MemberResponsibility" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Milestone" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="OperationLog" Allowed="None">
+        <Condition Name="OperationLogTypeCondition.FilteringByTarget" Allowed="Read" />
+      </Type>
+      <Type Resource="OrganizationalUnit" Allowed="Read" />
+      <Type Resource="PlanBaseline" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="PlanLevelColorConfig" Allowed="Read" />
+      <Type Resource="PlanningGroup" Allowed="None">
+        <Condition Name="RRSPCondition.CurrentUser" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="PlanningRole" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Portfolio" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="PortfolioEvaluationCriteria" Allowed="Read" />
+      <Type Resource="PortfolioEvaluationDimension" Allowed="Read" />
+      <Type Resource="PortfolioRelationship" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Practice" Allowed="Read" />
+      <Type Resource="Program" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ProgramBusinessCase" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ProgramCharter" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Project" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ProjectArtifact" Allowed="Read" />
+      <Type Resource="ProjectArtifactGroup" Allowed="Read" />
+      <Type Resource="ProjectBusinessCaseTemplate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ProjectCharterTemplate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ProjectClassification" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ProjectClassificationAnswer" Allowed="Read" />
+      <Type Resource="ProjectClassificationItem" Allowed="Read" />
+      <Type Resource="ProjectPlan" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ProjectPrioritization" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ProjectWorkPackage" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ProjectWorkPackageTemplate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="PropertyRoute" Allowed="DBWriteUIRead" />
+      <Type Resource="ProtocolPoint" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+        <Condition Name="ProtocolCondition.Confidential" Allowed="None" />
+        <Condition Name="ProtocolCondition.Private" Allowed="None" />
+      </Type>
+      <Type Resource="ProtocolPointDecision" Allowed="Read" />
+      <Type Resource="ProtocolPointType" Allowed="Read" />
+      <Type Resource="ProtocolTemplate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="RASCIMatrix" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="RASCIMatrixTask" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="RASCIMatrixTemplate" Allowed="Read" />
+      <Type Resource="RASCIMatrixTemplateTask" Allowed="Read" />
+      <Type Resource="RASCIRole" Allowed="Read" />
+      <Type Resource="Referat" Allowed="Read" />
+      <Type Resource="Requirement" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Ressort" Allowed="Read" />
+      <Type Resource="Revenue" Allowed="None">
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="RevenueType" Allowed="Read" />
+      <Type Resource="Risk" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="RiskCategory" Allowed="Read" />
+      <Type Resource="RiskCategoryTable" Allowed="Read" />
+      <Type Resource="RiskLibrary" Allowed="Read" />
+      <Type Resource="RiskTemplate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Role" Allowed="Read" />
+      <Type Resource="Service" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="ServiceTemplate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Stakeholder" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="StakeholderLog" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="StakeholderTemplate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="StatementOfWork" Allowed="Read">
+        <Condition Name="RRSPCondition.SOWEditor" Allowed="Write" />
+      </Type>
+      <Type Resource="StatementOfWorkService" Allowed="Read">
+        <Condition Name="RRSPCondition.SOWEditor" Allowed="Write" />
+      </Type>
+      <Type Resource="StatementOfWorkServiceTemplate" Allowed="Read" />
+      <Type Resource="StatusReport" Allowed="None">
+        <Condition Name="DomainCondition.ByParentDomain" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="StatusReportTemplate" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="Task" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="TaskAssignedLog" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="TaskLabel" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="TaskRelationship" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="TaskTransition" Allowed="None">
+        <Condition Name="DomainCondition.Domain_Read" Allowed="Read" />
+        <Condition Name="DomainCondition.Domain_Write" Allowed="Write" />
+      </Type>
+      <Type Resource="TeamMember" Allowed="Read" />
+      <Type Resource="TextBlock" Allowed="Read" />
+      <Type Resource="TextPart" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+      </Type>
+      <Type Resource="TokenEquivalenceGroup" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+      </Type>
+      <Type Resource="Toolbar" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="DBReadUINone" />
+      </Type>
+      <Type Resource="ToolbarMenu" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="DBReadUINone" />
+      </Type>
+      <Type Resource="ToolbarMenuPart" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="Read" />
+      </Type>
+      <Type Resource="ToolbarSwitcher" Allowed="None">
+        <Condition Name="RRSPCondition.RoleEntities" Allowed="DBReadUINone" />
+      </Type>
+      <Type Resource="User" Allowed="Read" />
+      <Type Resource="Video" Allowed="None">
+        <Condition Name="RRSPCondition.AllowedRole" Allowed="Read" />
+      </Type>
+      <Type Resource="WatchedProtocolPoint" Allowed="None">
+        <Condition Name="RRSPCondition.CurrentUser" Allowed="Write" />
+      </Type>
+      <Type Resource="WhatsNew" Allowed="None">
+        <Condition Name="RRSPCondition.Published" Allowed="Read" />
+      </Type>
+      <Type Resource="WhatsNewLog" Allowed="None">
+        <Condition Name="RRSPCondition.CurrentUser" Allowed="Write" />
+      </Type>
+      <Type Resource="WordConverter" Allowed="Read" />
+      <Type Resource="WordModel" Allowed="Read" />
+      <Type Resource="WordTemplate" Allowed="Read" />
+      <Type Resource="WordTransformer" Allowed="Read" />
+    </Role>
+    <Role Name="Advanced user">
+      <Type Resource="CameralisticAllocation" Allowed="Write" />
+      <Type Resource="ExpenditureType" Allowed="Write" />
+      <Type Resource="RevenueType" Allowed="Write" />
+    </Role>
+  </Types>
+</Auth>

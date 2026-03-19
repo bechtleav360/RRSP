@@ -1,0 +1,22 @@
+﻿.project-name-container {
+    display: inline-block;
+    width: 200px;
+    margin: 0 10px 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.project-icon-container {
+    display: inline-block;
+}
+
+.project-icon-container > svg{
+    width: 14px;
+}
+
+.project-btn-reset {
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}

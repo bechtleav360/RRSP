@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Entities>
+  <UserQuery Guid="99d974f7-d9a4-4426-be08-66e7de151207" DisplayName="My Tasks" Query="Task" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Search" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="Entity.ToString" Operation="Contains" />
+      <Filter Indentation="1" Token="Entity.Id" Operation="EqualTo" />
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo">
+        <Pinned Column="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.Labels.Any.Name" Operation="Contains">
+        <Pinned Label="Label" Column="2" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.AssignedTo" Operation="EqualTo" Value="[CurrentUser]" />
+      <Filter Indentation="0" Token="State" Operation="EqualTo" Value="InProgress" />
+      <Filter Indentation="0" Token="Column.ArchiveTasksOlderThan" Operation="EqualTo" />
+    </Filters>
+  </UserQuery>
+  <UserQuery Guid="13ac7e63-2585-4901-b54f-04a224b18f1a" DisplayName="Protokollpunkte" Query="ProtocolPoint" EntityType="Project" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Description" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="MeetingType" Operation="EqualTo">
+        <Pinned Column="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Responsible.(Member).User" Operation="EqualTo">
+        <Pinned Column="2" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Domain" Operation="EqualTo" Value="[CurrentEntity]">
+        <Pinned Column="3" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Date" Operation="GreaterThanOrEqual">
+        <Pinned Label="From" Column="0" Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Date" Operation="LessThanOrEqual">
+        <Pinned Label="To" Column="1" Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Domain.(Project).UsersWithProtocolAccess.Any" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="Nur meine Projekte" Column="2" Row="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="And">
+        <Pinned Label="Offene Punkte" Column="3" Row="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="1" Token="State" Operation="IsIn" Value="Open|InProgress" />
+      <Filter Indentation="1" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+      <Filter Indentation="0" Token="Type" Operation="EqualTo">
+        <Pinned Column="0" Row="2" Active="WhenHasValue" />
+      </Filter>
+    </Filters>
+  </UserQuery>
+  <Dashboard Guid="7b918cb5-61a3-4cff-9a88-24fec9c651b8" DisplayName="User dashboard" HideDisplayName="True" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="4" StartColumn="0" Columns="12" IconName="fas fa-rectangle-list" IconColor="#2E86C1">
+        <UserQueryPart UserQuery="99d974f7-d9a4-4426-be08-66e7de151207" AllowSelection="false" />
+      </Part>
+      <Part Row="3" StartColumn="0" Columns="12" IconName="fas fa-rectangle-list" IconColor="#2E86C1">
+        <UserQueryPart UserQuery="13ac7e63-2585-4901-b54f-04a224b18f1a" AllowSelection="false" />
+      </Part>
+      <Part Row="0" StartColumn="0" Columns="12" Title="" IconName="fa-brands fa-adn" IconColor="#4e7afd">
+        <TextPart TextContent="&lt;h2 dir=&quot;ltr&quot;&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Hi $FirstName$,&lt;/span&gt;&lt;/h2&gt;&lt;h3 dir=&quot;ltr&quot;&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Welcome to RRSP!&lt;/span&gt;&lt;/h3&gt;" TextPartType="HTML" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+</Entities>

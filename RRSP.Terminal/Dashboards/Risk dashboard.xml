@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Entities>
+  <UserChart Guid="32096322-fd89-4ec9-bc21-c87cbe3e5bfa" DisplayName="Project Risk History" Query="Risk" EntityType="Risk" HideQuickLink="false" ChartScript="D3ChartScript.MultiLines" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="Entity" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Entity.AssessmentHistory.Element.Date" OrderByIndex="1" OrderByType="Ascending" />
+      <Column />
+      <Column Token="Entity.AssessmentHistory.Element.Probability" />
+      <Column Token="Entity.AssessmentHistory.Element.Impact" />
+      <Column />
+      <Column />
+      <Column />
+    </Columns>
+    <Parameters>
+      <Parameter Name="CompleteValues" Value="Auto" />
+      <Parameter Name="HorizontalScale" Value="MinMax" />
+      <Parameter Name="VerticalScale" Value="ZeroMax" />
+      <Parameter Name="UnitMargin" Value="40" />
+      <Parameter Name="NumberMinWidth" Value="20" />
+      <Parameter Name="NumberOpacity" Value="0.8" />
+      <Parameter Name="CircleAutoReduce" Value="Yes" />
+      <Parameter Name="CircleRadius" Value="5" />
+      <Parameter Name="CircleStroke" Value="2" />
+      <Parameter Name="CircleRadiusHover" Value="15" />
+      <Parameter Name="ColorCategory" Value="category10" />
+      <Parameter Name="Interpolate" Value="linear" />
+    </Parameters>
+  </UserChart>
+  <Dashboard Guid="0b507af5-dd7d-4b1d-a4ed-746b5747226c" DisplayName="Projektrisikoverlauf" EntityType="Risk" Owner="Role;1;Standard user" EmbeddedInEntity="Tab" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="0" StartColumn="0" Columns="12" IconName="fas fa-chart-bar" IconColor="#6C3483" TitleColor="">
+        <UserChartPart UserChart="32096322-fd89-4ec9-bc21-c87cbe3e5bfa" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+</Entities>

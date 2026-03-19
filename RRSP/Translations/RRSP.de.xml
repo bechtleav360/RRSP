@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Translations>
+  <Type Name="ApplicationConfigurationEntity" Description="Anwendungskonfiguration">
+    <Member Name="AuthTokens" Description="Auth-Token" />
+    <Member Name="BusinessCaseReportTemplate" Description="Business Case Bericht Vorlage" />
+    <Member Name="ChangeRequestReportTemplate" Description="" />
+    <Member Name="ContactPersonReportTemplate" Description="Vorlage für den Kontaktpersonenbericht" />
+    <Member Name="DatabaseName" Description="Datenbankname" />
+    <Member Name="DefaultAccountingReceiver" Description="Standard-Buchhaltungsempfänger" />
+    <Member Name="DefaultDashboard" Description="Standard-Dashboard" />
+    <Member Name="DefaultPortfolioMangerRole" Description="Standard-Portfoliomanager-Rolle" />
+    <Member Name="DefaultProgramMangerRole" Description="Standard-Programmmanager-Rolle" />
+    <Member Name="DefaultProjectManagerRole" Description="Standard-Projektmanagerrolle" />
+    <Member Name="DefaultProjectMemberRole" Description="Standardrolle des Projektmitglieds" />
+    <Member Name="Email" Description="E-Mail" />
+    <Member Name="EmailSender" Description="E-Mail-Absender" />
+    <Member Name="EmailSignature" Description="E-Mail-Signatur" />
+    <Member Name="Environment" Description="Umgebung" />
+    <Member Name="ExtraValidAudiences" Description="Extra gültige Zielgruppen" />
+    <Member Name="Folders" Description="Ordner" />
+    <Member Name="MeetingProtocolExcelTemplate" Description="Besprechungsprotokoll Excel-Vorlage" />
+    <Member Name="MeetingProtocolReportTemplate" Description="Vorlage für einen Sitzungsprotokollbericht" />
+    <Member Name="PerDayPrice" Description="Preis pro Tag" />
+    <Member Name="ProjectCharterReportTemplate" Description="Projektcharta-Berichtsvorlage" />
+    <Member Name="RiskManagementPercentReportTemplate" Description="Risikomanagement Prozent Bericht Vorlage" />
+    <Member Name="RiskManagementReportTemplate" Description="Vorlage für einen Risikomanagementbericht" />
+    <Member Name="StatusReportReportTemplate" Description="Statusbericht Vorlage" />
+    <Member Name="Task" Description="Aufgabe" />
+    <Member Name="Translation" Description="Übersetzung" />
+    <Member Name="WorkPackageReportTemplate" Description="Vorlage für Arbeitspaketbericht" />
+  </Type>
+  <Type Name="ApplicationConfigurationOperation">
+    <Member Name="Save" Description="Speichern" />
+  </Type>
+  <Type Name="BigStringFileType">
+    <Member Name="EmailMessage" Description="E-Mail Nachricht" />
+    <Member Name="Exceptions" Description="Ausnahmen" />
+    <Member Name="OperationLog" Description="Operationenprotokoll" />
+    <Member Name="ViewLog" Description="Anzeigeprotokoll" />
+  </Type>
+  <Type Name="ColumnAction" Description="Spalte-Aktion">
+    <Member Name="Copy" Description="Kopieren" />
+    <Member Name="Ignore" Description="Ignorieren" />
+    <Member Name="Move" Description="Bewegen" />
+    <Member Name="Replace" Description="Ersetzen" />
+  </Type>
+  <Type Name="ColumnActionEmbedded" Description="Spalte-Aktion">
+    <Member Name="Action" Description="Aktion" />
+    <Member Name="Column" Description="Spalte" />
+    <Member Name="TargetColumn" Description="Ziel-Spalte" />
+  </Type>
+  <Type Name="DashboardTemplateMessage">
+    <Member Name="_0Of1WorkPackagesCompleted" Description="{0} von {1} Arbeitspaketen abgeschlossen" />
+    <Member Name="Available" Description="Verfügbar" />
+    <Member Name="BudgetExhausted" Description="Budget ausgeschöpft" />
+    <Member Name="ContinuousProjectMonitoringActive" Description="Kontinuierliche Projektüberwachung aktiv" />
+    <Member Name="KanbanBoard" Description="Kanban-Board" />
+    <Member Name="MonitoringAndControl" Description="Überwachung &amp; Steuerung" />
+    <Member Name="NoMonitoring" Description="Keine Überwachung" />
+    <Member Name="NoStandardPlan" Description="Kein Standardplan" />
+    <Member Name="NumberOfProjects" Description="Anzahl der Projekte/Programme" />
+    <Member Name="Of0TotalBudget" Description="von {0} Gesamtbudget" />
+    <Member Name="Progress" Description="Fortschritt" />
+    <Member Name="ProjectOwner" Description="Projekteigner/in" />
+    <Member Name="ProjectProgressWeighted" Description="Projektfortschritt (gewichtet)" />
+    <Member Name="Runtime" Description="Laufzeit" />
+  </Type>
+  <Type Name="DefaultDashboardEmbedded" Description="Standard-Dashboard">
+    <Member Name="Portfolio" Description="Portfolio" />
+    <Member Name="Program" Description="Programm" />
+    <Member Name="Project" Description="Projekt" />
+  </Type>
+  <Type Name="FoldersConfigurationEmbedded" Description="Ordnerkonfiguration">
+    <Member Name="AttachmentsFolder" Description="Anhängeordner" />
+    <Member Name="BillingDocumentFolder" Description="Ordner für Fakturierbaredokumente" />
+    <Member Name="BusinessCaseBaseLineFolder" Description="Business Case Base Line Ordner" />
+    <Member Name="CachedQueryFolder" Description="Cache-Abfrage-Ordner" />
+    <Member Name="ChangeRequestAttachmentFolder" Description="" />
+    <Member Name="ChangeRequestReportFolder" Description="" />
+    <Member Name="CommunicationLetterFolder" Description="Ordner für Kommunikationsbriefe" />
+    <Member Name="ContractAttachmentsFolder" Description="Ordner &quot;Vertragsanhänge&quot;" />
+    <Member Name="DelimitationDocumentFolder" Description="Ordner Abgrenzungsdokumente" />
+    <Member Name="DocumentQMAttachmentFolder" Description="Dokument QM Anhangsordner" />
+    <Member Name="EmailMessageFolder" Description="E-Mail-Nachrichten-Ordner" />
+    <Member Name="ExceptionsFolder" Description="Ausnahmen-Ordner" />
+    <Member Name="ExternalBillableAttachmentFolder" Description="Ordner für Externer abrechenbare Anlagen" />
+    <Member Name="HelpImagesFolder" Description="Ordner &quot;Hilfebilder&quot;" />
+    <Member Name="InvestmentAttachmentFolder" Description="Investitionsanhänge Ordner" />
+    <Member Name="InvestmentReportFolder" Description="Investitionsberichte Ordner" />
+    <Member Name="OperationLogFolder" Description="Operationsprotokoll-Ordner" />
+    <Member Name="ProjectChartFolder" Description="Projektdiagramm-Ordner" />
+    <Member Name="ProjectStatusReportFolder" Description="Projektstatusberichte-Ordner" />
+    <Member Name="ProtocolReportFolder" Description="Protokollberichts-Ordner" />
+    <Member Name="SkillCertificateFolder" Description="Skill-Zertifikate-Ordner" />
+    <Member Name="StatementOfWorkReportFolder" Description="Arbeitsbericht Ordner" />
+    <Member Name="VideoInlineImagesFolder" Description="Video-Inline-Bilder-Ordner" />
+    <Member Name="VideosFolder" Description="Videos-Ordner" />
+    <Member Name="VideoThumbnailsFolder" Description="Video-Miniaturansichten-Ordner" />
+    <Member Name="ViewLogFolder" Description="Anzeige-Protokol-Ordner" />
+    <Member Name="WhatsNewDocumentFolder" Description="Neuichkeit-Dokument-Ordner" />
+    <Member Name="WhatsNewPreviewFolder" Description="Neuichkeit-Vorschau-Ordner" />
+    <Member Name="WorkPackageAttachmentFolder" Description="Ordner für Arbeitspaketanhänge" />
+    <Member Name="WorkPackageReportFolder" Description="Ordner für Arbeitspaketberichte" />
+  </Type>
+  <Type Name="GlobalMessage">
+    <Member Name="ActiveProjects" Description="Aktive Projekte" />
+    <Member Name="CommunicationManagement" Description="Kommunikationsmanagement" />
+    <Member Name="DefaultPortfolioManagerRoleIsNotConfigured" Description="Standard-Portfoliomanagerrolle ist nicht konfiguriert" />
+    <Member Name="DefaultProgramManagerRoleIsNotConfigured" Description="Standardprogrammmanagerrolle ist nicht konfiguriert" />
+    <Member Name="PasswordComplexityWarning" Description="Passwortkomplexitätswarnung" />
+    <Member Name="PasswordMustContainDigit" Description="Das Passwort muss mindestens eine Ziffer enthalten" />
+    <Member Name="PasswordMustContainLowercase" Description="Das Passwort muss mindestens einen Kleinbuchstaben enthalten" />
+    <Member Name="PasswordMustContainSpecialChar" Description="Das Passwort muss mindestens ein spezielles Zeichen enthalten" />
+    <Member Name="PasswordMustContainUppercase" Description="Das Passwort muss mindestens einen Großbuchstaben enthalten" />
+    <Member Name="PleaseSelectAnAlternative0" Description="Bitte wählen Sie eine alternative {0}" />
+    <Member Name="ProjectsProgramsPortfolios" Description="Projekte / Programme / Portfolios" />
+    <Member Name="TasksAppearHereAsSoonAsTheyAreLinkedToAStakeholder" Description="Aufgaben erscheinen hier, sobald sie mit einem Stakeholder verknüpft sind." />
+  </Type>
+  <Type Name="LabelAction" Description="Label-Aktion">
+    <Member Name="Copy" Description="Kopieren" />
+    <Member Name="Ignore" Description="Ignorieren" />
+    <Member Name="Move" Description="Bewegen" />
+    <Member Name="Replace" Description="Ersetzen" />
+  </Type>
+  <Type Name="LabelActionEmbedded" Description="Label-Aktion">
+    <Member Name="Action" Description="Aktion" />
+    <Member Name="Label" Description="Label" />
+    <Member Name="TargetLabel" Description="Ziel-Label" />
+  </Type>
+  <Type Name="LoginPermission">
+    <Member Name="ChangePassword" Description="Passwort ändern" />
+  </Type>
+  <Type Name="NewBoardEmbedded" Description="Neuer Auftrag">
+    <Member Name="Columns" Description="Spalten" />
+  </Type>
+  <Type Name="NewColumnEmbedded" Description="Neue Spalte">
+    <Member Name="ArchiveTasksOlderThan" Description="Archivieren (erledigte) Aufgaben älter als" />
+    <Member Name="Name" Description="Name" />
+    <Member Name="TaskState" Description="Aufgabenstatus" />
+  </Type>
+  <Type Name="NewPortfolioModel" Description="Neues Portfolio">
+    <Member Name="Name" Description="Name" />
+    <Member Name="PortfolioPrefix" Description="Portfoliopräfix" />
+    <Member Name="Responsible" Description="Verantwortlich" />
+    <Member Name="RiskManagement" Description="Risikomanagement" />
+    <Member Name="Type" Description="Typ" />
+  </Type>
+  <Type Name="NewProgramModel" Description="Neues Programm">
+    <Member Name="Manager" Description="Manager" />
+    <Member Name="Name" Description="Name" />
+    <Member Name="ProgramPrefix" Description="Programm-Präfix" />
+    <Member Name="RiskManagement" Description="Risikomanagement" />
+  </Type>
+  <Type Name="NewProjectModel" Description="Neues Projekt">
+    <Member Name="CreateNewBoard" Description="Neues Board erstellen" />
+    <Member Name="CreateTasksFromLessonsLearned" Description="Erstellen Sie Aufgaben aus Lessons Learned" />
+    <Member Name="Members" Description="Mitglieder" />
+    <Member Name="ProjectManager" Description="Projektleiter" />
+    <Member Name="ProjectName" Description="Projektname" />
+    <Member Name="ProjectPrefix" Description="Projektpräfix" />
+    <Member Name="RiskManagement" Description="Risikomanagement" />
+  </Type>
+  <Type Name="RRSPCondition">
+    <Member Name="AllowedRole" Description="Erlaubte Rolle" />
+    <Member Name="Billed" Description="Fakturiert" />
+    <Member Name="CurrentUser" Description="Aktueller Benutzer" />
+    <Member Name="CurrentUserLastTwoWeeks" Description="Aktueller Benutzer letzte zwei Wochen" />
+    <Member Name="IsoAuditor" Description="ISO-Prüfer" />
+    <Member Name="IsoReportCreator" Description="Iso-Bericht-Ersteller" />
+    <Member Name="PersonInCharge" Description="Verantwortlicher" />
+    <Member Name="Published" Description="Veröffentlicht" />
+    <Member Name="RoleEntities" Description="Rollenentitäten" />
+    <Member Name="SOWEditor" Description="SOW-Redakteur" />
+    <Member Name="SupervisedUsers" Description="Beaufsichtigte Benutzer" />
+    <Member Name="TimeApprover" Description="Zeit-Genehmiger" />
+    <Member Name="UserEntities" Description="Benutzerentitäten" />
+  </Type>
+  <Type Name="RRSPMessage">
+    <Member Name="A360SolutionToManageTheDevelopmentOfSoftware" Description="Eine 360°-Lösung zur Verwaltung der Entwicklung von Software" />
+    <Member Name="WelcomeToRRSP" Description="Willkommen bei Agile 360" />
+  </Type>
+  <Type Name="RRSPTourTriggers">
+    <Member Name="Introduction" Description="Einleitung" />
+  </Type>
+  <Type Name="RRSPWordConverter">
+    <Member Name="AsposeToPdf" Description="&#x9;Aspose to pdf" />
+    <Member Name="AsposeToPdfWithAttachments" Description="Aspose to pdf mit Anhängen" />
+  </Type>
+  <Type Name="RRSPWordTransformer">
+    <Member Name="InsertRiskCategoryTable" Description="Tabelle der Risikokategorien einfügen" />
+    <Member Name="UpdateProjectStatusReport" Description="Projektstatusbericht aktualisieren" />
+  </Type>
+  <Type Name="PortfolioExpandedOperation">
+    <Member Name="Create" Description="Erstellen" />
+  </Type>
+  <Type Name="ProgramExpandedOperation">
+    <Member Name="Create" Description="Erstellen" />
+  </Type>
+  <Type Name="ProjectExpandedOperation">
+    <Member Name="Create" Description="Erstellen" />
+    <Member Name="Split" Description="Aufteilen" />
+  </Type>
+  <Type Name="ProjectExtensionMessage">
+    <Member Name="Basic" Description="Grundlegend" />
+    <Member Name="Options" Description="Optionen" />
+  </Type>
+  <Type Name="ProjectSplitModel" Description="Projektaufteilung">
+    <Member Name="Columns" Description="Spalten" />
+    <Member Name="Labels" Description="Etiketten" />
+    <Member Name="SourceProject" Description="Quellprojekt" />
+    <Member Name="TargetProject" Description="Zielprojekt" />
+    <Member Name="Tasks" Description="Aufgaben" />
+  </Type>
+  <Type Name="ReferatEntity" Description="Referat" PluralDescription="Referats" Gender="n">
+    <Member Name="Name" Description="Name" />
+  </Type>
+  <Type Name="ReferatOperation">
+    <Member Name="Delete" Description="Löschen" />
+    <Member Name="Save" Description="Speichern" />
+  </Type>
+  <Type Name="RessortEntity" Description="Ressort" PluralDescription="Ressorts" Gender="n">
+    <Member Name="Name" Description="Name" />
+  </Type>
+  <Type Name="RessortOperation">
+    <Member Name="Delete" Description="Löschen" />
+    <Member Name="Save" Description="Speichern" />
+  </Type>
+  <Type Name="RoleMixin">
+    <Member Name="AdministratedByBillingUser" Description="Verwaltet durch den Abrechnungsbenutzer" />
+    <Member Name="Type" Description="Typ" />
+  </Type>
+  <Type Name="RoleType" Description="Rollentyp">
+    <Member Name="External" Description="Extern" />
+    <Member Name="Internal" Description="Intern" />
+  </Type>
+  <Type Name="TaskActionEmbedded" Description="Aufgabe-Aktion">
+    <Member Name="Task" Description="Aufgabe" />
+  </Type>
+  <Type Name="TaskRiskMixin">
+    <Member Name="Risks" Description="Risiken" />
+  </Type>
+  <Type Name="TaskStakeholderMixin">
+    <Member Name="Stakeholders" Description="Stakeholders" />
+  </Type>
+  <Type Name="TranslationConfigurationEmbedded" Description="Übersetzungskonfiguration">
+    <Member Name="AzureCognitiveServicesAPIKey" Description="Azure Cognitive Service-API-Key" />
+    <Member Name="AzureCognitiveServicesRegion" Description="Azure Cognitive Service-Region" />
+    <Member Name="DeepLAPIKey" Description="DeepL-API-Schlüssel" />
+  </Type>
+  <Type Name="UserExpandedOperation">
+    <Member Name="DeleteWithAlternative" Description="Löschen mit Alternative" />
+  </Type>
+  <Type Name="UserMixin">
+    <Member Name="Referat" Description="Referat" />
+    <Member Name="Ressort" Description="Ressort" />
+  </Type>
+  <Type Name="WordTemplateExpandedOperation">
+    <Member Name="Clone" Description="Klonen" />
+  </Type>
+</Translations>

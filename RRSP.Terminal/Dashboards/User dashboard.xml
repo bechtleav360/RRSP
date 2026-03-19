@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Entities>
+  <UserQuery Guid="149bd90c-dc1f-4b99-b748-f06329d5c877" DisplayName="Work logs grouped by task" Query="WorkLog" IncludeDefaultFilters="false" AppendFilters="true" GroupResults="true" ColumnsMode="ReplaceAll">
+    <Columns>
+      <Column Token="Duration.Sum" SummaryToken="Duration.Sum" />
+      <Column Token="Task" />
+    </Columns>
+  </UserQuery>
+  <UserChart Guid="f027dc93-f83e-4c18-965a-738e4d65bb1b" DisplayName="Work logs by type" Query="WorkLog" HideQuickLink="false" ChartScript="D3ChartScript.Pie" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="User" Operation="EqualTo" Value="[CurrentUser]" />
+      <Filter Indentation="0" Token="Date" Operation="GreaterThanOrEqual" Value="yyyy/01/01 00:00:00" />
+      <Filter Indentation="0" Token="Date" Operation="LessThanOrEqual" Value="yyyy/mm/dd 00:00:00" />
+      <Filter Indentation="0" Token="Entity.IsFicticious" Operation="DistinctTo" Value="True" />
+    </Filters>
+    <Columns>
+      <Column Token="Entity.BillingType" OrderByIndex="1" OrderByType="Ascending" />
+      <Column Token="Entity.Duration.Sum" />
+    </Columns>
+    <Parameters>
+      <Parameter Name="InnerRadious" Value="0.5" />
+      <Parameter Name="Sort" Value="No" />
+      <Parameter Name="ColorCategory" Value="fluent" />
+      <Parameter Name="Value" Value="OnLabel" />
+      <Parameter Name="Total" Value="No" />
+      <Parameter Name="Percent" Value="OnLabel" />
+    </Parameters>
+    <CustomDrilldowns>
+      <CustomDrilldown>149bd90c-dc1f-4b99-b748-f06329d5c877</CustomDrilldown>
+    </CustomDrilldowns>
+  </UserChart>
+  <UserQuery Guid="99d974f7-d9a4-4426-be08-66e7de151207" DisplayName="My Tasks" Query="Task" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Search" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="Entity.ToString" Operation="Contains" />
+      <Filter Indentation="1" Token="Entity.Id" Operation="EqualTo" />
+      <Filter Indentation="1" Token="Project.Name" Operation="Contains" />
+      <Filter Indentation="0" Token="Project" Operation="EqualTo">
+        <Pinned Column="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.Labels.Any.Name" Operation="Contains">
+        <Pinned Label="Label" Column="2" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.AssignedTo" Operation="EqualTo" Value="[CurrentUser]" />
+      <Filter Indentation="0" Token="State" Operation="EqualTo" Value="Active" />
+      <Filter Indentation="0" Token="Column.ArchiveTasksOlderThan" Operation="EqualTo" />
+    </Filters>
+  </UserQuery>
+  <UserQuery Guid="13ac7e63-2585-4901-b54f-04a224b18f1a" DisplayName="Protokollpunkte" Query="ProtocolPoint" IncludeDefaultFilters="false" ColumnsMode="Add">
+    <Filters>
+      <Filter Indentation="0" GroupOperation="Or">
+        <Pinned Label="Description" Column="0" Active="WhenHasValue" SplitValue="true" />
+      </Filter>
+      <Filter Indentation="1" Token="AgendaDescription" Operation="Contains" />
+      <Filter Indentation="1" Token="Description" Operation="Contains" />
+      <Filter Indentation="0" Token="PointType" Operation="EqualTo">
+        <Pinned Column="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Responsible.(ProjectMember).User" Operation="EqualTo">
+        <Pinned Column="2" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Project" Operation="EqualTo">
+        <Pinned Column="3" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Date" Operation="GreaterThanOrEqual">
+        <Pinned Label="From" Column="0" Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Date" Operation="LessThanOrEqual">
+        <Pinned Label="To" Column="1" Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Project.(Project).UsersWithProtocolAccess.Any" Operation="EqualTo" Value="[CurrentUser]">
+        <Pinned Label="Nur meine Projekte" Column="2" Row="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" GroupOperation="And">
+        <Pinned Label="Offene Punkte" Column="3" Row="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="1" Token="State" Operation="IsIn" Value="Open|InProgress" />
+      <Filter Indentation="1" Token="Entity.Following.Count" Operation="EqualTo" Value="0" />
+      <Filter Indentation="0" Token="Type" Operation="EqualTo">
+        <Pinned Column="0" Row="2" Active="WhenHasValue" />
+      </Filter>
+    </Filters>
+  </UserQuery>
+  <Dashboard Guid="7b918cb5-61a3-4cff-9a88-24fec9c651b8" DisplayName="User dashboard" HideDisplayName="True" DashboardPriority="1" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="2" StartColumn="6" Columns="6" Title="" IconName="fas fa-chart-bar" IconColor="#6C3483">
+        <UserChartPart UserChart="f027dc93-f83e-4c18-965a-738e4d65bb1b" />
+      </Part>
+      <Part Row="0" StartColumn="0" Columns="9" Title="" IconName="fa-brands fa-adn" IconColor="#4e7afd">
+        <TextPart TextContent="&lt;h2 dir=&quot;ltr&quot;&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Hi $FirstName$,&lt;/span&gt;&lt;/h2&gt;&lt;h3 dir=&quot;ltr&quot;&gt;&lt;br&gt;&lt;span style=&quot;white-space: pre-wrap;&quot;&gt;Welcome to Agile 360!&lt;/span&gt;&lt;/h3&gt;" TextPartType="HTML" />
+      </Part>
+      <Part Row="4" StartColumn="0" Columns="12" IconName="fas fa-rectangle-list" IconColor="#2E86C1">
+        <UserQueryPart UserQuery="99d974f7-d9a4-4426-be08-66e7de151207" AllowSelection="false" />
+      </Part>
+      <Part Row="3" StartColumn="0" Columns="12" IconName="fas fa-rectangle-list" IconColor="#2E86C1">
+        <UserQueryPart UserQuery="13ac7e63-2585-4901-b54f-04a224b18f1a" AllowSelection="false" />
+      </Part>
+      <Part Row="2" StartColumn="0" Columns="6" Title="" IconName="fas fa-chart-bar" IconColor="#6C3483">
+        <UserChartPart UserChart="f027dc93-f83e-4c18-965a-738e4d65bb1b" ShowData="true" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+</Entities>

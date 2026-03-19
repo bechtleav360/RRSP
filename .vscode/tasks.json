@@ -1,0 +1,54 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "dotnet build",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/"
+            },
+            "windows": {
+                "command": "dotnet build"
+            },
+            "group": "build",
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "yarn tsgo",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "windows": {
+                "command": "yarn tsgo -b RRSP.Server/tsconfig.json"
+            },
+            "group": "build",
+            "problemMatcher": "$tsc"
+        },
+        {
+            "label": "yarn dev",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/RRSP.Server"
+            },
+            "group": "build",
+            "windows": {
+                "command": "yarn dev"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "yarn install",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/RRSP.Server"
+            },
+            "windows": {
+                "command": "yarn"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

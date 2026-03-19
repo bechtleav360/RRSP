@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Entities>
+  <EmailTemplate Name="Weekly email" Guid="4e703e1d-4613-4aa8-983f-aaf610636641" DisableAuthorization="false" Query="LogsByUserAndDate" EditableMessage="true" SendDifferentMessages="false" GroupResults="false" IsBodyHtml="true">
+    <Filters>
+      <Filter Indentation="0" Token="Date.WeekStart" Operation="GreaterThanOrEqual" Value="yyyy/mm/-12 hh:mm:ss" />
+      <Filter Indentation="0" Token="Date.WeekStart" Operation="LessThan" Value="yyyy/mm/-5 hh:mm:ss" />
+    </Filters>
+    <Orders>
+      <Orden Token="Date" OrderType="Ascending" />
+    </Orders>
+    <Recipients>
+      <Recipient DisplayName="" EmailAddress="" Kind="To" Token="User.EmailOwnerData" />
+    </Recipients>
+    <Messages>
+      <Message CultureInfo="en" Subject="Work hours reminder"><![CDATA[<p>
+Hi @[User.FirstName], 
+</p>
+<p>
+Looks like you have forgotten to book your hours last week:
+</p>
+<ul>
+<!--@foreach[Date]-->
+  <li>
+    @[Date]: 
+    <!--@if[Overtime<2]-->
+    <span style="color:darkred">@[WorkLogs]</span>
+    <!--@else-->
+    <span style="color:darkgreen">@[WorkLogs]</span>
+    <!--@endif-->
+    worked hours. 
+  </li>
+<!--@endforeach-->
+</ul>  
+<p>
+  You can fill your work hours using <a href="@[g:UrlLeft]/calendar">calendar</a>.
+</p>
+<p>
+  Kind regards
+</p>
+<p>
+  RRSP's bot
+</p>]]></Message>
+    </Messages>
+  </EmailTemplate>
+</Entities>

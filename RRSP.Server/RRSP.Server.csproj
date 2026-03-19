@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework> 
+    <Nullable>enable</Nullable>
+    <AssemblyVersion>1.0.0.*</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Deterministic>false</Deterministic>
+    <UserSecretsId>RRSP</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <IsPackable>false</IsPackable>
+    <TSC_Build>tsgo</TSC_Build>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\dist\**" />
+    <Content Remove="wwwroot\dist\**" />
+    <EmbeddedResource Remove="wwwroot\dist\**" />
+    <None Remove="wwwroot\dist\**" />
+    <Content Remove="tsconfig.json" />
+    <None Include="tsconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_WebToolingArtifacts Remove="Properties\launchSettings.json" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Properties\launchSettings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Signum.TSGenerator" Version="10.0.3" />
+    <ProjectReference Include="..\Framework\Signum\Signum.csproj" />
+    <ProjectReference Include="..\RRSP\RRSP.csproj" />
+  </ItemGroup>
+
+  <Target Name="PublishCollectDist" AfterTargets="ComputeFilesToPublish">
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="wwwroot\dist\**;" />
+      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+
+</Project>

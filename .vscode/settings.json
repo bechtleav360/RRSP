@@ -1,0 +1,31 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/node_modules": true,
+        "**/ts_out": true,
+    },
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[typescript]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[javascriptreact]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[typescriptreact]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+    "[css]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    }
+}

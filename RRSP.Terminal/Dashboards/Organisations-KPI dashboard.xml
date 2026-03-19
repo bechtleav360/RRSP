@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Entities>
+  <UserChart Guid="18ace404-4fc1-47e7-b85a-58c1bec3f903" DisplayName="Arbeitsprotokolle nach abrechenbaren Typen" Query="WorkLog" HideQuickLink="false" ChartScript="D3ChartScript.MultiColumns" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="User.PlanningGroups.Any" Operation="EqualTo" Value="" DashboardBehaviour="PromoteToDasboardPinnedFilter">
+        <Pinned Label="Benutzer Gruppe" Column="2" Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Date.MonthStart" Operation="GreaterThanOrEqual" Value="yyyy/01/01 00:00:00" DashboardBehaviour="PromoteToDasboardPinnedFilter">
+        <Pinned Label="Von" Column="0" />
+      </Filter>
+      <Filter Indentation="0" Token="Date.MonthStart" Operation="LessThanOrEqual" Value="yyyy/mm/01 00:00:00" DashboardBehaviour="PromoteToDasboardPinnedFilter">
+        <Pinned Label="Bis" Column="1" />
+      </Filter>
+      <Filter Indentation="0" Token="Project.PlanningGroups.Any" Operation="EqualTo" DashboardBehaviour="PromoteToDasboardPinnedFilter">
+        <Pinned Label="Projekt Gruppe" Column="2" Row="0" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.Task" Operation="DistinctTo" Value="Task;a6921ac6-45c5-4bcb-9304-f20b9a04e035;TFS-100395 - Abwesenheiten: (Urlaub, Krank, Feiertag, Elternzeit)" DashboardBehaviour="PromoteToDasboardPinnedFilter">
+        <Pinned Label="Ohne Abwesenheiten" Column="3" Row="0" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" Token="User" Operation="EqualTo" DashboardBehaviour="PromoteToDasboardPinnedFilter">
+        <Pinned Column="3" ColSpan="1" Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="User.Practice" Operation="EqualTo" DashboardBehaviour="PromoteToDasboardPinnedFilter">
+        <Pinned Column="1" Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="User.OrganizationalUnit" Operation="EqualTo" DashboardBehaviour="PromoteToDasboardPinnedFilter">
+        <Pinned Row="1" Active="WhenHasValue" />
+      </Filter>
+      <Filter Indentation="0" Token="User.OrganizationalUnit" Operation="DistinctTo" DashboardBehaviour="PromoteToDasboardPinnedFilter">
+        <Pinned Label="Mit OU" Column="4" Row="1" Active="Checkbox_Checked" />
+      </Filter>
+      <Filter Indentation="0" Token="Entity.HasFictitious" Operation="DistinctTo" Value="True" />
+    </Filters>
+    <Columns>
+      <Column Token="Date.MonthStart" />
+      <Column Token="Entity.BillingType" OrderByIndex="1" OrderByType="Ascending" />
+      <Column Token="Duration.Sum" />
+      <Column />
+      <Column />
+      <Column />
+      <Column />
+    </Columns>
+    <Parameters>
+      <Parameter Name="CompleteValues" Value="Auto" />
+      <Parameter Name="Scale" Value="ZeroMax" />
+      <Parameter Name="UnitMargin" Value="40" />
+      <Parameter Name="HorizontalMargin" Value="15" />
+      <Parameter Name="NumberOpacity" Value="0.8" />
+      <Parameter Name="NumberColor" Value="#fff" />
+      <Parameter Name="ColorCategory" Value="fluent" />
+    </Parameters>
+  </UserChart>
+  <UserChart Guid="028ccd9a-5c4c-49f4-9f0f-722f90fa4aec" DisplayName="Projektumsatz" Query="WorkLog" HideQuickLink="false" ChartScript="D3ChartScript.Pie" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.BillingType" Operation="EqualTo" Value="Billable" />
+    </Filters>
+    <Columns>
+      <Column Token="Project" Format="10" />
+      <Column Token="Entity.Cost.Sum" OrderByIndex="1" OrderByType="Ascending" />
+    </Columns>
+    <Parameters>
+      <Parameter Name="InnerRadious" Value="0.6" />
+      <Parameter Name="Sort" Value="No" />
+      <Parameter Name="ColorCategory" Value="fluent" />
+      <Parameter Name="Value" Value="OnLabel" />
+      <Parameter Name="Percent" Value="OnArc" />
+      <Parameter Name="Total" Value="Yes" />
+    </Parameters>
+  </UserChart>
+  <UserChart Guid="73106bb8-d6ee-409f-813a-073f0343672e" DisplayName="Total Performance" Query="WorkLog" HideQuickLink="false" ChartScript="D3ChartScript.StackedLines" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.HasFictitious" Operation="DistinctTo" Value="True" />
+    </Filters>
+    <Columns>
+      <Column Token="Date.MonthStart" />
+      <Column Token="Project" />
+      <Column Token="Duration.Sum" />
+      <Column />
+      <Column />
+      <Column />
+      <Column />
+    </Columns>
+    <Parameters>
+      <Parameter Name="CompleteValues" Value="Auto" />
+      <Parameter Name="HorizontalScale" Value="Bands" />
+      <Parameter Name="HorizontalMargin" Value="20" />
+      <Parameter Name="NumberOpacity" Value="0.8" />
+      <Parameter Name="NumberColor" Value="#fff" />
+      <Parameter Name="ColorCategory" Value="fluent" />
+      <Parameter Name="Order" Value="none" />
+      <Parameter Name="Stack" Value="zero" />
+      <Parameter Name="Interpolate" Value="linear" />
+      <Parameter Name="ValueAsPercent" Value="No" />
+    </Parameters>
+  </UserChart>
+  <UserChart Guid="e1a0fc1e-d39f-4d72-8f1d-96c4b485890b" DisplayName="Project Performance" Query="WorkLog" HideQuickLink="false" ChartScript="D3ChartScript.MultiLines" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.HasFictitious" Operation="DistinctTo" Value="True" />
+    </Filters>
+    <Columns>
+      <Column Token="Date.MonthStart" />
+      <Column Token="User" OrderByIndex="1" OrderByType="Ascending" />
+      <Column Token="Duration.Sum" />
+      <Column />
+      <Column />
+      <Column />
+      <Column />
+    </Columns>
+    <Parameters>
+      <Parameter Name="CompleteValues" Value="Auto" />
+      <Parameter Name="HorizontalScale" Value="Bands" />
+      <Parameter Name="VerticalScale" Value="ZeroMax" />
+      <Parameter Name="UnitMargin" Value="40" />
+      <Parameter Name="NumberMinWidth" Value="20" />
+      <Parameter Name="NumberOpacity" Value="0.0" />
+      <Parameter Name="CircleAutoReduce" Value="Yes" />
+      <Parameter Name="CircleRadius" Value="3" />
+      <Parameter Name="CircleStroke" Value="2" />
+      <Parameter Name="CircleRadiusHover" Value="15" />
+      <Parameter Name="ColorCategory" Value="category10" />
+      <Parameter Name="Interpolate" Value="linear" />
+    </Parameters>
+  </UserChart>
+  <UserChart Guid="c6381c78-acff-47d0-aeb9-46af7b8d14a0" DisplayName="Aufgaben" Query="WorkLog" HideQuickLink="false" ChartScript="D3ChartScript.Columns" MaxRows="100">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.HasFictitious" Operation="DistinctTo" Value="True" />
+    </Filters>
+    <Columns>
+      <Column Token="Task" />
+      <Column Token="Duration.Sum" OrderByIndex="1" OrderByType="Descending" />
+    </Columns>
+    <Parameters>
+      <Parameter Name="CompleteValues" Value="Auto" />
+      <Parameter Name="Scale" Value="ZeroMax" />
+      <Parameter Name="UnitMargin" Value="40" />
+      <Parameter Name="Labels" Value="Inside" />
+      <Parameter Name="LabelsMargin" Value="100" />
+      <Parameter Name="NumberOpacity" Value="0.8" />
+      <Parameter Name="NumberColor" Value="#fff" />
+      <Parameter Name="ColorCategory" Value="fluent" />
+      <Parameter Name="ForceColor" Value="" />
+    </Parameters>
+  </UserChart>
+  <UserChart Guid="8bb690dd-fcbe-4d14-845c-938cd5ea563d" DisplayName="Capacity Booking Type" Query="WorkLog" HideQuickLink="false" ChartScript="D3ChartScript.StackedColumns" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.HasFictitious" Operation="DistinctTo" Value="True" />
+    </Filters>
+    <Columns>
+      <Column Token="User" />
+      <Column Token="Entity.BillingType" />
+      <Column Token="Duration.Sum" />
+      <Column />
+      <Column />
+      <Column />
+      <Column />
+    </Columns>
+    <Parameters>
+      <Parameter Name="CompleteValues" Value="Auto" />
+      <Parameter Name="UnitMargin" Value="40" />
+      <Parameter Name="Labels" Value="Inside" />
+      <Parameter Name="LabelsMargin" Value="100" />
+      <Parameter Name="NumberOpacity" Value="0.8" />
+      <Parameter Name="NumberColor" Value="#fff" />
+      <Parameter Name="ColorCategory" Value="fluent" />
+      <Parameter Name="Stack" Value="zero" />
+      <Parameter Name="Order" Value="none" />
+      <Parameter Name="ValueAsPercent" Value="No" />
+    </Parameters>
+  </UserChart>
+  <UserChart Guid="03c4266c-143a-40c4-8d98-70e29b5ad0e3" DisplayName="Order Positions" Query="WorkLog" HideQuickLink="false" ChartScript="D3ChartScript.Columns" MaxRows="1000">
+    <Columns>
+      <Column Token="Entity.Billable.OrderPosition" />
+      <Column Token="Duration.Sum" OrderByIndex="1" OrderByType="Descending" />
+    </Columns>
+    <Parameters>
+      <Parameter Name="CompleteValues" Value="Auto" />
+      <Parameter Name="Scale" Value="ZeroMax" />
+      <Parameter Name="UnitMargin" Value="40" />
+      <Parameter Name="Labels" Value="Inside" />
+      <Parameter Name="LabelsMargin" Value="100" />
+      <Parameter Name="NumberOpacity" Value="0.8" />
+      <Parameter Name="NumberColor" Value="#fff" />
+      <Parameter Name="ColorCategory" Value="fluent" />
+      <Parameter Name="ForceColor" Value="" />
+    </Parameters>
+  </UserChart>
+  <UserChart Guid="38999952-7c0a-400c-b45a-dc2a2e904099" DisplayName="Total Revenue" Query="WorkLog" HideQuickLink="false" ChartScript="D3ChartScript.Columns" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.BillingType" Operation="EqualTo" Value="Billable" />
+    </Filters>
+    <Columns>
+      <Column Token="Date.MonthStart" />
+      <Column Token="Entity.Cost.Sum" />
+    </Columns>
+    <Parameters>
+      <Parameter Name="CompleteValues" Value="Auto" />
+      <Parameter Name="Scale" Value="MinMax" />
+      <Parameter Name="UnitMargin" Value="40" />
+      <Parameter Name="Labels" Value="Margin" />
+      <Parameter Name="LabelsMargin" Value="100" />
+      <Parameter Name="NumberOpacity" Value="0.8" />
+      <Parameter Name="NumberColor" Value="#fff" />
+      <Parameter Name="ColorCategory" Value="category10" />
+      <Parameter Name="ForceColor" Value="" />
+    </Parameters>
+  </UserChart>
+  <Dashboard Guid="26b3e987-cda4-4dfd-ad19-9b0ad8539375" DisplayName="Organisations-KPIs" Owner="Role;2;Super user" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="0" StartColumn="0" Columns="12" IconName="fas fa-chart-bar" IconColor="#6C3483" TitleColor="#000000" InteractionGroup="Group1">
+        <UserChartPart UserChart="18ace404-4fc1-47e7-b85a-58c1bec3f903" />
+      </Part>
+      <Part Row="1" StartColumn="7" Columns="5" IconName="fas fa-chart-bar" IconColor="#6C3483" TitleColor="" InteractionGroup="Group1">
+        <UserChartPart UserChart="028ccd9a-5c4c-49f4-9f0f-722f90fa4aec" />
+      </Part>
+      <Part Row="2" StartColumn="0" Columns="12" IconName="fas fa-chart-bar" IconColor="#6C3483" TitleColor="#000000" InteractionGroup="Group1">
+        <UserChartPart UserChart="73106bb8-d6ee-409f-813a-073f0343672e" />
+      </Part>
+      <Part Row="8" StartColumn="0" Columns="12" IconName="fas fa-chart-bar" IconColor="#6C3483" TitleColor="#000000" InteractionGroup="Group1">
+        <UserChartPart UserChart="e1a0fc1e-d39f-4d72-8f1d-96c4b485890b" />
+      </Part>
+      <Part Row="6" StartColumn="6" Columns="6" IconName="fas fa-chart-bar" IconColor="#6C3483" InteractionGroup="Group1">
+        <UserChartPart UserChart="c6381c78-acff-47d0-aeb9-46af7b8d14a0" />
+      </Part>
+      <Part Row="9" StartColumn="0" Columns="12" IconName="fas fa-chart-bar" IconColor="#6C3483">
+        <UserChartPart UserChart="8bb690dd-fcbe-4d14-845c-938cd5ea563d" />
+      </Part>
+      <Part Row="6" StartColumn="0" Columns="6" Title="Auftragsposition" IconName="fas fa-chart-bar" IconColor="#6C3483" TitleColor="#000000" InteractionGroup="Group1">
+        <UserChartPart UserChart="03c4266c-143a-40c4-8d98-70e29b5ad0e3" />
+      </Part>
+      <Part Row="1" StartColumn="0" Columns="7" Title="Gesamtumsatz" IconName="fas fa-chart-bar" IconColor="#6C3483" TitleColor="#000000">
+        <UserChartPart UserChart="38999952-7c0a-400c-b45a-dc2a2e904099" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+</Entities>

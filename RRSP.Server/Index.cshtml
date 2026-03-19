@@ -1,0 +1,218 @@
+@using Signum.Utilities;
+@using System.IO;
+@using System.Text.Json.Nodes;
+@using Microsoft.Extensions.Configuration
+@using System.Globalization
+@inject IConfiguration Configuration
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment hostingEnv
+@{
+    int? vitePort = Configuration.GetValue<int?>("ViteDevServerPort");
+
+    var viteAssets = vitePort != null ? ViteAssets.FromViteServerUrl($"http://localhost:{vitePort}/main.tsx") :
+        ViteAssets.FromManifestFile(System.IO.Path.Combine(hostingEnv.WebRootPath, "dist/.vite/manifest.json"), "main.tsx");
+    var faviconDir = "~/images/";
+}
+<!doctype html>
+<html lang="@CultureInfo.CurrentUICulture.Name">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" type="image/x-icon" href="@Url.Content(faviconDir + "favicon.ico?refresh")" />
+    <link rel="apple-touch-icon" sizes="180x180" href="@Url.Content(faviconDir + "apple-touch-icon.png")">
+    <link rel="icon" type="image/png" sizes="32x32" href="@Url.Content(faviconDir + "favicon-32x32.png")">
+    <link rel="icon" type="image/png" sizes="16x16" href="@Url.Content(faviconDir + "favicon-16x16.png")">
+    <link rel="manifest" href="@Url.Content("~/site.webmanifest")">
+    <base href="@Url.Content("~")" />
+    <style>
+        html,
+        body,
+        #reactDiv {
+            height: 100%;
+        }
+
+        :root {
+            --loader-width: 70px;
+            --loader-height: 70px;
+            --loader-color-primary: #27ae60;
+            --loader-color-secondary: #eee;
+            --line-width: 3px;
+            --animation-duration: 2s;
+            --loader-initial-scale: 0.1;
+        }
+
+        .center-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%
+        }
+
+
+        @@keyframes momentum {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+
+        .loading-spinner,
+        .loading-spinner:before,
+        .loading-spinner:after {
+            box-sizing: border-box;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+
+        @@media (prefers-reduced-motion: reduce) {
+            .loading-spinner,
+            .loading-spinner::before,
+            .loading-spinner::after {
+                animation: none !important;
+            }
+        }
+
+        .loading-spinner {
+            --primary-circle-offset: calc(((var(--loader-width,100px) * 0.2) / 2) - var(--line-width,4px));
+            --secondary-circle-offset: calc(((var(--loader-width,100px) * 0.4) / 2) - var(--line-width,4px)); /*- (var(--line-width,4px) * 2)*/
+            position: relative;
+            width: var(--loader-width, 100px);
+            height: var(--loader-height, 100px);
+            transform-origin: center center;
+            border-radius: 50% !important;
+            border: var(--line-width, 4px) solid rgba(0,0,0,0);
+            border-top-color: #FFCC00;
+            animation: momentum var(--animation-duration, 1s) linear infinite;
+        }
+
+            .loading-spinner:before {
+                content: "";
+                position: absolute;
+                transform-origin: center center;
+                top: var(--primary-circle-offset,10px);
+                left: var(--primary-circle-offset,10px);
+                width: calc(var(--loader-width,100px) * 0.8);
+                height: calc(var(--loader-height,100px) * 0.8);
+                border-radius: 50%;
+                border: var(--line-width,4px) solid rgba(0,0,0,0);
+                border-top-color: #FF0000;
+                filter: hue-rotate(3deg);
+                animation: momentum calc(var(--animation-duration, 1s) * 2) linear infinite;
+            }
+
+            .loading-spinner:after {
+                content: "";
+                position: absolute;
+                top: var(--secondary-circle-offset,20px);
+                left: var(--secondary-circle-offset,20px);
+                width: calc(var(--loader-width,100px) * 0.6);
+                height: calc(var(--loader-height,100px) * 0.6);
+                border-radius: 50%;
+                transform-origin: center center;
+                border: var(--line-width,4px) solid rgba(0,0,0,0);
+                border-top-color: rgb(0,0,0);
+                filter: hue-rotate(6deg);
+                animation: momentum var(--animation-duration, 1s) linear infinite;
+            }
+
+        @if (RRSP.Starter.NavbarColor.HasText())
+        {
+            <text>
+                .sidebar .test-environment {
+                    background-color: @RRSP.Starter.NavbarColor !important;
+                }
+            </text>
+      }
+    </style>
+</head>
+<body>
+    <!-- @TimeZoneInfo.Local.DaylightName / @TimeZoneInfo.Local.StandardName / @TimeZoneInfo.Local.GetUtcOffset(DateTime.Now)  / @DateTime.Now  -->
+    <div id="reactDiv">
+        <div class="center-container">
+            <div class="loading-spinner"></div>
+            <h1 class="h3" style="margin-left: 20px;color: rgb(156,159,164);font-size: 1.64063rem;font-family: 'Segoe UI', 'Source Sans Pro' , Calibri, Candara, Arial, sans-serif;font-weight: 300;">
+                Loading RRSP...
+            </h1>
+        </div>
+    </div>
+    @if (vitePort != null)
+    {
+        @ViteAssets.LoadViteReactRefresh(vitePort.Value)
+    }
+    <script>
+        var __serverName = @Json.Serialize(Configuration.GetValue<string>("ServerName", "none"));
+        @* var __azureADConfig = @Json.Serialize(RRSP.Starter.Configuration.Value.ActiveDirectory?.AzureAD?.ToAzureADConfigTS(null)); *@
+        var __disableSignalR = @Json.Serialize(Signum.ConcurrentUser.ConcurrentUserServer.DisableSignalR);
+        var __baseName = "@Url.Content("~")";
+        
+
+        var browser = (function (agent) {
+            switch (true) {
+                case agent.indexOf("edge") > -1: return "old edge";
+                case agent.indexOf("edg") > -1: return "chromium edge";
+                case agent.indexOf("opr") > -1 && !!window.opr: return "opera";
+                case agent.indexOf("chrome") > -1 && !!window.chrome: return "chrome";
+                case agent.indexOf("trident") > -1: return "ie";
+                case agent.indexOf("firefox") > -1: return "firefox";
+                case agent.indexOf("safari") > -1: return "safari";
+                default: return "other";
+            }
+        })(window.navigator.userAgent.toLowerCase());
+        /**
+            * @@param {...(a: HTMLElement) => void } complete - Blabla
+            */
+        function newElement(tagName, complete) {
+            var result = document.createElement(tagName);
+            complete(result);
+            return result;
+        }
+
+        function showError(error) {
+            var spinner = document.querySelector("#reactDiv .loading-spinner");
+            spinner.parentElement.removeChild(spinner);
+
+            var title = document.querySelector("#reactDiv h1").replaceWith(
+                newElement("div", function (div) {
+                    div.style.fontFamily = "'Segoe UI', 'Source Sans Pro' , Calibri, Candara, Arial, sans-serif";
+                    div.style.fontSize = "1.3rem";
+                    div.appendChild(newElement("h3", function (h1) {
+                        h1.appendChild(newElement("span", function (span) {
+                            span.style.color = "red";
+                            span.innerText = error.name;
+                        }));
+                        h1.appendChild(newElement("span", function (span) {
+                            span.style.color = "darkread";
+                            span.style.marginLeft = "10px";
+                            span.innerText = error.message;
+                        }));
+                    }));
+                    div.appendChild(newElement("pre", function (pre) {
+                        pre.style.whiteSpace = "pre-wrap";
+                        pre.innerText = error.stack;
+                    }));
+                }));
+        }
+
+        window.onerror = function (message, filename, lineno, colno, error) {
+            showError(error);
+        };
+
+        if (browser == "old edge" || browser == "ie") {
+            var spinner = document.querySelector("#reactDiv .loading-spinner");
+            spinner.parentElement.removeChild(spinner);
+            document.querySelector("#reactDiv h3").innerHTML =
+                "Agile360 is not compatible with your browser (" + browser + "). <br/>"
+                + "Please try with <a href='https://www.google.com/chrome/'>Google Chrome</a>, "
+                + "<a href='https://www.mozilla.org/en-US/firefox/new/'>Firefox</a> or "
+                + "the new <a href='https://www.microsoft.com/en-us/edge'>Microsoft Edge (chromium)</a>.";
+        } else {
+
+            @viteAssets.GetHtmlString(Url)
+        }
+    </script>
+</body>
+</html>

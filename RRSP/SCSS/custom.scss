@@ -1,0 +1,139 @@
+﻿// Your variable overrides can go here, e.g.:
+// $h1-font-size: 3rem;
+$font-size-base: 1.2rem;
+$primary: #007194;
+$info: #5F316E;
+$danger: #C0003C;
+$success: #00854A;
+$warning: #F7BB3D;
+
+$link-decoration: none;
+$link-hover-decoration: underline;
+/*  https://styleguide.bundesregierung.de/sg-de/basiselemente/farben */
+
+@font-face {
+    font-display: swap;
+    font-family: BundesSansWeb;
+    src: url(./fonts/BundesSansWeb/BundesSansWeb-Bold.woff2) format("woff2"),url(./fonts/BundesSansWeb/BundesSansWeb-Bold.woff) format("woff");
+    font-weight: 700;
+    font-style: normal
+}
+
+@font-face {
+    font-display: swap;
+    font-family: BundesSansWeb;
+    src: url(./fonts/BundesSansWeb/BundesSansWeb-BoldItalic.woff2) format("woff2"),url(./fonts/BundesSansWeb/BundesSansWeb-BoldItalic.woff) format("woff");
+    font-weight: 700;
+    font-style: italic
+}
+
+@font-face {
+    font-display: swap;
+    font-family: BundesSansWeb;
+    src: url(./fonts/BundesSansWeb/BundesSansWeb-Italic.woff2) format("woff2"),url(./fonts/BundesSansWeb/BundesSansWeb-Italic.woff) format("woff");
+    font-weight: 400;
+    font-style: italic
+}
+
+@font-face {
+    font-display: swap;
+    font-family: BundesSansWeb;
+    src: url(./fonts/BundesSansWeb/BundesSansWeb-Regular.woff2) format("woff2"),url(./fonts/BundesSansWeb/BundesSansWeb-Regular.woff) format("woff");
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-display: swap;
+    font-family: BundesSerifWeb;
+    src: url(./fonts/BundesSansWeb/BundesSerifWeb-Bold.woff2) format("woff2"),url(./fonts/BundesSansWeb/BundesSerifWeb-Bold.woff) format("woff");
+    font-weight: 700;
+    font-style: normal
+}
+
+@font-face {
+    font-display: swap;
+    font-family: BundesSerifWeb;
+    src: url(./fonts/BundesSansWeb/BundesSerifWeb-BoldItalic.woff2) format("woff2"),url(./fonts/BundesSansWeb/BundesSerifWeb-BoldItalic.woff) format("woff");
+    font-weight: 700;
+    font-style: italic
+}
+
+@font-face {
+    font-display: swap;
+    font-family: BundesSerifWeb;
+    src: url(./fonts/pmflexone/BundesSerifWeb-Italic.woff2) format("woff2"),url(./fonts/pmflexone/BundesSerifWeb-Italic.woff) format("woff");
+    font-weight: 400;
+    font-style: italic
+}
+
+@font-face {
+    font-display: swap;
+    font-family: BundesSerifWeb;
+    src: url(./fonts/pmflexone/BundesSerifWeb-Regular.woff2) format("woff2"),url(./fonts/pmflexone/BundesSerifWeb-Regular.woff) format("woff");
+    font-weight: 400;
+    font-style: normal
+}
+
+$font-family-sans-serif: "BundesSansWeb", Arial, sans-serif;
+$font-family-serif: "BundesSerifWeb", Helvetica, serif;
+$font-family-base: $font-family-sans-serif;
+$headings-font-family: $font-family-serif;
+
+@import "./_variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "./_bootswatch";
+/*
+body {
+    color: magenta !important;
+}*/
+
+body {
+    font-family: $font-family-base;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $headings-font-family;
+}
+
+.btn.input-group-text{
+    background: $input-group-addon-bg;
+    border: $input-border-width solid $input-group-addon-border-color
+}
+// =======================
+//  Dynamic Font Scaling
+// =======================
+
+// Runtime adjustable font size (controlled by FontSizeSelector.tsx)
+:root {
+    --font-size-scale: 1; // Default = 100%
+}
+
+body {
+    // Base font size scales dynamically
+    font-size: calc(#{$font-size-base} * var(--font-size-scale));
+    transition: font-size 0.15s ease-in-out; // smooth transition
+}
+
+// Scale headings and inline text
+h1 {
+    font-size: calc(2.5rem * var(--font-size-scale));
+}
+h2 {
+    font-size: calc(2rem * var(--font-size-scale));
+}
+h3 {
+    font-size: calc(1.75rem * var(--font-size-scale));
+}
+h4 {
+    font-size: calc(1.5rem * var(--font-size-scale));
+}
+h5 {
+    font-size: calc(1.25rem * var(--font-size-scale));
+}
+h6 {
+    font-size: calc(1rem * var(--font-size-scale));
+}
+h1, h2, h3, h4, h5, h6 {
+    transition: font-size 0.15s ease-in-out;
+}

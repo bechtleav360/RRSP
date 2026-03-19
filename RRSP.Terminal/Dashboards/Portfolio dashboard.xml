@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Entities>
+  <UserQuery Guid="376c6c5d-1e22-436f-bd7d-7c9f3a5ed748" DisplayName="Projekt KPI" Query="Project" EntityType="Portfolio" IncludeDefaultFilters="false" ColumnsMode="ReplaceAll">
+    <Filters>
+      <Filter Indentation="0" Token="Entity.ProjectInitiationRequest.Portfolio" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Name" />
+      <Column Token="Entity.LastStatusReport.ReportDate" />
+      <Column Token="Entity.LastStatusReport.OverallProgress" />
+      <Column Token="Entity.LastStatusReport.ConsumedTime" />
+      <Column Token="Entity.LastStatusReport.ConsumedCost" />
+      <Column Token="Entity.LastStatusReport.Budget" />
+      <Column Token="Entity.LastStatusReport.Scope" />
+      <Column Token="Entity.LastStatusReport.TimeLine" />
+      <Column Token="Entity.LastStatusReport.Resources" />
+      <Column Token="Entity.LastStatusReport.RisksAndIssues" />
+      <Column Token="Entity.LastStatusReport.Dependencies" />
+    </Columns>
+  </UserQuery>
+  <UserChart Guid="9db73030-2dcb-4e9c-8bd9-2fe51993dd5d" DisplayName="Portfolio Budget Historie" Query="PortfolioProjectStatusReports" EntityType="Portfolio" HideQuickLink="false" Owner="User;1;System Robot" ChartScript="D3ChartScript.StackedColumns" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="Portfolio" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Month" />
+      <Column Token="PortfolioProject" />
+      <Column Token="Entity.ConsumedCost.Remained" />
+      <Column />
+      <Column />
+      <Column />
+      <Column />
+    </Columns>
+    <Parameters>
+      <Parameter Name="CompleteValues" Value="Auto" />
+      <Parameter Name="UnitMargin" Value="100" />
+      <Parameter Name="Labels" Value="Margin" />
+      <Parameter Name="LabelsMargin" Value="100" />
+      <Parameter Name="NumberOpacity" Value="0.8" />
+      <Parameter Name="NumberColor" Value="#fff" />
+      <Parameter Name="ColorCategory" Value="set2" />
+      <Parameter Name="Stack" Value="zero" />
+      <Parameter Name="Order" Value="none" />
+      <Parameter Name="ValueAsPercent" Value="No" />
+    </Parameters>
+  </UserChart>
+  <UserChart Guid="0ca67d74-7b14-437a-9245-74995c5005fe" DisplayName="Portfolio Wert vs Komplexität" Query="Portfolio" EntityType="Portfolio" HideQuickLink="false" Owner="User;1;System Robot" ChartScript="D3ChartScript.Scatterplot" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="Entity" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="Entity.Projects.Element" />
+      <Column Token="Entity.Projects.Element.ProjectInitiationRequest.[Dimension].[2. Urgency]" />
+      <Column Token="Entity.Projects.Element.ProjectInitiationRequest.[Dimension].[1. Strategic Importance]" />
+      <Column />
+      <Column />
+      <Column />
+      <Column />
+    </Columns>
+    <Parameters>
+      <Parameter Name="HorizontalScale" Value="0...100" />
+      <Parameter Name="VerticalScale" Value="0...100" />
+      <Parameter Name="UnitMargin" Value="40" />
+      <Parameter Name="PointSize" Value="8" />
+      <Parameter Name="DrawingMode" Value="Svg" />
+      <Parameter Name="ColorScale" Value="ZeroMax" />
+      <Parameter Name="ColorInterpolate" Value="BrBG" />
+      <Parameter Name="ColorCategory" Value="dark2" />
+    </Parameters>
+  </UserChart>
+  <UserChart Guid="6c6e85dc-c92e-49bd-959b-70bb03623137" DisplayName="Capacity Overview" Query="PlannedCapacity" EntityType="Portfolio" HideQuickLink="false" ChartScript="D3ChartScript.Punchcard" MaxRows="1000">
+    <Filters>
+      <Filter Indentation="0" Token="Source" Operation="EqualTo" Value="[CurrentEntity]" />
+    </Filters>
+    <Columns>
+      <Column Token="StartDate.QuarterStart" />
+      <Column Token="Role" />
+      <Column Token="CapacityAmount" />
+      <Column />
+      <Column />
+      <Column Token="Entity.Allocated" />
+      <Column />
+    </Columns>
+    <Parameters>
+      <Parameter Name="CompleteHorizontalValues" Value="Auto" />
+      <Parameter Name="CompleteVerticalValues" Value="Auto" />
+      <Parameter Name="SizeScale" Value="ZeroMax" />
+      <Parameter Name="Shape" Value="Circle" />
+      <Parameter Name="XMargin" Value="110" />
+      <Parameter Name="HorizontalLineColor" Value="LightGray" />
+      <Parameter Name="VerticalLineColor" Value="LightGray" />
+      <Parameter Name="NumberOpacity" Value="0.8" />
+      <Parameter Name="NumberColor" Value="#fff" />
+      <Parameter Name="XSort" Value="Ascending" />
+      <Parameter Name="YSort" Value="Ascending" />
+      <Parameter Name="FillOpacity" Value="0.4" />
+      <Parameter Name="ColorScale" Value="ZeroMax" />
+      <Parameter Name="ColorInterpolate" Value="BrBG" />
+      <Parameter Name="FillColor" Value="gray" />
+      <Parameter Name="StrokeColor" Value="gray" />
+      <Parameter Name="StrokeWidth" Value="2" />
+      <Parameter Name="OpacityScale" Value="ZeroMax" />
+      <Parameter Name="InnerSizeType" Value="Absolute" />
+      <Parameter Name="InnerFillColor" Value="red" />
+    </Parameters>
+  </UserChart>
+  <Dashboard Guid="ef2238a6-c7c8-4d2d-b50e-573b51ad236c" DisplayName="Portfolio" EntityType="Portfolio" Owner="User;1;System Robot" EmbeddedInEntity="Tab" CombineSimilarRows="true">
+    <Parts>
+      <Part Row="1" StartColumn="0" Columns="2">
+        <BigValuePart ValueToken="Entity.Status" />
+      </Part>
+      <Part Row="1" StartColumn="4" Columns="2">
+        <BigValuePart ValueToken="Entity.Budget" />
+      </Part>
+      <Part Row="1" StartColumn="10" Columns="2" Title="Risiko">
+        <BigValuePart ValueToken="Entity.Risk" />
+      </Part>
+      <Part Row="1" StartColumn="6" Columns="2" Title="Verbraucht">
+        <BigValuePart ValueToken="Entity.Consumed" />
+      </Part>
+      <Part Row="1" StartColumn="8" Columns="2" Title="Fortschritt" IconColor="#2E86C1">
+        <BigValuePart ValueToken="Entity.BudgetProgress" />
+      </Part>
+      <Part Row="1" StartColumn="2" Columns="2" Title="Projektinitauftrage">
+        <BigValuePart ValueToken="Entity.ProjectInitiationRequests.Count" />
+      </Part>
+      <Part Row="3" StartColumn="0" Columns="12" IconName="fas fa-rectangle-list" IconColor="#2E86C1">
+        <UserQueryPart UserQuery="376c6c5d-1e22-436f-bd7d-7c9f3a5ed748" AllowSelection="false" />
+      </Part>
+      <Part Row="2" StartColumn="0" Columns="4" IconName="fas fa-chart-bar" IconColor="#6C3483">
+        <UserChartPart UserChart="9db73030-2dcb-4e9c-8bd9-2fe51993dd5d" AllowChangeShowData="true" AutoRefresh="true" />
+      </Part>
+      <Part Row="2" StartColumn="8" Columns="4" IconName="fas fa-chart-bar" IconColor="#6C3483">
+        <UserChartPart UserChart="0ca67d74-7b14-437a-9245-74995c5005fe" AllowChangeShowData="true" AutoRefresh="true" />
+      </Part>
+      <Part Row="2" StartColumn="4" Columns="4">
+        <UserChartPart UserChart="6c6e85dc-c92e-49bd-959b-70bb03623137" />
+      </Part>
+    </Parts>
+    <TokenEquivalencesGroups />
+  </Dashboard>
+</Entities>

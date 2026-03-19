@@ -1,0 +1,28 @@
+{
+  "profiles": {
+    "Local": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": ""
+      }
+    },
+    "DEMO_BVA": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "demobva"
+      }
+    },
+    "PM_FLEX_ONE": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "rrsp"
+      }
+    },
+    "Local_cloudogu": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "local_cloudogu"
+      }
+    }
+  }
+}
