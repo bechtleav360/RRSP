@@ -43,7 +43,7 @@ class BasicLoader
         {
             UserName = username,
             Email =  username == "System" ? null : username + "@bechtle.com",
-            PasswordHash = PasswordEncoding.EncodePassword(username, username),
+            PasswordHash = PasswordEncoding.HashPassword(username, username),
             Role = role.ToLite(),
             State = UserState.Active,
         };

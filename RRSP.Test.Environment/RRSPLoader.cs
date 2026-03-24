@@ -47,7 +47,7 @@ public static class Tools
             {
                 UserName = email,
                 Email = email,
-                PasswordHash = PasswordEncoding.EncodePassword(userName, userName),
+                PasswordHash = PasswordEncoding.HashPassword(userName, userName),
                 Role = (role ?? superUser).ToLite(),
                 State = UserState.Active,
             };

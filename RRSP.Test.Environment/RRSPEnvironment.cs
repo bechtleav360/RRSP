@@ -28,7 +28,7 @@ public static class RRSPEnvironment
             var connectionString = config.GetConnectionString("ConnectionString")!;
             var azureConnectionString = config.GetConnectionString("AzureStorageConnectionString");
             var brodcasSecret = config["BroadcastSecret"]!;
-            BroadcastSecretHash = brodcasSecret.HasText() ? Convert.ToBase64String(PasswordEncoding.EncodePassword("", brodcasSecret)) : null;
+            BroadcastSecretHash = brodcasSecret.HasText() ? Convert.ToBase64String(PasswordEncoding.HashPassword("", brodcasSecret)) : null;
             //if (!connectionString.Contains("Test")) //Security mechanism to avoid passing test on production
             //    throw new InvalidOperationException("ConnectionString does not contain the word 'Test'.");
 
