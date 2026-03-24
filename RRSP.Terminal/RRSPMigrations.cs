@@ -926,7 +926,7 @@ class RRSPMigrations
         UserEntity system = new UserEntity
         {
             UserName = username,
-            PasswordHash = PasswordEncoding.EncodePassword(username, username),
+            PasswordHash = PasswordEncoding.HashPassword(username, username),
             Role = Database.Query<RoleEntity>().Where(r => r.Name == role).SingleEx().ToLite(),
             State = UserState.Active,
         };
