@@ -41,6 +41,7 @@ public class EnvironmentTest
             using (AuthLogic.Disable())
             {
                 AuthLogic.LoadRoles(authRules);
+                AuthLogic.ImportRulesScript(authRules, interactive: false)!.PlainSqlCommand().ExecuteLeaves();
                 BasicLoader.LoadUsers();
                 BasicLoader.LoadBasics();
                 BasicLoader.CreateProtocolMasterData();
@@ -81,7 +82,6 @@ public class EnvironmentTest
                     UserAssetsImporter.ImportAll(File.ReadAllBytes(@"..\..\..\..\RRSP.Terminal\ToolbarEntity1.xml"));
                 }
 
-                AuthLogic.ImportRulesScript(authRules, interactive: false)!.PlainSqlCommand().ExecuteLeaves();
             }
         }
 
