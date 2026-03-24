@@ -1,36 +1,29 @@
 # AI Agent Instructions for RRSP
 
-This document contains shared instructions for AI coding assistants (GitHub Copilot, OpenCode, etc.) working on the RRSP project.
+**Read [`Framework/AGENTS.md`](Framework/AGENTS.md) first** — it contains all Signum Framework conventions (entities, operations, logic, React components, localization, build system).
+
+This file only covers RRSP-specific details.
 
 ---
 
-## Base Instructions
-**This repository uses Signum Framework.** 
+## Project Structure
+- **RRSP/** — Main library: entities, logic, and React components organized by module.
+- **RRSP.Server/** — ASP.NET Core host, Vite dev server (port 3000), API controllers.
+- **RRSP.Terminal/** — Console app for database migrations and data loading.
+- **RRSP.Test.Logic/** — xUnit tests for business logic.
+- **RRSP.Test.React/** — Selenium UI tests.
+- **RRSP.Test.Environment/** — Shared test setup and database configuration.
+- **Framework/** — Signum Framework git submodule (do not modify directly from this repo).
 
-For general Signum Framework conventions, **see `Framework/AGENTS.md`** first.
+## Key Files
+- `RRSP/Starter.cs` — Central bootstrapping. Registers all framework extensions and app modules via `Start()`.
+- `RRSP/MainAdmin.tsx` — Imports and starts all module clients.
+- `RRSP/Layout.tsx` — Main application shell (navbar, sidebar, modals).
+- `RRSP.Server/Program.cs` — Server entry point, calls `Starter.Start()`.
+- `Modules.xml` — Configuration for optional/removable modules.
 
-The instructions below provide RRSP-specific overrides and additions.
-
----
-
-## Project Overview
-- **Project Name:** RRSP
-- **Main Project:** RRSP/RRSP.csproj
-- **.NET Version:** 10.0
-- **Framework:** Signum Framework (git submodule at `Framework/`)
-
-## RRSP-Specific Overrides
-
-(Add your RRSP-specific coding conventions, patterns, and guidelines here)
-
----
-
-## Common Patterns
-
-(Document common patterns specific to this project)
-
----
-
-## Important Notes
-
-(Add any important notes or warnings for AI assistants working on this codebase)
+## Build & Run
+- **C#:** `dotnet build RRSP/RRSP.csproj` (not the entire solution).
+- **TypeScript:** `yarn tsgo --build` from the RRSP folder.
+- **Dev server:** `yarn dev` from RRSP.Server (Vite on port 3000).
+- **Tests:** `dotnet test RRSP.Test.Logic/RRSP.Test.Logic.csproj`.
