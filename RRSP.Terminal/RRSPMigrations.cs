@@ -1005,19 +1005,7 @@ class RRSPMigrations
                     DocumentQMAttachmentFolder = @"document-qm-attachment",
                     BusinessCaseBaseLineFolder = @"business-case-base-line",
                 },
-                //ActiveDirectory = new ActiveDirectoryConfigurationEmbedded
-                //{
-                //    AzureAD = new AzureActiveDirectoryEmbedded
-                //    {
-                //        ApplicationID = Guid.Parse("06f172a6-eb85-4727-bb6a-035b1e18009a"),
-                //        DirectoryID = Guid.Parse("ecd106db-905e-428b-a596-a35a36d07bb0"),
-                //        LoginWithAzureAD = true,
-                //    },
-                //    WindowsAD = null,
-                //    AllowMatchUsersBySimpleUserName = true,
-                //    AutoCreateUsers = true,
-                //    DefaultRole = null,
-                //},
+              
                 Translation = new TranslationConfigurationEmbedded
                 {
                 },
